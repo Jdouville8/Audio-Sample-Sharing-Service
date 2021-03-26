@@ -1,3 +1,6 @@
 node_modules
+<<<<<<< HEAD
 client/node_modules
+=======
+>>>>>>> fa1c679c5a716befe7ef554e446d36c6ae8eec6c
 .DS_Store
