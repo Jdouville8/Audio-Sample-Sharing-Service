@@ -11,6 +11,9 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// DB Atlas uri
+const uri = process.env.MONGODB_URI;
+
 // Define API routes here
 
 // Send every other request to the React app
