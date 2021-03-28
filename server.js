@@ -25,6 +25,7 @@ mongoose.connect(
 );
 
 // Add routes, both API and view
+// Comment for prune
 app.use(require("./routes/api.js"));
 
 // Send every other request to the React app
