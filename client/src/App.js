@@ -11,3 +11,4 @@ function App() {
 }
 
 export default App;
+// style= {{backgroundImage: 'url("./public/Wave1Edit.png")}}

@@ -14,6 +14,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import Background from "../../images/Wave1Edit2.png";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -164,7 +165,14 @@ function NavBar() {
   return (
     <div className={classes.grow}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar
+          style={{
+            backgroundImage: `url(${Background})`,
+            backgroundRepeat: `no-repeat`,
+            backgroundSize: `cover`,
+            backgroundPosition: `center center`,
+          }}
+        >
           <IconButton
             edge="start"
             className={classes.menuButton}
