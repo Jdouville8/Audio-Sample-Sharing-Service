@@ -20,3 +20,5 @@ router.post("/api/users", ({ body }, res) => {
         res.status(400).json(err);
       });
   });
+
+  module.exports = router;
