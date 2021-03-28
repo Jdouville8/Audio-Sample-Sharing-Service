@@ -5,9 +5,6 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 
 const useStyles = makeStyles({
-	root: {
-		maxWidth: 345,
-	},
 	media: {
 		height: 140,
 	},
@@ -18,7 +15,7 @@ function Icon(props) {
 
 	return (
 		<>
-			<Card className={classes.root}>
+			<Card>
 				<CardActionArea>
 					<CardMedia
 						className={classes.media}
