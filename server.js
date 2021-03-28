@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require('mongoose');
 
@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost:3000/wavmovers',
+  process.env.MONGODB_URI || 'mongodb://localhost/SampleLibrary',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -24,7 +24,8 @@ mongoose.connect(
   }
 );
 
-// Define API routes here
+// Add routes, both API and view
+app.use(require("./routes/api.js"));
 
 // Send every other request to the React app
 // Define any API routes before this runs
