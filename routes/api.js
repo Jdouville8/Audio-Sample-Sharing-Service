@@ -6,14 +6,18 @@ const GridFsStorage = require('multer-gridfs-storage');
 const db = mongoose.connection;
 const User = require('../models/User');
 const crypto = require('crypto');
+const path = require('path');
 
 let gfs;
+
 db.once('open', function () {
 	gfs = Grid(db.db, mongoose.mongo);
+	console.log('db.once called!');
+	gfs.collection('uploads');
 });
 
 const storage = new GridFsStorage({
-	url: 'mongodb://localhost:27017/SampleLibrary',
+	url: 'mongodb://localhost/SampleLibrary',
 	file: (req, file) => {
 		return new Promise((resolve, reject) => {
 			crypto.randomBytes(16, (err, buf) => {
@@ -34,7 +38,7 @@ const storage = new GridFsStorage({
 // sets file input to single file
 const singleUpload = multer({ storage: storage }).single('file');
 
-router.get('api/files/:filename', (req, res) => {
+router.get('/api/files/:filename', (req, res) => {
 	gfs.files.find({ filename: req.params.filename }).toArray((err, files) => {
 		if (!files || files.length === 0) {
 			return res.status(404).json({
@@ -49,8 +53,9 @@ router.get('api/files/:filename', (req, res) => {
 	});
 });
 
-router.get('api/files', (req, res) => {
-	gfs.files.find().toArray((err, files) => {
+router.get('/api/files', (req, res) => {
+	gfs.files.find({}).toArray((err, files) => {
+		console.log(files);
 		if (!files || files.length === 0) {
 			return res.status(404).json({
 				message: 'Could not find files',
@@ -60,7 +65,7 @@ router.get('api/files', (req, res) => {
 	});
 });
 
-router.post('api/files', singleUpload, (req, res) => {
+router.post('/api/files', singleUpload, (req, res) => {
 	if (req.file) {
 		return res.json({
 			success: true,
