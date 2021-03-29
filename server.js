@@ -33,20 +33,15 @@ app.use(function (req, res, next) {
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
 }
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(logger('dev'));
 
 // Put all API endpoints under '/api'
 // app.use('/api', require('./routes/file'));
 app.use(require('./routes/api.js'));
-
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-
-// app.get('*', (req, res) => {
-// 	res.sendFile(path.join(__dirname + '/client/build/index.html'));
-// });
-
+//
+//
+//
 const port = process.env.PORT || 3001;
 app.listen(port);
 console.log(`Server listening on ${port}`);
