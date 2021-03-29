@@ -33,6 +33,9 @@ mongoose.connect(
   }
 );
 
+// init gfs strean
+let gfs;
+
 // Add routes, both API and view
 // Comment for prune
 app.use(require("./routes/api.js"));

@@ -6,12 +6,12 @@ const UserSchema = new Schema({
   username: {
     type: String,
     trim: true,
-    required: "Enter a username"
+    required: "Enter a username",
   },
   password: {
     type: String,
-    required: "Enter a password"
-  }
+    required: "Enter a password",
+  },
 });
 
 const User = mongoose.model("User", UserSchema);
