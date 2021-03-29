@@ -7,24 +7,24 @@ import Landing from "./pages/Landing";
 import FileSubmit from "./pages/fileSubmit";
 
 function App() {
-  return (
-    <Router>
-      <div>
-        <NavBar />
-        <Switch>
-          <Route exact path={"/search"}>
-            <Search />
-          </Route>
-          <Route exact path={("/", "/landing")}>
-            <Landing />
-          </Route>
-          <Route exact path={"/upload"}>
-            <FileSubmit />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+	return (
+		<Router>
+			<div>
+				<NavBar />
+				<Switch>
+					<Route exact path={"/search"}>
+						<Search />
+					</Route>
+					<Route exact path={["/", "/landing"]}>
+						<Landing />
+					</Route>
+					<Route exact path={"/upload"}>
+						<FileSubmit />
+					</Route>
+				</Switch>
+			</div>
+		</Router>
+	);
 }
 
 export default App;
