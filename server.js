@@ -1,11 +1,20 @@
 const express = require("express");
+const bodyParser = require('body-parser')
 const path = require("path");
+const crypto = require('crypto')
 const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require('mongoose');
+const multer = require('multer')
+const GridFsStorage = require('multer-gridfs-storage')
+const Grid = require('multer-gridfs-stream')
+const methodOverride = require('method-override')
+
 
 
 // Define middleware here
+app.use(bodyParser.json())
+app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
