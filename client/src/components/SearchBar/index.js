@@ -21,10 +21,8 @@ function SearchBar() {
 		<div className={classes.root}>
 			<TextField
 				id="standard-full-width"
-				label="Label"
 				style={{ margin: 8 }}
-				placeholder="Placeholder"
-				helperText="Full width!"
+				placeholder="Search"
 				fullWidth
 				margin="normal"
 				InputLabelProps={{
