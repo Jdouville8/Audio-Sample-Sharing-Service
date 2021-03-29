@@ -1,10 +1,10 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Search from './pages/Search';
-import NavBar from './components/navBar/NavBar.js';
-import Landing from './pages/Landing';
-import FileSubmit from './pages/fileSubmit';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Search from "./pages/Search";
+import NavBar from "./components/navBar/NavBar.js";
+import Landing from "./pages/Landing";
+import FileSubmit from "./pages/fileSubmit";
 
 function App() {
 	return (
@@ -12,13 +12,13 @@ function App() {
 			<div>
 				<NavBar />
 				<Switch>
-					<Route exact path={'/search'}>
+					<Route exact path={"/search"}>
 						<Search />
 					</Route>
-					<Route exact path={('/', '/landing')}>
+					<Route exact path={["/", "/landing"]}>
 						<Landing />
 					</Route>
-					<Route exact path={'/upload'}>
+					<Route exact path={"/upload"}>
 						<FileSubmit />
 					</Route>
 				</Switch>

@@ -34,7 +34,7 @@ function Search() {
 				justify="center"
 				alignItems="center"
 				spacing={4}>
-				<Grid item sm={10}>
+				<Grid item sm={11} lg={8}>
 					<SearchBar />
 				</Grid>
 			</Grid>
