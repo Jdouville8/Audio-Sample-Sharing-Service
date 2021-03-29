@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import Icon from "../components/Icon";
 import SearchBar from "../components/SearchBar";
 import Details from "../components/Details";
-import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
