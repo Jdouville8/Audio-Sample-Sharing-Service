@@ -5,6 +5,7 @@ import Search from "./pages/Search";
 import NavBar from "./components/navBar/NavBar.js";
 import Landing from "./pages/Landing";
 import FileSubmit from "./pages/fileSubmit";
+import Login from "./pages/Login";
 
 function App() {
 	return (
@@ -20,6 +21,9 @@ function App() {
 					</Route>
 					<Route exact path={"/upload"}>
 						<FileSubmit />
+					</Route>
+					<Route exact path={"/login"}>
+						<Login />
 					</Route>
 				</Switch>
 			</div>
