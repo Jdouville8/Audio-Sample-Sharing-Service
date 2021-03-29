@@ -9,7 +9,7 @@ function App() {
 			<div>
 				{/* Nav */}
 				<Switch>
-					<Route exact path={"/search"}>
+					<Route exact path={"/"}>
 						<Search />
 					</Route>
 				</Switch>
