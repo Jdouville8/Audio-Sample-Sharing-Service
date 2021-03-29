@@ -9,8 +9,11 @@ const crypto = require('crypto');
 const path = require('path');
 
 let gfs;
+
 db.once('open', function () {
 	gfs = Grid(db.db, mongoose.mongo);
+	console.log('db.once called!');
+	gfs.collection('uploads');
 });
 
 const storage = new GridFsStorage({
@@ -51,7 +54,8 @@ router.get('/api/files/:filename', (req, res) => {
 });
 
 router.get('/api/files', (req, res) => {
-	gfs.files.find().toArray((err, files) => {
+	gfs.files.find({}).toArray((err, files) => {
+		console.log(files);
 		if (!files || files.length === 0) {
 			return res.status(404).json({
 				message: 'Could not find files',
