@@ -1,21 +1,25 @@
 import React from "react";
-
 import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Search from "./pages/Search";
 import NavBar from "./components/navBar/NavBar.js";
 import Landing from "./pages/Landing";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import router from "../../routes/api";
+import FileSubmit from "./pages/fileSubmit";
+
 function App() {
   return (
     <Router>
       <div>
         <NavBar />
         <Switch>
-          {/* <Route>
+          <Route exact path={"/search"}>
             <Search />
-          </Route> */}
-          <Route exact path={"/landing"}>
+          </Route>
+          <Route exact path={("/", "/landing")}>
             <Landing />
+          </Route>
+          <Route exact path={"/upload"}>
+            <FileSubmit />
           </Route>
         </Switch>
       </div>
