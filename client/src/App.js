@@ -6,6 +6,7 @@ import NavBar from "./components/navBar/NavBar.js";
 import Landing from "./pages/Landing";
 import FileSubmit from "./pages/fileSubmit";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
 	return (
@@ -24,6 +25,9 @@ function App() {
 					</Route>
 					<Route exact path={"/login"}>
 						<Login />
+					</Route>
+					<Route exact path={"/signup"}>
+						<Signup />
 					</Route>
 				</Switch>
 			</div>
