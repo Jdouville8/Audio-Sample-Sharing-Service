@@ -11,6 +11,8 @@ const path = require('path');
 let gfs;
 db.once('open', function () {
 	gfs = Grid(db.db, mongoose.mongo);
+	gfs.collection('uploads')
+	// console.log(gfs)
 });
 
 const storage = new GridFsStorage({
@@ -51,7 +53,8 @@ router.get('/api/files/:filename', (req, res) => {
 });
 
 router.get('/api/files', (req, res) => {
-	gfs.files.find().toArray((err, files) => {
+	gfs.files.find({}).toArray((err, files) => {
+		console.log(`FILES RETREIVED ${files}`)
 		if (!files || files.length === 0) {
 			return res.status(404).json({
 				message: 'Could not find files',
@@ -60,6 +63,17 @@ router.get('/api/files', (req, res) => {
 		return res.json(files);
 	});
 });
+
+// router.get('/api/chunks', (req, res) => {
+// 	gfs.files.find().toArray((err, files) => {
+// 		if (!files || files.length === 0) {
+// 			return res.status(404).json({
+// 				message: 'Could not find files',
+// 			});
+// 		}
+// 		return res.json(files);
+// 	});
+// });
 
 router.post('/api/files', singleUpload, (req, res) => {
 	if (req.file) {
