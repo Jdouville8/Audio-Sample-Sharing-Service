@@ -1,12 +1,25 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React from "react";
+
 import "./App.css";
 import NavBar from "./components/navBar/NavBar.js";
+import Landing from "./pages/Landing";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import router from "../../routes/api";
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-    </div>
+    <Router>
+      <div>
+        <NavBar />
+        <Switch>
+          {/* <Route>
+            <Search />
+          </Route> */}
+          <Route exact path={"/landing"}>
+            <Landing />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
