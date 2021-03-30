@@ -64,7 +64,7 @@ export default function FileSubmit() {
 							variant="contained"
 							color="primary"
 							value="Upload"
-							onClick={log}>
+							onClick={onSubmit}>
 							Submit
 						</Button>
 					</form>
