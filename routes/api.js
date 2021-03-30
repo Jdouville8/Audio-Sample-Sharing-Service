@@ -55,7 +55,7 @@ router.get('/api/files/:filename', (req, res) => {
 
 router.get('/api/files', (req, res) => {
 	gfs.files.find({}).toArray((err, files) => {
-		console.log(files);
+		// console.log(formData);
 		if (!files || files.length === 0) {
 			return res.status(404).json({
 				message: 'Could not find files',

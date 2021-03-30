@@ -33,8 +33,12 @@ export default function FileSubmit() {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		const formData = new FormData();
-		formData.append("file");
+		const data = new FormData(e.target);
+		
+		fetch('/api/files', {
+		  method: 'POST',
+		  body: data,
+		});
 	};
 
 	return (
