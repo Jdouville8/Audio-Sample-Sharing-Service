@@ -163,7 +163,7 @@ function NavBar() {
   );
 
   return (
-    <div className={classes.grow} style={{ marginBottom: "50px" }}>
+    <div className={classes.grow}>
       <AppBar position="fixed">
         <Toolbar
           style={{
