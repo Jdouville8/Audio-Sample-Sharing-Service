@@ -1,13 +1,18 @@
 import React from "react";
+// import { Link } from "react-router-dom";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+  Badge,
+  MenuItem,
+  Menu,
+  Link,
+} from "@material-ui/core";
+
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -133,20 +138,20 @@ function NavBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
+        <Link
+          href="/landing"
+          style={{ color: "#3d1347", margin: "5px", marginTop: "10%" }}
+        >
+          Home
+        </Link>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
+        <Link
+          href="/login"
+          style={{ color: "#3d1347", margin: "5px", marginTop: "10%" }}
+        >
+          Login
+        </Link>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -157,7 +162,7 @@ function NavBar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <p style={{ color: "#3d1347" }}>Profile</p>
       </MenuItem>
     </Menu>
   );
@@ -182,7 +187,7 @@ function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            WavMovers
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -199,16 +204,23 @@ function NavBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
+            <Link
+              href="/landing"
+              style={{ color: "pink", margin: "5px", marginTop: "10%" }}
+            >
+              Home
+            </Link>
+            <Link
+              href="/login"
+              style={{ color: "pink", margin: "5px", marginTop: "10%" }}
+            >
+              Login
+            </Link>
+            {/* <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               edge="end"
               aria-label="account of current user"
