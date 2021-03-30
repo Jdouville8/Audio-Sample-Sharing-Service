@@ -27,7 +27,7 @@ function Search() {
 	const classes = useStyles();
 
 	return (
-		<div style={{ height: "86.1vh", width: "99vw" }}>
+		<div style={{ height: "100vh" }}>
 			<Grid
 				container
 				direction="row"

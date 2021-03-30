@@ -28,7 +28,7 @@ function Login() {
 	const onSubmit = () => {};
 
 	return (
-		<div style={{ height: "84.4vh" }}>
+		<div style={{ height: "100vh" }}>
 			<Grid>
 				<Grid item lg={7}>
 					<div
