@@ -37,6 +37,7 @@ export default function FileSubmit() {
 		// const data = file
 		
 		fetch('http://localhost:3001/api/files', {
+		
 		  method: 'POST',
 		  body:  JSON.stringify(file)
 		});

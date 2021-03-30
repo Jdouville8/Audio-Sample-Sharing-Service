@@ -14,6 +14,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,6 +63,16 @@ export default function RecipeReviewCard() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleDownload = (e) => {
+    // e.preventDefault();
+		console.log()
+		// const data = file
+		
+    window.location.href = "http://localhost:3001/api/files/f03a00764bcf985418cc17d6a6ad5bfd.zip";
+		
+
+  }
 
   return (
     <Card className={classes.root}>
@@ -112,6 +123,11 @@ export default function RecipeReviewCard() {
             ) : (
               <SkipNextIcon />
             )}
+          </IconButton>
+          <IconButton 
+          aria-label="Download"
+          onClick={handleDownload}>
+             <GetAppIcon/>
           </IconButton>
         </div>
       </Collapse>
