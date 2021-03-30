@@ -16,8 +16,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Background from "../../images/Wave1Edit2.png";
 
@@ -125,42 +124,46 @@ function NavBar() {
 		</Menu>
 	);
 
-	const mobileMenuId = "primary-search-account-menu-mobile";
-	const renderMobileMenu = (
-		<Menu
-			anchorEl={mobileMoreAnchorEl}
-			anchorOrigin={{ vertical: "top", horizontal: "right" }}
-			id={mobileMenuId}
-			keepMounted
-			transformOrigin={{ vertical: "top", horizontal: "right" }}
-			open={isMobileMenuOpen}
-			onClose={handleMobileMenuClose}>
-			<MenuItem>
-				<Link
-					href="/landing"
-					style={{ color: "#3d1347", margin: "5px", marginTop: "10%" }}>
-					Home
-				</Link>
-			</MenuItem>
-			<MenuItem>
-				<Link
-					href="/login"
-					style={{ color: "#3d1347", margin: "5px", marginTop: "10%" }}>
-					Login
-				</Link>
-			</MenuItem>
-			<MenuItem onClick={handleProfileMenuOpen}>
-				<IconButton
-					aria-label="account of current user"
-					aria-controls="primary-search-account-menu"
-					aria-haspopup="true"
-					color="inherit">
-					<AccountCircle />
-				</IconButton>
-				<p style={{ color: "#3d1347" }}>Profile</p>
-			</MenuItem>
-		</Menu>
-	);
+  const mobileMenuId = "primary-search-account-menu-mobile";
+  const renderMobileMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+      <MenuItem>
+        <Link
+          href="/home"
+          style={{ color: "#3d1347", margin: "5px", marginTop: "10%" }}
+        >
+          Home
+        </Link>
+      </MenuItem>
+      <MenuItem>
+        <Link
+          href="/login"
+          style={{ color: "#3d1347", margin: "5px", marginTop: "10%" }}
+        >
+          Login
+        </Link>
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+        <p style={{ color: "#3d1347" }}>Profile</p>
+      </MenuItem>
+    </Menu>
+  );
 
 	return (
 		<div className={classes.grow}>
