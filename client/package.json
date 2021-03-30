@@ -5,11 +5,21 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "axios": "^0.21.1",
+    "clsx": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+<<<<<<< HEAD
     "react-scripts": "3.4.3",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2"
+=======
+    "react-h5-audio-player": "^3.6.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3"
+>>>>>>> main
   },
   "scripts": {
     "start": "react-scripts start",
