@@ -55,7 +55,7 @@ router.get('/api/files/:filename', (req, res) => {
 
 router.get('/api/files', (req, res) => {
 	gfs.files.find({}).toArray((err, files) => {
-		console.log(files);
+		// console.log(formData);
 		if (!files || files.length === 0) {
 			return res.status(404).json({
 				message: 'Could not find files',
@@ -66,6 +66,7 @@ router.get('/api/files', (req, res) => {
 });
 
 router.post('/api/files', singleUpload, (req, res) => {
+	console.log(req.body)
 	if (req.file) {
 		return res.json({
 			success: true,
@@ -75,7 +76,7 @@ router.post('/api/files', singleUpload, (req, res) => {
 	res.send({ success: false });
 });
 
-router.delete('api/files/:id', (req, res) => {
+router.delete('/api/files/:id', (req, res) => {
 	gfs.remove({ _id: req.params.id }, (err) => {
 		if (err) return res.status(500).json({ success: false });
 		return res.json({ success: true });
