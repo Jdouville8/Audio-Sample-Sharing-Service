@@ -164,7 +164,7 @@ function NavBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar
           style={{
             backgroundImage: `url(${Background})`,
