@@ -5,23 +5,25 @@ import Search from "./pages/Search";
 import NavBar from "./components/navBar/NavBar.js";
 import Landing from "./pages/Landing";
 import FileSubmit from "./pages/fileSubmit";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <Router>
-      <div>
+      <div style={{ height: "100vh" }}>
         <NavBar />
         <Switch>
           <Route exact path={"/search"}>
             <Search />
           </Route>
-          <Route exact path={("/", "/landing")}>
+          <Route exact path={["/", "/landing"]}>
             <Landing />
           </Route>
           <Route exact path={"/upload"}>
             <FileSubmit />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
