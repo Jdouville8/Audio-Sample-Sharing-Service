@@ -68,7 +68,9 @@ export default function RecipeReviewCard() {
     // e.preventDefault();
 		console.log()
 		// const data = file
-		
+
+
+		// THIS URL MUST CHANGE DYNAMICALLY
     window.location.href = "http://localhost:3001/api/files/f03a00764bcf985418cc17d6a6ad5bfd.zip";
 		
 
