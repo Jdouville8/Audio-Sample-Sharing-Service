@@ -1,3 +1,7 @@
 node_modules
+<<<<<<< HEAD
 package-lock
+=======
+package-lock.json
+>>>>>>> main
 .DS_Store

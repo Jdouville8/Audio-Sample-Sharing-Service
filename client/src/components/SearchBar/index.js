@@ -18,21 +18,17 @@ function SearchBar() {
   const classes = useStyles();
 
   return (
-    <div>
-      <div className={classes.root}>
-        <TextField
-          id="standard-full-width"
-          label="Label"
-          style={{ margin: 8 }}
-          placeholder="Placeholder"
-          helperText="Full width!"
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-      </div>
+    <div className={classes.root}>
+      <TextField
+        id="standard-full-width"
+        style={{ margin: 8 }}
+        placeholder="Search"
+        fullWidth
+        margin="normal"
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
     </div>
   );
 }

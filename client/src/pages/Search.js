@@ -26,36 +26,36 @@ const useStyles = makeStyles((theme) => ({
 function Search() {
   const classes = useStyles();
 
-  return (
-    <div style={{ backgroundColor: "red", height: "100vh" }}>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={4}
-      >
-        <Grid item sm={10}>
-          <SearchBar />
-        </Grid>
-      </Grid>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={4}
-      >
-        {/* need to map over search results and add these items dynamically */}
-        <Grid item>
-          <Icon />
-        </Grid>
-        <Grid item>
-          <Details />
-        </Grid>
-      </Grid>
-    </div>
-  );
+
+	return (
+		<div style={{height: "100vh" }}>
+			<Grid
+				container
+				direction="row"
+				justify="center"
+				alignItems="center"
+				spacing={4}>
+				<Grid item sm={11} lg={8}>
+					<SearchBar />
+				</Grid>
+			</Grid>
+			<Grid
+				container
+				direction="row"
+				justify="center"
+				alignItems="center"
+				spacing={4}>
+				{/* need to map over search results and add these items dynamically */}
+				<Grid item>
+					<Icon />
+				</Grid>
+				<Grid item>
+					<Details />
+				</Grid>
+			</Grid>
+		</div>
+	);
+>>>>>>> main
 }
 
 export default Search;
