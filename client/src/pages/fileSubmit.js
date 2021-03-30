@@ -33,8 +33,13 @@ export default function FileSubmit() {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		const formData = new FormData();
-		formData.append("file");
+		console.log(file)
+		// const data = file
+		
+		fetch('http://localhost:3001/api/files', {
+		  method: 'POST',
+		  body:  JSON.stringify(file)
+		});
 	};
 
 	return (
@@ -56,15 +61,17 @@ export default function FileSubmit() {
 						className={classes.root}
 						noValidate
 						autoComplete="off"
-						onSubmit={onSubmit}>
+						// onSubmit={onSubmit}
+						>
 						<label>Please choose a File</label>
 						<br />
-						<TextField name="upload-audio" type="file" onChange={onChange} />
+						<TextField name="file" type="file" onChange={onChange} />
 						<Button
 							variant="contained"
 							color="primary"
-							value="Upload"
-							onClick={log}>
+							// value="Upload"
+							onClick={onSubmit}
+							>
 							Submit
 						</Button>
 					</form>
