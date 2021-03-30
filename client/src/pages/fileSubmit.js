@@ -40,9 +40,9 @@ export default function FileSubmit() {
 	return (
 		<div
 			style={{
-				position: "absolute",
-				left: "50%",
-				top: "50%",
+				height: "100vh",
+				marginLeft: "60%",
+				marginTop: "40%",
 				transform: "translate(-50%, -50%)",
 			}}>
 			<Card
