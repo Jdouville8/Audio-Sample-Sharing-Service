@@ -69,8 +69,8 @@ function Landing() {
 						</Typography>
 					</CardContent>
 					<CardActions>
-						<Button size="small">
-							Maybe this is a link to the signup.login
+						<Button size="small" href="/signup">
+							Sign up today
 						</Button>
 					</CardActions>
 				</Card>

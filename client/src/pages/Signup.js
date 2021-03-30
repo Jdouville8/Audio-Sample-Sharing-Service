@@ -25,6 +25,8 @@ const useStyles = makeStyles({
 function Signup() {
 	const classes = useStyles();
 
+	const onSubmit = () => {};
+
 	return (
 		<div style={{ height: "84.4vh" }}>
 			<Grid>
@@ -48,34 +50,37 @@ function Signup() {
 							transform: "translate(-50%, -50%)",
 						}}>
 						<Card className={classes.root} variant="outlined">
-							<CardContent></CardContent>
-							<CardActions>
-								<TextField
-									id="outlined-basic"
-									label="Email"
-									variant="outlined"
-									fullWidth
-								/>
-							</CardActions>
-							<CardActions>
-								<TextField
-									id="outlined-basic"
-									label="Username"
-									variant="outlined"
-									fullWidth
-								/>
-							</CardActions>
-							<CardActions>
-								<TextField
-									id="outlined-basic"
-									label="Password"
-									variant="outlined"
-									fullWidth
-								/>
-							</CardActions>
-							<CardActions>
-								<Button size="medium">Signup</Button>
-							</CardActions>
+							<form>
+								<CardActions>
+									<TextField
+										id="outlined-basic"
+										label="Email"
+										variant="outlined"
+										fullWidth
+									/>
+								</CardActions>
+								<CardActions>
+									<TextField
+										id="outlined-basic"
+										label="Username"
+										variant="outlined"
+										fullWidth
+									/>
+								</CardActions>
+								<CardActions>
+									<TextField
+										id="outlined-basic"
+										label="Password"
+										variant="outlined"
+										fullWidth
+									/>
+								</CardActions>
+								<CardActions>
+									<Button size="medium" onClick={onSubmit}>
+										Signup
+									</Button>
+								</CardActions>
+							</form>
 						</Card>
 					</div>
 				</Grid>
