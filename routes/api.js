@@ -66,6 +66,7 @@ router.get('/api/files', (req, res) => {
 });
 
 router.post('/api/files', singleUpload, (req, res) => {
+	console.log(req.body)
 	if (req.file) {
 		return res.json({
 			success: true,
