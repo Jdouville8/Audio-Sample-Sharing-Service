@@ -38,8 +38,8 @@ function Landing() {
         style={{
           position: "relative",
           backgroundImage: `url(${Background})`,
-          width: "100%",
-          height: "800px",
+          width: "100",
+          height: "100vh",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center center",
