@@ -16,8 +16,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Background from "../../images/Wave1Edit2.png";
 
@@ -139,7 +138,7 @@ function NavBar() {
     >
       <MenuItem>
         <Link
-          href="/landing"
+          href="/home"
           style={{ color: "#3d1347", margin: "5px", marginTop: "10%" }}
         >
           Home
