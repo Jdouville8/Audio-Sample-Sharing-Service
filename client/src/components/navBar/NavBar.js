@@ -200,13 +200,18 @@ function NavBar() {
 					<div className={classes.sectionDesktop}>
 						<Link
 							href="/home"
-							style={{ color: "pink", margin: "5px", marginTop: "10%" }}>
+							style={{ color: "pink", margin: "5px", marginTop: "9%" }}>
 							Home
 						</Link>
 						<Link
 							href="/login"
-							style={{ color: "pink", margin: "5px", marginTop: "10%" }}>
+							style={{ color: "pink", margin: "5px", marginTop: "9%" }}>
 							Login
+						</Link>
+						<Link
+							href="/upload"
+							style={{ color: "pink", margin: "5px", marginTop: "9%" }}>
+							Upload
 						</Link>
 						{/* <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
