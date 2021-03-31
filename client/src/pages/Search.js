@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Icon from "../components/Icon";
 import SearchBar from "../components/SearchBar";
@@ -26,6 +26,28 @@ const useStyles = makeStyles((theme) => ({
 function Search() {
 	const classes = useStyles();
 
+	const [results, setResults] = useState({
+		src: "",
+		title: "",
+		artist: "",
+		overview: "",
+		dlUrl: "",
+		audioSrc: "",
+	});
+
+	useEffect(() => {
+		fetch("http://localhost:3001/api/files", {
+			method: "GET",
+		})
+			.then((res) => {
+				console.log(res);
+				setResults(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+
 	return (
 		<div style={{ height: "100vh" }}>
 			<Grid
@@ -46,10 +68,16 @@ function Search() {
 				spacing={4}>
 				{/* need to map over search results and add these items dynamically */}
 				<Grid item>
-					<Icon />
+					<Icon src={results.src} />
 				</Grid>
 				<Grid item>
-					<Details />
+					<Details
+						title={results.title}
+						artist={results.artist}
+						overview={results.overview}
+						dlUrl={results.dlUrl}
+						audioSrc={results.audioSrc}
+					/>
 				</Grid>
 			</Grid>
 		</div>

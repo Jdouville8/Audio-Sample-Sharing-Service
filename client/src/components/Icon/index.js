@@ -10,13 +10,15 @@ const useStyles = makeStyles({
 	},
 });
 
-function Icon() {
+function Icon(props) {
 	const classes = useStyles();
 
 	return (
 		<div>
 			<Card>
-				<CardMedia className={classes.media} />
+				<CardMedia className={classes.media}>
+					<img src={props.src} />
+				</CardMedia>
 			</Card>
 		</div>
 	);
