@@ -39,7 +39,7 @@ function Landing() {
 					position: "relative",
 					backgroundImage: `url(${Background})`,
 					width: "100",
-					height: "84.4vh",
+					height: "100vh",
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
 					backgroundPosition: "center center",
@@ -69,8 +69,8 @@ function Landing() {
 						</Typography>
 					</CardContent>
 					<CardActions>
-						<Button size="small">
-							Maybe this is a link to the signup.login
+						<Button size="small" href="/signup">
+							Sign up today
 						</Button>
 					</CardActions>
 				</Card>

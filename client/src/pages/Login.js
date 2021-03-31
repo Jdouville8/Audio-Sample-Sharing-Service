@@ -25,8 +25,10 @@ const useStyles = makeStyles({
 function Login() {
 	const classes = useStyles();
 
+	const onSubmit = () => {};
+
 	return (
-		<div style={{ height: "84.4vh" }}>
+		<div style={{ height: "100vh" }}>
 			<Grid>
 				<Grid item lg={7}>
 					<div
@@ -48,25 +50,31 @@ function Login() {
 							transform: "translate(-50%, -50%)",
 						}}>
 						<Card className={classes.root} variant="outlined">
-							<CardContent></CardContent>
-							<CardActions>
-								<TextField
-									id="outlined-basic"
-									label="Username"
-									variant="outlined"
-								/>
-								<TextField
-									id="outlined-basic"
-									label="Password"
-									variant="outlined"
-								/>
-							</CardActions>
-							<CardActions>
-								<Button size="medium">Signup</Button>
-								<Button style={{ marginLeft: "auto" }} size="medium">
-									Login
-								</Button>
-							</CardActions>
+							<form>
+								<CardActions>
+									<TextField
+										id="outlined-basic"
+										label="Username"
+										variant="outlined"
+									/>
+									<TextField
+										id="outlined-basic"
+										label="Password"
+										variant="outlined"
+									/>
+								</CardActions>
+								<CardActions>
+									<Button size="medium" href="/signup">
+										Signup
+									</Button>
+									<Button
+										style={{ marginLeft: "auto" }}
+										size="medium"
+										onClick={onSubmit}>
+										Login
+									</Button>
+								</CardActions>
+							</form>
 						</Card>
 					</div>
 				</Grid>
