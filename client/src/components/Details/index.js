@@ -81,14 +81,17 @@ export default function Details(props) {
   };
 
   return (
-    <Card className={classes.root}>
+    <Card
+      className={classes.root}
+      style={{ marginTop: "15px", marginBottom: "15px" }}
+    >
       <CardHeader
         title={props.title}
         subheader={props.artist}
         subheaderTypographyProps={{ color: "black" }}
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" component="p">
           {props.overview}
         </Typography>
       </CardContent>
