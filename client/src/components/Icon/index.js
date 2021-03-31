@@ -4,15 +4,26 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 
 const useStyles = makeStyles({
-	media: {
-		width: 204,
-		height: 204,
-	},
+  media: {
+    width: 204,
+    height: 204,
+  },
 });
 
 function Icon(props) {
-	const classes = useStyles();
+  const classes = useStyles();
 
+<<<<<<< HEAD
+  return (
+    <div>
+      <Card style={{ marginTop: "15px", marginBottom: "15px" }}>
+        <CardMedia className={classes.media}>
+          <img src={props.src} />
+        </CardMedia>
+      </Card>
+    </div>
+  );
+=======
 	return (
 		<div>
 			<Card>
@@ -23,6 +34,7 @@ function Icon(props) {
 			</Card>
 		</div>
 	);
+>>>>>>> main
 }
 
 export default Icon;
