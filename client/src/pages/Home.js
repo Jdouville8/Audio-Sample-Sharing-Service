@@ -2,8 +2,8 @@ import React from "react";
 import Details from "../components/Details/index";
 import Grid from "@material-ui/core/Grid";
 import Icon from "../components/Icon";
-import SearchBar from "../components/SearchBar";
 import Background from "../images/wallpaper.jpg";
+import Packs from "../packs.json";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home() {
+  const results = Packs;
+
   return (
     <div
       style={{
@@ -39,10 +41,20 @@ function Home() {
       <Grid container direction="row" justify="center" alignItems="center">
         {/* need to map over search results and add these items dynamically */}
         <Grid item>
-          <Icon />
+          {results.map((result) => (
+            <Icon src={result.src} />
+          ))}
         </Grid>
         <Grid item>
-          <Details />
+          {results.map((result) => (
+            <Details
+              title={result.title}
+              artist={result.artist}
+              overview={result.overview}
+              dlUrl={result.dlUrl}
+              audioSrc={result.audioSrc}
+            />
+          ))}
         </Grid>
       </Grid>
     </div>
