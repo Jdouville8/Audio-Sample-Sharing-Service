@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -65,8 +65,17 @@ export default function Details(props) {
     setExpanded(!expanded);
   };
 
-  const handleFavClick = () => {
-    axios.post("/api/users/favs", {});
+  const buttonRef = useRef(null);
+
+  const handleFavClick = (e) => {
+    e.preventDefault();
+
+    const fav = buttonRef.id;
+    axios
+      .post("/api/users/favs", {
+        favorites: fav,
+      })
+      .then(console.log("post success"));
   };
 
   const handleDownload = (e) => {
@@ -91,12 +100,17 @@ export default function Details(props) {
         subheaderTypographyProps={{ color: "black" }}
       />
       <CardContent>
-        <Typography variant="body2" component="p">
+        <Typography variant="body2" color="textSecondary" component="p">
           {props.overview}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={handleFavClick}>
+        <IconButton
+          aria-label="add to favorites"
+          onClick={handleFavClick}
+          id={props.key}
+          ref={buttonRef}
+        >
           <FavoriteIcon />
         </IconButton>
         <IconButton

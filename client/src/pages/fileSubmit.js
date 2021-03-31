@@ -4,6 +4,8 @@ import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
+import { Box } from '@material-ui/core'
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -16,6 +18,13 @@ const useStyles = makeStyles((theme) => ({
 		width: 300,
 		height: 180,
 	},
+	button: {
+		color: '#5e235b',
+		margin: '10%'
+	},
+	label: {
+		fontSize: '22px'
+	}
 }));
 
 export default function FileSubmit() {
@@ -53,7 +62,9 @@ export default function FileSubmit() {
 				marginLeft: "60%",
 				marginTop: "40%",
 				transform: "translate(-50%, -50%)",
+				display: 'flex'
 			}}>
+			<Box>
 			<Card
 				className={classes.card}
 				spacing={0}
@@ -68,12 +79,15 @@ export default function FileSubmit() {
 						// onSubmit={onSubmit}
 						enctype='multipart/form-data'
 						>
-						<label>Please choose a File</label>
+						<label className={classes.label}>
+							Please choose a File
+						</label>
 						<br />
 						<TextField name="file" type="file" onChange={onChange} />
 						<Button
 							variant="contained"
-							color="primary"
+							className={classes.button}
+							// color="primary"
 							// value="Upload"
 							onClick={onSubmit}
 							>
@@ -82,6 +96,7 @@ export default function FileSubmit() {
 					</form>
 				</CardActions>
 			</Card>
+			</Box>
 		</div>
 	);
 }

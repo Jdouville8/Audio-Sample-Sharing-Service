@@ -108,6 +108,11 @@ function NavBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    window.location.href = "http://localhost:3000/search";
+  };
+
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -182,31 +187,39 @@ function NavBar() {
             </Typography>
           </Link>
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
+            <form onSubmit={onSubmit}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
+            </form>
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Link
               href="/home"
-              style={{ color: "pink", margin: "5px", marginTop: "10%" }}
+              style={{ color: "pink", margin: "5px", marginTop: "9%" }}
             >
               Home
             </Link>
             <Link
               href="/login"
-              style={{ color: "pink", margin: "5px", marginTop: "10%" }}
+              style={{ color: "pink", margin: "5px", marginTop: "9%" }}
             >
               Login
+            </Link>
+            <Link
+              href="/upload"
+              style={{ color: "pink", margin: "5px", marginTop: "9%" }}
+            >
+              Upload
             </Link>
             {/* <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
