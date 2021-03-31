@@ -28,14 +28,6 @@ const storage = new GridFsStorage({
 				const fileInfo = {
 					filename: filename,
 					bucketName: "uploads",
-					metadata: {
-						src: "",
-						title: "",
-						artist: "",
-						overview: "",
-						dlUrl: "",
-						audioSrc: "",
-					},
 				};
 				resolve(fileInfo);
 			});
