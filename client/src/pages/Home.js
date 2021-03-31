@@ -29,7 +29,6 @@ function Home() {
   return (
     <div
       style={{
-        backgroundImage: `url(${Background})`,
         height: "100vh",
         width: "100%",
       }}

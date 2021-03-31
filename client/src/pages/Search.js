@@ -28,7 +28,12 @@ function Search() {
   const classes = useStyles();
 
   return (
-    <div style={{ backgroundImage: `url(${Background})`, height: "100vh" }}>
+    <div
+      style={{
+        height: "100vh",
+        width: "100%",
+      }}
+    >
       <Grid
         container
         direction="row"
