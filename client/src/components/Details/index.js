@@ -56,37 +56,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-<<<<<<< HEAD
-export default function RecipeReviewCard(props) {
+export default function Details(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState(false);
-=======
-export default function Details(props) {
-	const classes = useStyles();
-	const theme = useTheme();
-	const [expanded, setExpanded] = React.useState(false);
->>>>>>> main
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-<<<<<<< HEAD
+  const handleFavClick = () => {
+    axios.post("/api/users/favs", {});
+  };
+
   const handleDownload = (e) => {
     // e.preventDefault();
     console.log();
     // const data = file
-=======
-	const handleFavClick = () => {
-		axios.post("/api/users/favs", {});
-	};
-
-	const handleDownload = (e) => {
-		// e.preventDefault();
-		console.log();
-		// const data = file
->>>>>>> main
 
     // THIS URL MUST CHANGE DYNAMICALLY
     const fileName = props.dlUrl;
@@ -94,20 +80,20 @@ export default function Details(props) {
       "http://localhost:3001/api/files/" + fileName + ".zip";
   };
 
-<<<<<<< HEAD
   return (
-    <Card
-      className={classes.root}
-      style={{ marginTop: "15px", marginBottom: "15px" }}
-    >
-      <CardHeader title={props.title} subheader={props.artist} />
+    <Card className={classes.root}>
+      <CardHeader
+        title={props.title}
+        subheader={props.artist}
+        subheaderTypographyProps={{ color: "black" }}
+      />
       <CardContent>
-        <Typography variant="body2" component="p">
+        <Typography variant="body2" color="textSecondary" component="p">
           {props.overview}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" onClick={handleFavClick}>
           <FavoriteIcon />
         </IconButton>
         <IconButton
@@ -155,62 +141,4 @@ export default function Details(props) {
       </Collapse>
     </Card>
   );
-=======
-	return (
-		<Card className={classes.root}>
-			<CardHeader title={props.title} subheader={props.artist} />
-			<CardContent>
-				<Typography variant="body2" color="textSecondary" component="p">
-					{props.overview}
-				</Typography>
-			</CardContent>
-			<CardActions disableSpacing>
-				<IconButton aria-label="add to favorites" onClick={handleFavClick}>
-					<FavoriteIcon />
-				</IconButton>
-				<IconButton
-					className={clsx(classes.expand, {
-						[classes.expandOpen]: expanded,
-					})}
-					onClick={handleExpandClick}
-					aria-expanded={expanded}
-					aria-label="show more">
-					<ExpandMoreIcon />
-				</IconButton>
-			</CardActions>
-			<Collapse in={expanded} timeout="auto" unmountOnExit>
-				<CardContent className={classes.content}>
-					<Typography component="h5" variant="h5">
-						{props.trackList}
-					</Typography>
-					<Typography variant="subtitle1" color="textSecondary">
-						{props.artist}
-					</Typography>
-				</CardContent>
-				<div className={classes.controls}>
-					<IconButton aria-label="previous">
-						{theme.direction === "rtl" ? (
-							<SkipNextIcon />
-						) : (
-							<SkipPreviousIcon />
-						)}
-					</IconButton>
-					<IconButton aria-label="play/pause">
-						<PlayArrowIcon className={classes.playIcon} />
-					</IconButton>
-					<IconButton aria-label="next">
-						{theme.direction === "rtl" ? (
-							<SkipPreviousIcon />
-						) : (
-							<SkipNextIcon />
-						)}
-					</IconButton>
-					<IconButton aria-label="Download" onClick={handleDownload}>
-						<GetAppIcon />
-					</IconButton>
-				</div>
-			</Collapse>
-		</Card>
-	);
->>>>>>> main
 }
