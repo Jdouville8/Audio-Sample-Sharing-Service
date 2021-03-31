@@ -70,9 +70,9 @@ export default function RecipeReviewCard(props) {
 		// const data = file
 
 		// THIS URL MUST CHANGE DYNAMICALLY
+		const fileName = props.dlUrl;
 		window.location.href =
-			"http://localhost:3001/api/files/f03a00764bcf985418cc17d6a6ad5bfd.zip";
-		// {props.src}
+			"http://localhost:3001/api/files/" + fileName + ".zip";
 	};
 
 	return (
