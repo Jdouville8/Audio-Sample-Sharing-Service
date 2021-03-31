@@ -9,11 +9,20 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Footer from "../src/components/Footer/Footer";
+import Background from "./images/wallpaper.jpg";
 
 function App() {
   return (
     <Router>
-      <div>
+      <div
+        style={{
+          backgroundImage: `url(${Background})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundAttachment: "fixed",
+        }}
+      >
         <NavBar />
         <Switch>
           <Route exact path={"/search"}>

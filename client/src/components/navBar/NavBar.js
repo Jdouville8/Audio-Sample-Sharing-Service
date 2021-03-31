@@ -184,10 +184,12 @@ function NavBar() {
             aria-label="open drawer"
           >
             <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            WavMovers
-          </Typography>
+          </IconButton>{" "}
+          <Link href="/landing" style={{ color: "white" }}>
+            <Typography className={classes.title} variant="h6" noWrap>
+              WavMovers
+            </Typography>
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -204,7 +206,7 @@ function NavBar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Link
-              href="/landing"
+              href="/home"
               style={{ color: "pink", margin: "5px", marginTop: "10%" }}
             >
               Home

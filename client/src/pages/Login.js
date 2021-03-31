@@ -30,7 +30,12 @@ function Login() {
   const onSubmit = () => {};
 
   return (
-    <div style={{ backgroundImage: `url(${Background})`, height: "100vh" }}>
+    <div
+      style={{
+        height: "100vh",
+        width: "100%",
+      }}
+    >
       <Grid>
         <Grid item lg={7}>
           <div
