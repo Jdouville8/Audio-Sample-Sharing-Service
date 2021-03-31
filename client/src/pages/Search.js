@@ -34,24 +34,12 @@ function Search() {
 
   return (
     <div style={{ height: "100vh" }}>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={4}
-      >
+      <Grid container direction="row" justify="center" alignItems="center">
         <Grid item sm={11} lg={8}>
           <SearchBar />
         </Grid>
       </Grid>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={4}
-      >
+      <Grid container direction="row" justify="center" alignItems="center">
         <Grid item>
           {results.map((result) => (
             <Icon src={result.src} />
