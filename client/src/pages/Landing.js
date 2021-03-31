@@ -39,7 +39,7 @@ function Landing() {
 					position: "relative",
 					backgroundImage: `url(${Background})`,
 					width: "100",
-					height: "84.4vh",
+					height: "92vh",
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
 					backgroundPosition: "center center",

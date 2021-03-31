@@ -27,9 +27,15 @@ function Footer() {
     >
       <div>
         <AudioPlayer
-          autoPlay
-          src="http://example.com/audio.mp3"
+          // autoPlay
+          progressUpdateInterval={50}
           onPlay={(e) => console.log("onPlay")}
+          showFilledProgress='true'
+          progressJumpSteps={{
+            forward: 30000,
+            backward: 10000
+          }}
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
           style={{
             width: "33%",
             backgroundColor: `rgba(0,0,0,.3)`,
