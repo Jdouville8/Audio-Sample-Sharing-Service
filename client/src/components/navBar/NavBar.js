@@ -13,12 +13,11 @@ import {
   Link,
 } from "@material-ui/core";
 
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
 import MoreIcon from "@material-ui/icons/MoreVert";
-import Background from "../../images/Wave1Edit2.png";
+import Background from "../../images/WaveFlip.png";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -177,14 +176,6 @@ function NavBar() {
             backgroundPosition: `center center`,
           }}
         >
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>{" "}
           <Link href="/landing" style={{ color: "white" }}>
             <Typography className={classes.title} variant="h6" noWrap>
               WavMovers
