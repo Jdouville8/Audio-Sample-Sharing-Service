@@ -12,8 +12,14 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const config = require('./config');
 
+const connectionParams = {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true 
+}
+
 // connect to mongoose
-mongoose.connect(config.db);
+mongoose.connect(config.db, connectionParams);
 /** Seting up server to accept cross-origin browser requests */
 app.use(function (req, res, next) {
 	//allow cross origin requests
