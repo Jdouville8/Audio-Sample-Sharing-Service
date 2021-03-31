@@ -9,8 +9,7 @@ import {
 	TextField,
 	makeStyles,
 } from "@material-ui/core";
-import CoolImg from "../images/landing.png";
-import Background from "../images/wallpaper.jpg";
+import CoolImg from "../images/ms1-1.png";
 
 const useStyles = makeStyles({
 	root: {
