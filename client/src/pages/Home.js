@@ -3,6 +3,7 @@ import Details from "../components/Details/index";
 import Grid from "@material-ui/core/Grid";
 import Icon from "../components/Icon";
 import SearchBar from "../components/SearchBar";
+import Background from "../images/wallpaper.jpg";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -26,7 +27,13 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div
+      style={{
+        backgroundImage: `url(${Background})`,
+        height: "100vh",
+        width: "100%",
+      }}
+    >
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item sm={11} lg={8}></Grid>
       </Grid>
