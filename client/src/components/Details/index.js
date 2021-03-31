@@ -82,7 +82,7 @@ export default function Details(props) {
 
 	return (
 		<Card className={classes.root}>
-			<CardHeader title={props.title} subheader={props.artist} />
+			<CardHeader title={props.title} subheader={props.artist} subheaderTypographyProps={{'color': 'black'}}/>
 			<CardContent>
 				<Typography variant="body2" color="textSecondary" component="p">
 					{props.overview}
