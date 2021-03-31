@@ -13,16 +13,15 @@ const useStyles = makeStyles({
 function Icon(props) {
   const classes = useStyles();
 
-	return (
-		<div>
-			<Card>
-				<CardMedia className={classes.media}>
-					<img src={props.src} 
-					alt='pack images'/>
-				</CardMedia>
-			</Card>
-		</div>
-	);
+  return (
+    <div>
+      <Card style={{ marginTop: "15px", marginBottom: "15px" }}>
+        <CardMedia className={classes.media}>
+          <img src={props.src} />
+        </CardMedia>
+      </Card>
+    </div>
+  );
 }
 
 export default Icon;
