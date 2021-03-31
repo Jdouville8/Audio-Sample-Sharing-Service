@@ -32,35 +32,6 @@ function Search() {
 	// 		});
 	// }, []);
 
-<<<<<<< HEAD
-  return (
-    <div style={{ height: "100vh" }}>
-      <Grid container direction="row" justify="center" alignItems="center">
-        <Grid item sm={11} lg={8}>
-          <SearchBar />
-        </Grid>
-      </Grid>
-      <Grid container direction="row" justify="center" alignItems="center">
-        <Grid item>
-          {results.map((result) => (
-            <Icon src={result.src} />
-          ))}
-        </Grid>
-        <Grid item>
-          {results.map((result) => (
-            <Details
-              title={result.title}
-              artist={result.artist}
-              overview={result.overview}
-              dlUrl={result.dlUrl}
-              audioSrc={result.audioSrc}
-            />
-          ))}
-        </Grid>
-      </Grid>
-    </div>
-  );
-=======
 	return (
 		<div style={{ height: "100vh" }}>
 			<Grid
@@ -99,7 +70,6 @@ function Search() {
 			</Grid>
 		</div>
 	);
->>>>>>> main
 }
 
 export default Search;
