@@ -5,6 +5,7 @@ const Grid = require("gridfs-stream");
 const GridFsStorage = require("multer-gridfs-storage");
 const db = mongoose.connection;
 const User = require("../models/User");
+const PackInfo = require("../models/PackInfo");
 const crypto = require("crypto");
 const path = require("path");
 
@@ -81,6 +82,17 @@ router.delete("/api/files/:id", (req, res) => {
 		if (err) return res.status(500).json({ success: false });
 		return res.json({ success: true });
 	});
+});
+
+// Pack Info Routes
+router.post("/api/packinfo", ({ body }, res) => {
+	PackInfo.create(body)
+		.then((dbPackInfo) => {
+			res.json(dbPackInfo);
+		})
+		.catch((err) => {
+			res.status(400).json(err);
+		});
 });
 
 // User Routes
