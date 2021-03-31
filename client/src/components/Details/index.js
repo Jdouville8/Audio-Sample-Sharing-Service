@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function RecipeReviewCard(props) {
+export default function Details(props) {
 	const classes = useStyles();
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);

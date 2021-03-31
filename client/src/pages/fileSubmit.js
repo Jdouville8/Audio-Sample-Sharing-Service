@@ -33,14 +33,17 @@ export default function FileSubmit() {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		console.log(file)
-		// const data = file
+		const formData = new FormData();
+		formData.append("file", file);
 		
 		fetch('http://localhost:3001/api/files', {
-		
-		  method: 'POST',
-		  body:  JSON.stringify(file)
+			
+			method: 'POST',
+			body:  formData,
+			//   headers: new Headers()
 		});
+		
+		console.log(formData)
 	};
 
 	return (
@@ -63,6 +66,7 @@ export default function FileSubmit() {
 						noValidate
 						autoComplete="off"
 						// onSubmit={onSubmit}
+						enctype='multipart/form-data'
 						>
 						<label>Please choose a File</label>
 						<br />

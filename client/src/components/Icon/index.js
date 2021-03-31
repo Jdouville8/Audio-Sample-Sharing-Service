@@ -17,7 +17,8 @@ function Icon(props) {
 		<div>
 			<Card>
 				<CardMedia className={classes.media}>
-					<img src={props.src} />
+					<img src={props.src} 
+					alt='pack images'/>
 				</CardMedia>
 			</Card>
 		</div>
