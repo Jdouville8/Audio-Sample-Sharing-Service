@@ -107,9 +107,7 @@ router.post("/api/users", ({ body }, res) => {
 });
 
 router.post("/api/users/favs", (req, res) => {
-	User.update({
-		favorites: req.body.favorites,
-	})
+	User.updateOne({ $push: { favorites: req.body.favorites } })
 		.then((dbUser) => {
 			res.json(dbUser);
 		})

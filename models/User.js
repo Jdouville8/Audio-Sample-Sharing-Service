@@ -13,7 +13,7 @@ const UserSchema = new Schema({
 		required: "Enter a password",
 	},
 	favorites: {
-		type: String,
+		type: Array,
 		trim: true,
 	},
 });
