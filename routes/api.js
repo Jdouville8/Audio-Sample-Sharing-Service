@@ -106,6 +106,18 @@ router.post("/api/users", ({ body }, res) => {
 		});
 });
 
+router.post("/api/users/favs", (req, res) => {
+	User.update({
+		favorites: req.body.favorites,
+	})
+		.then((dbUser) => {
+			res.json(dbUser);
+		})
+		.catch((err) => {
+			res.status(400).json(err);
+		});
+});
+
 router.get("/api/users", (req, res) => {
 	User.find({})
 		.then((dbUsers) => {
