@@ -15,6 +15,7 @@ import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import GetAppIcon from "@material-ui/icons/GetApp";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -64,6 +65,10 @@ export default function RecipeReviewCard(props) {
 		setExpanded(!expanded);
 	};
 
+	const handleFavClick = () => {
+		axios.post("/api/users/favs", {});
+	};
+
 	const handleDownload = (e) => {
 		// e.preventDefault();
 		console.log();
@@ -84,7 +89,7 @@ export default function RecipeReviewCard(props) {
 				</Typography>
 			</CardContent>
 			<CardActions disableSpacing>
-				<IconButton aria-label="add to favorites">
+				<IconButton aria-label="add to favorites" onClick={handleFavClick}>
 					<FavoriteIcon />
 				</IconButton>
 				<IconButton
