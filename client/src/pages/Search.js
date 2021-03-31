@@ -50,8 +50,6 @@ function Search() {
 				justify="center"
 				alignItems="center"
 				spacing={4}>
-				{/* need to map over search results and add these items dynamically */}
-
 				<Grid item>
 					{results.map((result) => (
 						<Icon src={result.src} />
