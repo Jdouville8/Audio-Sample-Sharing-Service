@@ -16,6 +16,7 @@ import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import GetAppIcon from "@material-ui/icons/GetApp";
+import Grid from "@material-ui/core/Grid";
 import Icon from "../Icon";
 import axios from "axios";
 
@@ -57,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
 		height: 38,
 		width: 38,
 	},
+	type: {
+		width: 950,
+	},
 }));
 
 export default function Details(props) {
@@ -97,73 +101,82 @@ export default function Details(props) {
 			<Card
 				className={classes.root}
 				style={{ marginTop: "15px", marginBottom: "15px" }}>
-				<div>
-					<CardMedia
-						className={classes.cover}
-						image={props.src}
-						title={props.title}
-					/>
-					<CardHeader
-						title={props.title}
-						subheader={props.artist}
-						subheaderTypographyProps={{ color: "black" }}
-					/>
-					<CardContent>
-						<Typography variant="body2" color="textSecondary" component="p">
-							{props.overview}
-						</Typography>
-					</CardContent>
-					<CardActions disableSpacing>
-						<IconButton
-							aria-label="add to favorites"
-							onClick={handleFavClick}
-							id={props.key}
-							ref={buttonRef}>
-							<FavoriteIcon />
-						</IconButton>
-						<IconButton
-							className={clsx(classes.expand, {
-								[classes.expandOpen]: expanded,
-							})}
-							onClick={handleExpandClick}
-							aria-expanded={expanded}
-							aria-label="show more">
-							<ExpandMoreIcon />
-						</IconButton>
-					</CardActions>
-				</div>
-				<Collapse in={expanded} timeout="auto" unmountOnExit>
-					<CardContent className={classes.content}>
-						<Typography component="h5" variant="h5">
-							{props.trackList}
-						</Typography>
-						<Typography variant="subtitle1" color="textSecondary">
-							{props.artist}
-						</Typography>
-					</CardContent>
-					<div className={classes.controls}>
-						<IconButton aria-label="previous">
-							{theme.direction === "rtl" ? (
-								<SkipNextIcon />
-							) : (
-								<SkipPreviousIcon />
-							)}
-						</IconButton>
-						<IconButton aria-label="play/pause">
-							<PlayArrowIcon className={classes.playIcon} />
-						</IconButton>
-						<IconButton aria-label="next">
-							{theme.direction === "rtl" ? (
-								<SkipPreviousIcon />
-							) : (
-								<SkipNextIcon />
-							)}
-						</IconButton>
-						<IconButton aria-label="Download" onClick={handleDownload}>
-							<GetAppIcon />
-						</IconButton>
-					</div>
-				</Collapse>
+				<Grid container>
+					<Grid item>
+						<CardMedia
+							className={classes.cover}
+							image={props.src}
+							title={props.title}
+						/>
+					</Grid>
+					<Grid item>
+						<CardHeader
+							title={props.title}
+							subheader={props.artist}
+							subheaderTypographyProps={{ color: "black" }}
+						/>
+						<CardContent>
+							<Typography
+								className={classes.type}
+								variant="body2"
+								color="textSecondary"
+								component="p">
+								{props.overview}
+							</Typography>
+						</CardContent>
+						<CardActions disableSpacing>
+							<IconButton
+								aria-label="add to favorites"
+								onClick={handleFavClick}
+								id={props.key}
+								ref={buttonRef}>
+								<FavoriteIcon />
+							</IconButton>
+							<IconButton
+								className={clsx(classes.expand, {
+									[classes.expandOpen]: expanded,
+								})}
+								onClick={handleExpandClick}
+								aria-expanded={expanded}
+								aria-label="show more">
+								<ExpandMoreIcon />
+							</IconButton>
+						</CardActions>
+
+						<Collapse in={expanded} timeout="auto" unmountOnExit>
+							<CardContent className={classes.content}>
+								<Typography component="h5" variant="h5">
+									{props.trackList}
+								</Typography>
+								<Typography variant="subtitle1" color="textSecondary">
+									{props.artist}
+								</Typography>
+							</CardContent>
+							<div className={classes.controls}>
+								<IconButton aria-label="previous">
+									{theme.direction === "rtl" ? (
+										<SkipNextIcon />
+									) : (
+										<SkipPreviousIcon />
+									)}
+								</IconButton>
+								<IconButton aria-label="play/pause">
+									<PlayArrowIcon className={classes.playIcon} />
+								</IconButton>
+								<IconButton aria-label="next">
+									{theme.direction === "rtl" ? (
+										<SkipPreviousIcon />
+									) : (
+										<SkipNextIcon />
+									)}
+								</IconButton>
+								<IconButton aria-label="Download" onClick={handleDownload}>
+									<GetAppIcon />
+								</IconButton>
+							</div>
+						</Collapse>
+					</Grid>
+				</Grid>
 			</Card>
 		</div>
 	);
