@@ -6,13 +6,12 @@ function LogoutButton() {
 	const { logout } = useAuth0();
 
 	return (
-
 		<Link
-		style={{ color: 'pink', margin: '5px', marginTop: '9%' }}
-		onClick={() => logout({ returnTo: window.location.origin })}
-	>
-		Log Out
-	</Link>
+			style={{ color: 'pink', margin: '5px', marginTop: '9%' }}
+			onClick={() => logout({ returnTo: window.location.origin })}
+		>
+			Log Out
+		</Link>
 	);
 }
 
