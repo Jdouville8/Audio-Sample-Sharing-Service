@@ -1,7 +1,6 @@
 import React from "react";
 import Details from "../components/Details/index";
 import Grid from "@material-ui/core/Grid";
-import Icon from "../components/Icon";
 import Background from "../images/wallpaper.jpg";
 import Packs from "../packs.json";
 

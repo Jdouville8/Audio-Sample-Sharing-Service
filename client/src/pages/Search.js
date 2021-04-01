@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
-import Icon from "../components/Icon";
 import SearchBar from "../components/SearchBar";
 import Details from "../components/Details";
 import { makeStyles } from "@material-ui/core/styles";
