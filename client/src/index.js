@@ -8,17 +8,17 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-	<Router>
-		<Auth0Provider
-			domain="wavmovers.us.auth0.com"
-			clientId="IEGWrp4HIHw4dv4dcMoWlpgdpGA1IVrV"
-			redirectUri={window.location.origin}
-		>
-			{/* <Auth0ProviderWithHistory> */}
+	// <Router>
+	// 	<Auth0Provider
+	// 		domain="wavmovers.us.auth0.com"
+	// 		clientId="IEGWrp4HIHw4dv4dcMoWlpgdpGA1IVrV"
+	// 		redirectUri={window.location.origin}
+	// 	>
+			
 			<App />
-			{/* </Auth0ProviderWithHistory> */}
-		</Auth0Provider>
-	</Router>,
+		
+		
+	,
 	document.getElementById('root')
 );
 registerServiceWorker();
