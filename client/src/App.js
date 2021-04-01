@@ -15,7 +15,7 @@ import NoMatch from './pages/NoMatch';
 
 function App() {
 	return (
-		<Router>
+		
 			<div
 				style={{
 					backgroundImage: `url(${Background})`,
@@ -54,7 +54,7 @@ function App() {
 				</Switch>
 				<Footer />
 			</div>
-		</Router>
+		
 	);
 }
 
