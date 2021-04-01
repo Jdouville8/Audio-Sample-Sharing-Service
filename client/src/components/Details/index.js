@@ -17,7 +17,6 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import Grid from "@material-ui/core/Grid";
-import Icon from "../Icon";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 		width: 38,
 	},
 	type: {
-		width: 950,
+		width: 960,
 	},
 }));
 
