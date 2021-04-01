@@ -1,20 +1,17 @@
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BottomNavigation, Grid, Paper, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = {
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-}));
+};
+
 function Footer() {
-  const classes = useStyles();
+  const classes = useStyles;
+
   return (
     <footer
       container
