@@ -45,7 +45,7 @@ export default function FileSubmit() {
 		const formData = new FormData();
 		formData.append("file", file);
 		
-		fetch('http://localhost:3001/api/files', {
+		fetch('/api/files', {
 			
 			method: 'POST',
 			body:  formData,
