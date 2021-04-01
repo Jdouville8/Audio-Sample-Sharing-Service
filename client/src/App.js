@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Footer from "../src/components/Footer/Footer";
 import Background from "./images/wallpaper.jpg";
+import NoMatch from "./pages/NoMatch";
 
 function App() {
   return (
@@ -42,6 +43,12 @@ function App() {
           </Route>
           <Route exact path={"/home"}>
             <Home />
+          </Route>
+          <Route exact path={"/home"}>
+            <Home />
+          </Route>
+          <Route>
+            <NoMatch />
           </Route>
         </Switch>
         <Footer />
