@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import Search from './pages/Search';
 import NavBar from './components/navBar/NavBar.js';
 import Landing from './pages/Landing';

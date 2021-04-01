@@ -218,12 +218,19 @@ function NavBar() {
 						>
 							Home
 						</Link>
+						{/* Set up button - change later once working */}
 						<Link
+							style={{ color: 'pink', margin: '5px', marginTop: '9%' }}
+							onClick={() => loginWithRedirect()}
+						>
+							Log In
+						</Link>
+						{/* <Link
 							href="/login"
 							style={{ color: 'pink', margin: '5px', marginTop: '9%' }}
 						>
 							Login
-						</Link>
+						</Link> */}
 						<Link
 							href="/upload"
 							style={{ color: 'pink', margin: '5px', marginTop: '9%' }}
