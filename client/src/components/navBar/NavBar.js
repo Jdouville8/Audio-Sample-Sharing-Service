@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import AccountThumbnail from '../AccountThumbnail/AccountThumbnail';
 // import { Link } from "react-router-dom";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import {
@@ -12,7 +13,6 @@ import {
 	MenuItem,
 	Menu,
 	Link,
-	Button,
 } from '@material-ui/core';
 
 import SearchIcon from '@material-ui/icons/Search';
@@ -20,6 +20,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Background from '../../images/WaveFlip.png';
+import AuthenticationButton from '../AuthenticationButton/AuthenticationButton';
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -154,16 +155,7 @@ function NavBar() {
 				</Link>
 			</MenuItem>
 			<MenuItem>
-				{/* Set up button - change later once working */}
-				<Button color="blue" onClick={() => loginWithRedirect()}>
-					Log In
-				</Button>
-				{/* <Link
-					href="/login"
-					style={{ color: '#3d1347', margin: '5px', marginTop: '10%' }}
-				>
-					Login
-				</Link> */}
+				<AuthenticationButton style={{ color: '#3d1347' }} />
 			</MenuItem>
 			<MenuItem onClick={handleProfileMenuOpen}>
 				<IconButton
@@ -218,19 +210,7 @@ function NavBar() {
 						>
 							Home
 						</Link>
-						{/* Set up button - change later once working */}
-						<Link
-							style={{ color: 'pink', margin: '5px', marginTop: '9%' }}
-							onClick={() => loginWithRedirect()}
-						>
-							Log In
-						</Link>
-						{/* <Link
-							href="/login"
-							style={{ color: 'pink', margin: '5px', marginTop: '9%' }}
-						>
-							Login
-						</Link> */}
+						<AuthenticationButton />
 						<Link
 							href="/upload"
 							style={{ color: 'pink', margin: '5px', marginTop: '9%' }}
@@ -250,7 +230,7 @@ function NavBar() {
 							onClick={handleProfileMenuOpen}
 							color="inherit"
 						>
-							<AccountCircle />
+							<AccountThumbnail />
 						</IconButton>
 					</div>
 					<div className={classes.sectionMobile}>
