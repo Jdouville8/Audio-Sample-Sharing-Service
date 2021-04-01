@@ -13,7 +13,6 @@ import {
 	MenuItem,
 	Menu,
 	Link,
-	Button,
 } from '@material-ui/core';
 
 import SearchIcon from '@material-ui/icons/Search';
