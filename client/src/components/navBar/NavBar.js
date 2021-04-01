@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import AccountThumbnail from '../AccountThumbnail/AccountThumbnail';
 // import { Link } from "react-router-dom";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import {
@@ -230,7 +231,7 @@ function NavBar() {
 							onClick={handleProfileMenuOpen}
 							color="inherit"
 						>
-							<AccountCircle />
+							<AccountThumbnail />
 						</IconButton>
 					</div>
 					<div className={classes.sectionMobile}>
