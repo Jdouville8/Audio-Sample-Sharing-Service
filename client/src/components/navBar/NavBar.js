@@ -19,6 +19,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Background from "../../images/WaveFlip.png";
 import AuthenticationButton from "../AuthenticationButton/AuthenticationButton";
+import AuthenticationButtonIcon from "../AuthenticationButtonIcon/AuthenticationButtonIcon";
 import HomeIcon from "@material-ui/icons/Home";
 import PublishIcon from "@material-ui/icons/Publish";
 import BookIcon from "@material-ui/icons/Book";
@@ -153,46 +154,52 @@ function NavBar() {
 					style={{
 						color: "#3d1347",
 						margin: "5px",
-						marginTop: "10%",
 					}}>
 					Home
 				</Link>
+			</MenuItem>
+			<MenuItem>
+				<AuthenticationButton />
+			</MenuItem>
+			<MenuItem>
 				<Link
 					to="/education"
 					style={{
 						color: "pink",
 						margin: "5px",
-						marginTop: "9%",
 						textDecoration: "none",
 					}}>
 					Resources
 				</Link>
+			</MenuItem>
+			<MenuItem>
 				<Link
 					to="/lessons"
 					style={{
 						color: "pink",
 						margin: "5px",
-						marginTop: "9%",
 						textDecoration: "none",
 					}}>
 					Lessons
 				</Link>
+			</MenuItem>
+			<MenuItem>
 				<Link
 					to="/upload"
 					style={{
 						color: "pink",
 						margin: "5px",
-						marginTop: "9%",
 						textDecoration: "none",
 					}}>
 					Upload
 				</Link>
+			</MenuItem>
+			<MenuItem>
 				<Link
 					to="/about"
 					style={{
 						color: "pink",
 						margin: "5px",
-						marginTop: "9%",
 						textDecoration: "none",
 					}}>
 					About
@@ -260,7 +267,7 @@ function NavBar() {
 								<HomeIcon />
 							</Link>
 						</Tooltip>
-						<AuthenticationButton />
+						<AuthenticationButtonIcon />
 						<Tooltip title="Resources">
 							<Link
 								to="/education"
