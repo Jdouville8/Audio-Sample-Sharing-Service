@@ -49,7 +49,7 @@ app.use(logger('dev'));
 
 // Put all API endpoints under '/api'
 // app.use('/api', require('./routes/file'));
-app.use(require('./routes/api.js'));
+app.use(require('./routes'));
 //
 //
 //
