@@ -91,12 +91,7 @@ export default function Details(props) {
 
 		console.log(audioSrc);
 
-		// const fav = buttonRef.id;
-		// axios
-		// 	.post('/api/users/favs', {
-		// 		favorites: fav,
-		// 	})
-		// 	.then(console.log('post success'));
+		// send audioSrc value to audio player in footer component
 	};
 
 	const handleDownload = (e) => {
