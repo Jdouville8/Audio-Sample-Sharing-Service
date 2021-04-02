@@ -116,7 +116,7 @@ router.post('/users/favs', (req, res) => {
 		});
 });
 
-router.get('/api/users', (req, res) => {
+router.get('/users', (req, res) => {
 	User.find({})
 		.then((dbUsers) => {
 			res.json(dbUsers);
