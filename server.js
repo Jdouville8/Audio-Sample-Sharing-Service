@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
 		'Access-Control-Allow-Methods',
 		'POST, PUT, OPTIONS, DELETE, GET'
 	);
-	res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+	res.header('Access-Control-Allow-Origin', 'https://wavmovers.herokuapp.com');
 	res.header(
 		'Access-Control-Allow-Headers',
 		'Origin, X-Requested-With, Content-Type, Accept'
@@ -38,10 +38,10 @@ app.use(function (req, res, next) {
 // Serve static files from the React app
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
-	app.get('/*', function (req, res) {
-		res.sendFile(path.join(__dirname, 'build', 'index.html'));
-	});
-	app.use(express.static(path.join(__dirname, 'build')));
+	// app.get('/*', function (req, res) {
+	// 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+	// });
+	// app.use(express.static(path.join(__dirname, 'build')));
 }
 
 app.use(express.json());
