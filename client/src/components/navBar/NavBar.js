@@ -220,6 +220,32 @@ function NavBar() {
 							</Link>
 						</Tooltip>
 						<AuthenticationButton />
+
+						<Tooltip title="Resources">
+							<Link
+								to="/education"
+								style={{
+									color: "pink",
+									margin: "5px",
+									marginTop: "9%",
+									textDecoration: "none",
+								}}
+								aria-label="upload">
+								<BookIcon />
+							</Link>
+						</Tooltip>
+						<Tooltip title="Lessons">
+							<Link
+								to="/lessons"
+								style={{
+									color: "pink",
+									margin: "5px",
+									marginTop: "9%",
+									textDecoration: "none",
+								}}>
+								Lessons
+							</Link>
+						</Tooltip>
 						<Tooltip title="Upload">
 							<Link
 								to="/upload"
@@ -232,17 +258,16 @@ function NavBar() {
 								<PublishIcon />
 							</Link>
 						</Tooltip>
-						<Tooltip title="Resources">
+						<Tooltip title="About">
 							<Link
-								to="/education"
+								to="/about"
 								style={{
 									color: "pink",
 									margin: "5px",
 									marginTop: "9%",
 									textDecoration: "none",
-								}}
-								aria-label="upload">
-								<BookIcon />
+								}}>
+								About
 							</Link>
 						</Tooltip>
 						{/* <IconButton aria-label="show 17 new notifications" color="inherit">
