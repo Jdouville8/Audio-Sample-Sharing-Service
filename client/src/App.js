@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import PlayerContext from './utils/PlayerContext';
 import Search from './pages/Search';
 import NavBar from './components/navBar/NavBar.js';
 import Landing from './pages/Landing';
