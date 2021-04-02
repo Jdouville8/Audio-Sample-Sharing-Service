@@ -23,20 +23,38 @@ export default function MediaCard(props) {
   return (
     <Card className={classes.root}>
       <CardMedia className={classes.media} image={props.pic} />
-      <CardContent>
+      <CardContent
+        style={{
+          backgroundColor: "#424242",
+          color: "white",
+          textAlign: "center",
+        }}
+      >
         <Typography gutterBottom variant="h5" component="h2">
           {props.name}
         </Typography>
-        <Typography gutterBottom variant="h5" component="h2">
+        <Typography
+          gutterBottom
+          variant="subtitle1"
+          style={{ color: "lightgray" }}
+        >
           {props.role}
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ color: "white" }}
+        >
           {props.about}
         </Typography>
       </CardContent>
-
-      <CardActions>
-        <a href={props.gitHub} target="_blank">
+      <CardActions style={{ backgroundColor: "#424242" }}>
+        <a
+          href={props.gitHub}
+          target="_blank"
+          style={{ color: "pink", margin: "auto" }}
+        >
           GitHub
         </a>
       </CardActions>
