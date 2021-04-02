@@ -23,6 +23,8 @@ import AuthenticationButton from "../AuthenticationButton/AuthenticationButton";
 import HomeIcon from "@material-ui/icons/Home";
 import PublishIcon from "@material-ui/icons/Publish";
 import BookIcon from "@material-ui/icons/Book";
+import EventIcon from "@material-ui/icons/Event";
+import InfoIcon from "@material-ui/icons/Info";
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -156,6 +158,46 @@ function NavBar() {
 					}}>
 					Home
 				</Link>
+				<Link
+					to="/education"
+					style={{
+						color: "pink",
+						margin: "5px",
+						marginTop: "9%",
+						textDecoration: "none",
+					}}>
+					<BookIcon />
+				</Link>
+				<Link
+					to="/lessons"
+					style={{
+						color: "pink",
+						margin: "5px",
+						marginTop: "9%",
+						textDecoration: "none",
+					}}>
+					<EventIcon />
+				</Link>
+				<Link
+					to="/upload"
+					style={{
+						color: "pink",
+						margin: "5px",
+						marginTop: "9%",
+						textDecoration: "none",
+					}}>
+					<PublishIcon />
+				</Link>
+				<Link
+					to="/about"
+					style={{
+						color: "pink",
+						margin: "5px",
+						marginTop: "9%",
+						textDecoration: "none",
+					}}>
+					<InfoIcon />
+				</Link>
 			</MenuItem>
 			<MenuItem>
 				<AuthenticationButton style={{ color: "#3d1347" }} />
@@ -220,7 +262,6 @@ function NavBar() {
 							</Link>
 						</Tooltip>
 						<AuthenticationButton />
-
 						<Tooltip title="Resources">
 							<Link
 								to="/education"
@@ -229,8 +270,7 @@ function NavBar() {
 									margin: "5px",
 									marginTop: "9%",
 									textDecoration: "none",
-								}}
-								aria-label="upload">
+								}}>
 								<BookIcon />
 							</Link>
 						</Tooltip>
@@ -243,7 +283,7 @@ function NavBar() {
 									marginTop: "9%",
 									textDecoration: "none",
 								}}>
-								Lessons
+								<EventIcon />
 							</Link>
 						</Tooltip>
 						<Tooltip title="Upload">
@@ -267,7 +307,7 @@ function NavBar() {
 									marginTop: "9%",
 									textDecoration: "none",
 								}}>
-								About
+								<InfoIcon />
 							</Link>
 						</Tooltip>
 						{/* <IconButton aria-label="show 17 new notifications" color="inherit">
