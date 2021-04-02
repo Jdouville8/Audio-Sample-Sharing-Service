@@ -224,6 +224,16 @@ function NavBar() {
 							}}>
 							Upload
 						</Link>
+						<Link
+							to="/education"
+							style={{
+								color: "pink",
+								margin: "5px",
+								marginTop: "9%",
+								textDecoration: "none",
+							}}>
+							Free Resources
+						</Link>
 						{/* <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
