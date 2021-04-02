@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link, Tooltip, makeStyles } from "@material-ui/core";
 import AccountBox from "@material-ui/icons/AccountBox";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	login: {
 		cursor: "pointer",
 	},
