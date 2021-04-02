@@ -18,7 +18,8 @@ ReactDOM.render(
 			<App />
 			{/* </Auth0ProviderWithHistory> */}
 		</Auth0Provider>
-	</Router>,
+	</Router>
+	,
 	document.getElementById('root')
 );
 registerServiceWorker();
