@@ -39,7 +39,7 @@ const storage = new GridFsStorage({
 // sets file input to single file
 const singleUpload = multer({ storage: storage }).single('file');
 
-router.get('/api/files/:filename', (req, res) => {
+router.get('/files/:filename', (req, res) => {
 	gfs.files.find({ filename: req.params.filename }).toArray((err, files) => {
 		if (!files || files.length === 0) {
 			return res.status(404).json({
@@ -54,7 +54,7 @@ router.get('/api/files/:filename', (req, res) => {
 	});
 });
 
-router.get('/api/files', (req, res) => {
+router.get('/files', (req, res) => {
 	gfs.files.find({}).toArray((err, files) => {
 		console.log('Form Sent!');
 		if (!files || files.length === 0) {
@@ -66,7 +66,7 @@ router.get('/api/files', (req, res) => {
 	});
 });
 
-router.post('/api/files', singleUpload, (req, res) => {
+router.post('/files', singleUpload, (req, res) => {
 	console.log(req.body);
 	if (req.file) {
 		return res.json({
@@ -77,7 +77,7 @@ router.post('/api/files', singleUpload, (req, res) => {
 	res.send({ success: false });
 });
 
-router.delete('/api/files/:id', (req, res) => {
+router.delete('/files/:id', (req, res) => {
 	gfs.remove({ _id: req.params.id }, (err) => {
 		if (err) return res.status(500).json({ success: false });
 		return res.json({ success: true });
@@ -85,7 +85,7 @@ router.delete('/api/files/:id', (req, res) => {
 });
 
 // Pack Info Routes
-router.post('/api/packinfo', ({ body }, res) => {
+router.post('/packinfo', ({ body }, res) => {
 	PackInfo.create(body)
 		.then((dbPackInfo) => {
 			res.json(dbPackInfo);
@@ -96,7 +96,7 @@ router.post('/api/packinfo', ({ body }, res) => {
 });
 
 // User Routes
-router.post('/api/users', ({ body }, res) => {
+router.post('/users', ({ body }, res) => {
 	User.create(body)
 		.then((dbUser) => {
 			res.json(dbUser);
@@ -106,7 +106,7 @@ router.post('/api/users', ({ body }, res) => {
 		});
 });
 
-router.post('/api/users/favs', (req, res) => {
+router.post('/users/favs', (req, res) => {
 	User.updateOne({ $push: { favorites: req.body.favorites } })
 		.then((dbUser) => {
 			res.json(dbUser);
