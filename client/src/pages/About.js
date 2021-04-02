@@ -7,7 +7,13 @@ function About() {
 
   return (
     <div>
-      <DevCard />
+      <DevCard
+        pic={info.pic}
+        name={info.name}
+        role={info.role}
+        about={info.about}
+        gitHub={info.gitHub}
+      />
     </div>
   );
 }
