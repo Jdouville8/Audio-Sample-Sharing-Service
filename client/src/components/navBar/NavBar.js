@@ -166,7 +166,7 @@ function NavBar() {
 						marginTop: "9%",
 						textDecoration: "none",
 					}}>
-					<BookIcon />
+					Resources
 				</Link>
 				<Link
 					to="/lessons"
@@ -176,7 +176,7 @@ function NavBar() {
 						marginTop: "9%",
 						textDecoration: "none",
 					}}>
-					<EventIcon />
+					Lessons
 				</Link>
 				<Link
 					to="/upload"
@@ -186,7 +186,7 @@ function NavBar() {
 						marginTop: "9%",
 						textDecoration: "none",
 					}}>
-					<PublishIcon />
+					Upload
 				</Link>
 				<Link
 					to="/about"
@@ -196,7 +196,7 @@ function NavBar() {
 						marginTop: "9%",
 						textDecoration: "none",
 					}}>
-					<InfoIcon />
+					About
 				</Link>
 			</MenuItem>
 			<MenuItem>
