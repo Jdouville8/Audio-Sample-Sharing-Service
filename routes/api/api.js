@@ -18,7 +18,7 @@ db.once('open', function () {
 });
 
 const storage = new GridFsStorage({
-	url: 'mongodb://localhost/SampleLibrary',
+	url: process.env.MONGODB_URI,
 	file: (req, file) => {
 		return new Promise((resolve, reject) => {
 			crypto.randomBytes(16, (err, buf) => {
