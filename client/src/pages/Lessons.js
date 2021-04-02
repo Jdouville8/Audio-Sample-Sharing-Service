@@ -8,7 +8,12 @@ function Lessons() {
 				height: "100vh",
 				width: "100%",
 			}}>
-			<InlineWidget url="https://calendly.com/seff0" />
+			<InlineWidget
+				styles={{
+					height: "650px",
+				}}
+				url="https://calendly.com/backleftmusic"
+			/>
 		</div>
 	);
 }
