@@ -7,6 +7,9 @@ const useStyles = makeStyles({
 	root: {
 		marginTop: "19%",
 	},
+	cardTitle: {
+		fontWeight: '20px'
+	}
 });
 
 function Lessons() {
@@ -24,27 +27,16 @@ function Lessons() {
 						variant="outlined"
 						style={{ opacity: ".95", boxShadow: "5px 5px 15px grey" }}>
 						<CardContent>
-							<Typography style={{ opacity: "1" }}>
-								<b>WavMovers</b> is a cutting edge audio sample library and
-								education platform aimed to enable music creators to make their
-								ideas reality. All samples purchased are royalty-free, ready for
-								use in any production with no copyright implications to worry
-								about. In the Age of information, WavMovers is a one stop
-								destination for all the tools you need to turn ideas into
-								masterpieces.
+							<Typography style={{ opacity: "1" }} className={classes.cardTitle}>
+								Are you interested in receiving technical and industry related feedback from your favorite artists in the scene?
+							</Typography>	
+							<br />
+							<Typography>
+								<b>WavMovers</b> offers 1-on-1 lesson scheduling with professional artists to give you the tools you need to create. Our artists can cover a vast array of topics including: Track arrangement, DAW Workflow, Sound design, Mixing, Mastering, DJing, Music theory, Track feedback, Industry consulting, and Artistic identity guidance
 							</Typography>
 							<br />
 							<Typography>
-								Want to know more about making your own sounds and how to
-								implement them in your productions? Then check out the
-								educational resources tab for interactive Ableton project file
-								lessons, 1-on-1 sessions with your favorite artists and links to
-								free educational resources to get you started.
-							</Typography>
-							<br />
-							<Typography>
-								In the Age of information, WavMovers is a one stop destination
-								for all the tools you need to turn ideas into masterpieces.
+								WavMovers 1-on-1 lessons will empower you to grow leaps and bounds in your musical journey through honing the skills needed to get you from the bedroom to the main stage
 							</Typography>
 						</CardContent>
 					</Card>

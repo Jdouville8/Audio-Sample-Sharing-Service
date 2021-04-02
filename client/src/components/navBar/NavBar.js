@@ -234,6 +234,16 @@ function NavBar() {
 							}}>
 							Free Resources
 						</Link>
+						<Link
+							to="/lessons"
+							style={{
+								color: "pink",
+								margin: "5px",
+								marginTop: "9%",
+								textDecoration: "none",
+							}}>
+							Lessons
+						</Link>
 						{/* <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
