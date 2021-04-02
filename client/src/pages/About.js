@@ -5,6 +5,7 @@ import Justin from "../images/Justin.jpeg";
 import Nick from "../images/Nick.jpg";
 import Luke from "../images/Luke.jpg";
 import Seth from "../images/Seth.jpg";
+import { Grid } from "@material-ui/core";
 
 function About() {
   const devs = [
@@ -40,15 +41,26 @@ function About() {
 
   return (
     <div style={{ height: "100vh" }}>
-      {devs.map((dev) => (
-        <DevCard
-          pic={dev.pic}
-          name={dev.name}
-          role={dev.role}
-          about={dev.about}
-          gitHub={dev.gitHub}
-        />
-      ))}
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        spacing={4}
+        style={{ marginTop: "20px" }}
+      >
+        {devs.map((dev) => (
+          <Grid item style={{ height: "75%" }}>
+            <DevCard
+              pic={dev.pic}
+              name={dev.name}
+              role={dev.role}
+              about={dev.about}
+              gitHub={dev.gitHub}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 }
