@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import AccountThumbnail from "../AccountThumbnail/AccountThumbnail";
-// import { Link } from "react-router-dom";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import {
 	AppBar,
@@ -146,7 +145,11 @@ function NavBar() {
 			<MenuItem>
 				<Link
 					to="/home"
-					style={{ color: "#3d1347", margin: "5px", marginTop: "10%" }}>
+					style={{
+						color: "#3d1347",
+						margin: "5px",
+						marginTop: "10%",
+					}}>
 					Home
 				</Link>
 			</MenuItem>
@@ -176,7 +179,9 @@ function NavBar() {
 						backgroundSize: `cover`,
 						backgroundPosition: `center center`,
 					}}>
-					<Link to="/landing" style={{ color: "white" }}>
+					<Link
+						to="/landing"
+						style={{ color: "white", textDecoration: "none" }}>
 						<Typography className={classes.title} variant="h6" noWrap>
 							WavMovers
 						</Typography>
@@ -200,13 +205,23 @@ function NavBar() {
 					<div className={classes.sectionDesktop}>
 						<Link
 							to="/home"
-							style={{ color: "pink", margin: "5px", marginTop: "9%" }}>
+							style={{
+								color: "pink",
+								margin: "5px",
+								marginTop: "9%",
+								textDecoration: "none",
+							}}>
 							Home
 						</Link>
 						<AuthenticationButton />
 						<Link
 							to="/upload"
-							style={{ color: "pink", margin: "5px", marginTop: "9%" }}>
+							style={{
+								color: "pink",
+								margin: "5px",
+								marginTop: "9%",
+								textDecoration: "none",
+							}}>
 							Upload
 						</Link>
 						{/* <IconButton aria-label="show 17 new notifications" color="inherit">
