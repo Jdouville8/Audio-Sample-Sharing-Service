@@ -1,17 +1,27 @@
-import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Link } from '@material-ui/core';
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Link, Tooltip, makeStyles } from "@material-ui/core";
+import AccountBox from "@material-ui/icons/AccountBox";
+
+const useStyles = makeStyles(() => ({
+	login: {
+		cursor: "pointer",
+	},
+}));
 
 function LogoutButton() {
+	const classes = useStyles();
 	const { logout } = useAuth0();
 
 	return (
-		<Link
-			style={{ color: 'pink', margin: '5px', marginTop: '9%' }}
-			onClick={() => logout({ returnTo: window.location.origin })}
-		>
-			Log Out
-		</Link>
+		<Tooltip title="Logout">
+			<Link
+				className={classes.login}
+				style={{ color: "pink", margin: "5px", marginTop: "9%" }}
+				onClick={() => logout({ returnTo: window.location.origin })}>
+				<AccountBox />
+			</Link>
+		</Tooltip>
 	);
 }
 

@@ -16,7 +16,6 @@ import {
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Background from "../../images/WaveFlip.png";
 import AuthenticationButton from "../AuthenticationButton/AuthenticationButton";
