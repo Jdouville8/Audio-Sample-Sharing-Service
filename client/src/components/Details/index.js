@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
+import PlayerContext from '../../utils/PlayerContext';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -67,6 +68,8 @@ export default function Details(props) {
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
 
+	const changePlayerContext = useContext(PlayerContext);
+
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
 	};
@@ -90,6 +93,8 @@ export default function Details(props) {
 		let audioSrc = props.audioSrc;
 
 		console.log(audioSrc);
+
+		changePlayerContext(audioSrc);
 
 		// send audioSrc value to audio player in footer component
 	};

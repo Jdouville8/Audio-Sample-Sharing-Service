@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
-import PlayerContext from './utils/PlayerContext';
 
 ReactDOM.render(
 	<Router>
@@ -13,9 +12,7 @@ ReactDOM.render(
 			clientId="IEGWrp4HIHw4dv4dcMoWlpgdpGA1IVrV"
 			redirectUri={window.location.origin}
 		>
-			<PlayerContext.Provider>
-				<App />
-			</PlayerContext.Provider>
+			<App />
 		</Auth0Provider>
 	</Router>,
 	document.getElementById('root')

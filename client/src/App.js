@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import PlayerContext from './utils/PlayerContext';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Search from './pages/Search';
 import NavBar from './components/navBar/NavBar.js';
@@ -16,50 +17,60 @@ import NoMatch from './pages/NoMatch';
 import Lessons from './pages/Lessons';
 
 function App() {
+	const [src, setSrc] = useState({
+		audioSrc: '',
+	});
+
+	const handlePlayClick = (str) => {
+		setSrc({ audioSrc: str });
+	};
+
 	return (
-		<Router>
-			<div
-				style={{
-					backgroundImage: `url(${Background})`,
-					backgroundRepeat: 'no-repeat',
-					backgroundSize: 'cover',
-					backgroundPosition: 'center center',
-					backgroundAttachment: 'fixed',
-				}}
-			>
-				<NavBar />
-				<Switch>
-					<Route exact path={'/search'}>
-						<Search />
-					</Route>
-					<Route exact path={['/', '/landing']}>
-						<Landing />
-					</Route>
-					<Route exact path={'/upload'}>
-						<FileSubmit />
-					</Route>
-					<Route exact path={'/login'}>
-						<Login />
-					</Route>
-					<Route exact path={'/signup'}>
-						<Signup />
-					</Route>
-					<Route exact path={'/home'}>
-						<Home />
-					</Route>
-					<Route exact path={'/lessons'}>
-						<Lessons />
-					</Route>
-					<Route exact path={'/education'}>
-						<Education />
-					</Route>
-					<Route>
-						<NoMatch />
-					</Route>
-				</Switch>
-				<Footer />
-			</div>
-		</Router>
+		<PlayerContext.Provider value={handlePlayClick}>
+			<Router>
+				<div
+					style={{
+						backgroundImage: `url(${Background})`,
+						backgroundRepeat: 'no-repeat',
+						backgroundSize: 'cover',
+						backgroundPosition: 'center center',
+						backgroundAttachment: 'fixed',
+					}}
+				>
+					<NavBar />
+					<Switch>
+						<Route exact path={'/search'}>
+							<Search />
+						</Route>
+						<Route exact path={['/', '/landing']}>
+							<Landing />
+						</Route>
+						<Route exact path={'/upload'}>
+							<FileSubmit />
+						</Route>
+						<Route exact path={'/login'}>
+							<Login />
+						</Route>
+						<Route exact path={'/signup'}>
+							<Signup />
+						</Route>
+						<Route exact path={'/home'}>
+							<Home />
+						</Route>
+						<Route exact path={'/lessons'}>
+							<Lessons />
+						</Route>
+						<Route exact path={'/education'}>
+							<Education />
+						</Route>
+						<Route>
+							<NoMatch />
+						</Route>
+					</Switch>
+					<Footer audioSrc={src.audioSrc} />
+				</div>
+			</Router>
+		</PlayerContext.Provider>
 	);
 }
 
