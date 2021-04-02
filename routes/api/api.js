@@ -4,8 +4,8 @@ const multer = require('multer');
 const Grid = require('gridfs-stream');
 const GridFsStorage = require('multer-gridfs-storage');
 const db = mongoose.connection;
-const User = require('../models/User');
-const PackInfo = require('../models/PackInfo');
+const User = require('../../models/User');
+const PackInfo = require('../../models/PackInfo');
 const crypto = require('crypto');
 const path = require('path');
 
@@ -56,7 +56,7 @@ router.get('/api/files/:filename', (req, res) => {
 
 router.get('/api/files', (req, res) => {
 	gfs.files.find({}).toArray((err, files) => {
-		console.log("Form Sent!");
+		console.log('Form Sent!');
 		if (!files || files.length === 0) {
 			return res.status(404).json({
 				message: 'Could not find files',
