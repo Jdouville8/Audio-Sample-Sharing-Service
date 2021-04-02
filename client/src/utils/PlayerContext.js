@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const PlayerContext = React.createContext({
-  audioSrc = ""
+	audioSrc: '',
 });
 
 export default PlayerContext;
