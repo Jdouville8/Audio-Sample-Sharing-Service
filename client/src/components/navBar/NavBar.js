@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import AccountThumbnail from "../AccountThumbnail/AccountThumbnail";
-// import { Link } from "react-router-dom";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import {
   AppBar,
@@ -12,9 +11,8 @@ import {
   Badge,
   MenuItem,
   Menu,
-  Link,
 } from "@material-ui/core";
-
+import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
@@ -148,8 +146,12 @@ function NavBar() {
     >
       <MenuItem>
         <Link
-          href="/home"
-          style={{ color: "#3d1347", margin: "5px", marginTop: "10%" }}
+          to="/home"
+          style={{
+            color: "#3d1347",
+            margin: "5px",
+            marginTop: "10%",
+          }}
         >
           Home
         </Link>
@@ -182,7 +184,10 @@ function NavBar() {
             backgroundPosition: `center center`,
           }}
         >
-          <Link href="/landing" style={{ color: "white" }}>
+          <Link
+            to="/landing"
+            style={{ color: "white", textDecoration: "none" }}
+          >
             <Typography className={classes.title} variant="h6" noWrap>
               WavMovers
             </Typography>
@@ -205,15 +210,25 @@ function NavBar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Link
-              href="/home"
-              style={{ color: "pink", margin: "5px", marginTop: "9%" }}
+              to="/home"
+              style={{
+                color: "pink",
+                margin: "5px",
+                marginTop: "9%",
+                textDecoration: "none",
+              }}
             >
               Home
             </Link>
             <AuthenticationButton />
             <Link
-              href="/upload"
-              style={{ color: "pink", margin: "5px", marginTop: "9%" }}
+              to="/upload"
+              style={{
+                color: "pink",
+                margin: "5px",
+                marginTop: "9%",
+                textDecoration: "none",
+              }}
             >
               Upload
             </Link>
