@@ -1,23 +1,23 @@
-import React, { useRef } from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
-import GetAppIcon from "@material-ui/icons/GetApp";
-import Grid from "@material-ui/core/Grid";
-import axios from "axios";
+import React, { useRef } from 'react';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import { red } from '@material-ui/core/colors';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import Grid from '@material-ui/core/Grid';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -25,31 +25,31 @@ const useStyles = makeStyles((theme) => ({
 	},
 	media: {
 		height: 0,
-		paddingTop: "56.25%", // 16:9
+		paddingTop: '56.25%', // 16:9
 	},
 	expand: {
-		transform: "rotate(0deg)",
-		marginLeft: "auto",
-		transition: theme.transitions.create("transform", {
+		transform: 'rotate(0deg)',
+		marginLeft: 'auto',
+		transition: theme.transitions.create('transform', {
 			duration: theme.transitions.duration.shortest,
 		}),
 	},
 	expandOpen: {
-		transform: "rotate(180deg)",
+		transform: 'rotate(180deg)',
 	},
 	avatar: {
 		backgroundColor: red[500],
 	},
 	content: {
-		flex: "1 0 auto",
+		flex: '1 0 auto',
 	},
 	cover: {
 		width: 204,
 		height: 204,
 	},
 	controls: {
-		display: "flex",
-		alignItems: "center",
+		display: 'flex',
+		alignItems: 'center',
 		paddingLeft: theme.spacing(1),
 		paddingBottom: theme.spacing(1),
 	},
@@ -78,10 +78,25 @@ export default function Details(props) {
 
 		const fav = buttonRef.id;
 		axios
-			.post("/api/users/favs", {
+			.post('/api/users/favs', {
 				favorites: fav,
 			})
-			.then(console.log("post success"));
+			.then(console.log('post success'));
+	};
+
+	const handlePlayClick = (e) => {
+		e.preventDefault();
+
+		let audioSrc = props.audioSrc;
+
+		console.log(audioSrc);
+
+		// const fav = buttonRef.id;
+		// axios
+		// 	.post('/api/users/favs', {
+		// 		favorites: fav,
+		// 	})
+		// 	.then(console.log('post success'));
 	};
 
 	const handleDownload = (e) => {
@@ -92,14 +107,15 @@ export default function Details(props) {
 		// THIS URL MUST CHANGE DYNAMICALLY
 		const fileName = props.dlUrl;
 		window.location.href =
-			"http://localhost:3001/api/files/" + fileName + ".zip";
+			'http://localhost:3001/api/files/' + fileName + '.zip';
 	};
 
 	return (
 		<div>
 			<Card
 				className={classes.root}
-				style={{ marginTop: "15px", marginBottom: "15px" }}>
+				style={{ marginTop: '15px', marginBottom: '15px' }}
+			>
 				<Grid container>
 					<Grid item>
 						<CardMedia
@@ -112,14 +128,15 @@ export default function Details(props) {
 						<CardHeader
 							title={props.title}
 							subheader={props.artist}
-							subheaderTypographyProps={{ color: "black" }}
+							subheaderTypographyProps={{ color: 'black' }}
 						/>
 						<CardContent>
 							<Typography
 								className={classes.type}
 								variant="body2"
 								color="textSecondary"
-								component="p">
+								component="p"
+							>
 								{props.overview}
 							</Typography>
 						</CardContent>
@@ -128,7 +145,8 @@ export default function Details(props) {
 								aria-label="add to favorites"
 								onClick={handleFavClick}
 								id={props.key}
-								ref={buttonRef}>
+								ref={buttonRef}
+							>
 								<FavoriteIcon />
 							</IconButton>
 							<IconButton
@@ -137,7 +155,8 @@ export default function Details(props) {
 								})}
 								onClick={handleExpandClick}
 								aria-expanded={expanded}
-								aria-label="show more">
+								aria-label="show more"
+							>
 								<ExpandMoreIcon />
 							</IconButton>
 						</CardActions>
@@ -153,17 +172,17 @@ export default function Details(props) {
 							</CardContent>
 							<div className={classes.controls}>
 								<IconButton aria-label="previous">
-									{theme.direction === "rtl" ? (
+									{theme.direction === 'rtl' ? (
 										<SkipNextIcon />
 									) : (
 										<SkipPreviousIcon />
 									)}
 								</IconButton>
-								<IconButton aria-label="play/pause">
+								<IconButton aria-label="play/pause" onClick={handlePlayClick}>
 									<PlayArrowIcon className={classes.playIcon} />
 								</IconButton>
 								<IconButton aria-label="next">
-									{theme.direction === "rtl" ? (
+									{theme.direction === 'rtl' ? (
 										<SkipPreviousIcon />
 									) : (
 										<SkipNextIcon />
