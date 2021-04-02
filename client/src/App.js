@@ -8,6 +8,7 @@ import FileSubmit from "./pages/fileSubmit";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
+import Education from "./pages/EducationalResources";
 import Footer from "./components/Footer/Footer";
 import UserProfile from "./pages/userProfile";
 import Background from "./images/wallpaper.jpg";
@@ -47,6 +48,9 @@ function App() {
 					</Route>
 					<Route exact path={"/lessons"}>
 						<Lessons />
+					</Route>
+					<Route exact path={"/education"}>
+						<Education />
 					</Route>
 					<Route>
 						<NoMatch />
