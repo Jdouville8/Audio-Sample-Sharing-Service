@@ -261,7 +261,7 @@ function NavBar() {
 								style={{
 									color: "pink",
 									margin: "5px",
-									marginTop: "9%",
+									marginTop: "7%",
 									textDecoration: "none",
 								}}>
 								<HomeIcon />
@@ -274,7 +274,7 @@ function NavBar() {
 								style={{
 									color: "pink",
 									margin: "5px",
-									marginTop: "9%",
+									marginTop: "7%",
 									textDecoration: "none",
 								}}>
 								<BookIcon />
@@ -286,7 +286,7 @@ function NavBar() {
 								style={{
 									color: "pink",
 									margin: "5px",
-									marginTop: "9%",
+									marginTop: "7%",
 									textDecoration: "none",
 								}}>
 								<EventIcon />
@@ -298,7 +298,7 @@ function NavBar() {
 								style={{
 									color: "pink",
 									margin: "5px",
-									marginTop: "9%",
+									marginTop: "7%",
 									textDecoration: "none",
 								}}>
 								<PublishIcon />
@@ -310,7 +310,7 @@ function NavBar() {
 								style={{
 									color: "pink",
 									margin: "5px",
-									marginTop: "9%",
+									marginTop: "7%",
 									textDecoration: "none",
 								}}>
 								<InfoIcon />

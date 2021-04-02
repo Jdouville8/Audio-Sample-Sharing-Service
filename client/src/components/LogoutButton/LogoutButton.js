@@ -16,7 +16,7 @@ function LogoutButton() {
 		<Tooltip title="Logout">
 			<Link
 				className={classes.login}
-				style={{ color: "pink", margin: "5px", marginTop: "9%" }}
+				style={{ color: "pink", margin: "5px", marginTop: "7%" }}
 				onClick={() => logout({ returnTo: window.location.origin })}>
 				Logout
 			</Link>

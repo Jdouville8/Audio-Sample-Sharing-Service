@@ -17,7 +17,7 @@ function LoginButtonIcon() {
 		<Tooltip title="Login">
 			<Link
 				className={classes.login}
-				style={{ color: "pink", margin: "5px", marginTop: "9%" }}
+				style={{ color: "pink", margin: "5px", marginTop: "7%" }}
 				onClick={() => loginWithRedirect()}>
 				<AccountBox />
 			</Link>
