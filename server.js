@@ -37,13 +37,12 @@ app.use(function (req, res, next) {
 });
 // Serve static files from the React app
 if (process.env.NODE_ENV === 'production') {
-	// app.use(express.static('client/build')); <- this one homepage works but not links
-	app.use(express.static(path.join(__dirname, 'client/build')));
+	app.use(express.static('client/build'));
 	app.get('/*', function (req, res) {
 		res.sendFile(path.join(__dirname, 'build', 'index.html'));
 	});
 	app.use(express.static(path.join(__dirname, 'build')));
-}
+// }
 
 app.use(express.json());
 app.use(logger('dev'));
