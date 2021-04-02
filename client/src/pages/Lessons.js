@@ -5,7 +5,7 @@ import { InlineWidget } from "react-calendly";
 
 const useStyles = makeStyles({
 	root: {
-		marginTop: "5%",
+		marginTop: "19%",
 	},
 });
 
@@ -18,8 +18,11 @@ function Lessons() {
 				width: "100%",
 			}}>
 			<Grid container direction="row" alignItems="center" justify="center">
-				<Grid item style={{ height: "700px", width: "300px" }}>
-					<Card className={classes.root} variant="outlined">
+				<Grid item style={{ height: "700px", width: "25%" }}>
+					<Card
+						className={classes.root}
+						variant="outlined"
+						style={{ opacity: ".95", boxShadow: "5px 5px 15px grey" }}>
 						<CardContent>
 							<Typography style={{ opacity: "1" }}>
 								<b>WavMovers</b> is a cutting edge audio sample library and
