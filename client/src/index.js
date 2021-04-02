@@ -14,12 +14,9 @@ ReactDOM.render(
 			clientId="IEGWrp4HIHw4dv4dcMoWlpgdpGA1IVrV"
 			redirectUri={window.location.origin}
 		>
-			{/* <Auth0ProviderWithHistory> */}
 			<App />
-			{/* </Auth0ProviderWithHistory> */}
 		</Auth0Provider>
-	</Router>
-	,
+	</Router>,
 	document.getElementById('root')
 );
 registerServiceWorker();
