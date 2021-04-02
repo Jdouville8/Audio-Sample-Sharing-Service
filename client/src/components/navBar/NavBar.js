@@ -11,14 +11,20 @@ import {
 	Badge,
 	MenuItem,
 	Menu,
+	Tooltip,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Background from "../../images/WaveFlip.png";
 import AuthenticationButton from "../AuthenticationButton/AuthenticationButton";
+import AuthenticationButtonIcon from "../AuthenticationButtonIcon/AuthenticationButtonIcon";
+import HomeIcon from "@material-ui/icons/Home";
+import PublishIcon from "@material-ui/icons/Publish";
+import BookIcon from "@material-ui/icons/Book";
+import EventIcon from "@material-ui/icons/Event";
+import InfoIcon from "@material-ui/icons/Info";
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -148,9 +154,55 @@ function NavBar() {
 					style={{
 						color: "#3d1347",
 						margin: "5px",
-						marginTop: "10%",
 					}}>
 					Home
+				</Link>
+			</MenuItem>
+			<MenuItem>
+				<AuthenticationButton />
+			</MenuItem>
+			<MenuItem>
+				<Link
+					to="/education"
+					style={{
+						color: "pink",
+						margin: "5px",
+						textDecoration: "none",
+					}}>
+					Resources
+				</Link>
+			</MenuItem>
+			<MenuItem>
+				<Link
+					to="/lessons"
+					style={{
+						color: "pink",
+						margin: "5px",
+						textDecoration: "none",
+					}}>
+					Lessons
+				</Link>
+			</MenuItem>
+			<MenuItem>
+				<Link
+					to="/upload"
+					style={{
+						color: "pink",
+						margin: "5px",
+						textDecoration: "none",
+					}}>
+					Upload
+				</Link>
+			</MenuItem>
+			<MenuItem>
+				<Link
+					to="/about"
+					style={{
+						color: "pink",
+						margin: "5px",
+						textDecoration: "none",
+					}}>
+					About
 				</Link>
 			</MenuItem>
 			<MenuItem>
@@ -203,47 +255,67 @@ function NavBar() {
 					</div>
 					<div className={classes.grow} />
 					<div className={classes.sectionDesktop}>
-						<Link
-							to="/home"
-							style={{
-								color: "pink",
-								margin: "5px",
-								marginTop: "9%",
-								textDecoration: "none",
-							}}>
-							Home
-						</Link>
-						<AuthenticationButton />
-						<Link
-							to="/upload"
-							style={{
-								color: "pink",
-								margin: "5px",
-								marginTop: "9%",
-								textDecoration: "none",
-							}}>
-							Upload
-						</Link>
-						<Link
-							to="/education"
-							style={{
-								color: "pink",
-								margin: "5px",
-								marginTop: "9%",
-								textDecoration: "none",
-							}}>
-							Free Resources
-						</Link>
-						<Link
-							to="/lessons"
-							style={{
-								color: "pink",
-								margin: "5px",
-								marginTop: "9%",
-								textDecoration: "none",
-							}}>
-							Lessons
-						</Link>
+						<Tooltip title="Home">
+							<Link
+								to="/home"
+								style={{
+									color: "pink",
+									margin: "5px",
+									marginTop: "7%",
+									textDecoration: "none",
+								}}>
+								<HomeIcon />
+							</Link>
+						</Tooltip>
+						<AuthenticationButtonIcon />
+						<Tooltip title="Resources">
+							<Link
+								to="/education"
+								style={{
+									color: "pink",
+									margin: "5px",
+									marginTop: "7%",
+									textDecoration: "none",
+								}}>
+								<BookIcon />
+							</Link>
+						</Tooltip>
+						<Tooltip title="Lessons">
+							<Link
+								to="/lessons"
+								style={{
+									color: "pink",
+									margin: "5px",
+									marginTop: "7%",
+									textDecoration: "none",
+								}}>
+								<EventIcon />
+							</Link>
+						</Tooltip>
+						<Tooltip title="Upload">
+							<Link
+								to="/upload"
+								style={{
+									color: "pink",
+									margin: "5px",
+									marginTop: "7%",
+									textDecoration: "none",
+								}}>
+								<PublishIcon />
+							</Link>
+						</Tooltip>
+						<Tooltip title="About">
+							<Link
+								to="/about"
+								style={{
+									color: "pink",
+									margin: "5px",
+									marginTop: "7%",
+									textDecoration: "none",
+								}}>
+								<InfoIcon />
+							</Link>
+						</Tooltip>
 						{/* <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
