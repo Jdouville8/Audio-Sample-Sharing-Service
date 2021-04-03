@@ -58,6 +58,7 @@ const [success, setSuccess] =  useState(false)
 
             if(response.data.success) {
                 console.log('successful payment')
+                console.log(response)
                 setSuccess(true)
             }
         } catch (error) {
@@ -77,7 +78,7 @@ const [success, setSuccess] =  useState(false)
                  <CardElement options={CARD_OPTIONS}/>
             </div>
         </fieldset>
-      <button type="submit" disabled={!stripe}>
+      <button type="submit">
         Pay
       </button>
     </form>

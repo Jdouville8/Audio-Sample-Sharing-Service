@@ -8,14 +8,14 @@ const User = require('../../models/User');
 const PackInfo = require('../../models/PackInfo');
 const crypto = require('crypto');
 const path = require('path');
-const stripe = require('stripe')(process.env.STRIPE_KEY)
+const stripe = require('stripe')("sk_test_51IbyXTGpEScSSzwXa4BjlezpCAlmkLuqvKClrD0WWGJGcbyb11Xb5FonGapu5upg2xuJ68JcEpil8MRCYj4CoA6500MKKmKCLu")
 
 
 const calculateOrderAmount = () => {
     // Replace this constant with a calculation of the order's amount
     // Calculate the order total on the server to prevent
     // people from directly manipulating the amount on the client
-    return 1400;
+    return 3000;
   };
   
 router.post("/create-payment-intent", async (req, res) => {
@@ -32,7 +32,8 @@ router.post("/create-payment-intent", async (req, res) => {
       confirm: true
     });
     res.send({
-      clientSecret: paymentIntent.client_secret
+    message: 'Payment Successful',
+      success: true
     });
   });
 
