@@ -107,7 +107,7 @@ export default function Details(props) {
 		// THIS URL MUST CHANGE DYNAMICALLY
 		const fileName = props.dlUrl;
 		window.location.href =
-			'http://localhost:3001/api/files/' + fileName + '.zip';
+			'https://wavmovers.herokuapp.com/api/files/' + fileName;
 	};
 
 	return (
