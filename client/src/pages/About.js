@@ -5,9 +5,17 @@ import Justin from "../images/Justin.jpeg";
 import Nick from "../images/Nick.jpg";
 import Luke from "../images/Luke.jpg";
 import Seth from "../images/Seth.jpg";
-import { Grid } from "@material-ui/core";
+import { Grid, makeStyles, Button } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+  },
+}));
 
 function About() {
+  const classes = useStyles();
   const devs = [
     {
       name: "Justin Douville",
@@ -40,17 +48,24 @@ function About() {
   ];
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: "100vh", width: "100%" }}>
       <Grid
         container
         direction="row"
         justify="center"
         alignItems="center"
-        spacing={4}
+        // spacing={2}
         style={{ marginTop: "20px" }}
       >
         {devs.map((dev) => (
-          <Grid item style={{ height: "75%" }}>
+          <Grid
+            item
+            style={{
+              height: "75%",
+              marginInline: "15px",
+              marginBottom: "20px",
+            }}
+          >
             <DevCard
               pic={dev.pic}
               name={dev.name}
@@ -60,6 +75,27 @@ function About() {
             />
           </Grid>
         ))}
+      </Grid>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        style={{ marginTop: "20px", color: "white" }}
+      >
+        <Grid item>
+          <Button
+            className={classes.paper}
+            style={{
+              backgroundColor: "#424242",
+              color: "white",
+            }}
+            href="mailto:wavmovers@gmail.com"
+            target="_blank"
+          >
+            Email the Team
+          </Button>
+        </Grid>
       </Grid>
     </div>
   );

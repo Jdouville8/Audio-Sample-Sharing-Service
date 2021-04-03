@@ -8,7 +8,6 @@ import {
   IconButton,
   Typography,
   InputBase,
-  Badge,
   MenuItem,
   Menu,
 } from "@material-ui/core";
