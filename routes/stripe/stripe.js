@@ -8,7 +8,7 @@ const User = require('../../models/User');
 const PackInfo = require('../../models/PackInfo');
 const crypto = require('crypto');
 const path = require('path');
-const stripe = require('stripe')("sk_test_51IbyXTGpEScSSzwXa4BjlezpCAlmkLuqvKClrD0WWGJGcbyb11Xb5FonGapu5upg2xuJ68JcEpil8MRCYj4CoA6500MKKmKCLu")
+const stripe = require('stripe')(process.env.STRIPE_KEY)
 
 
 const calculateOrderAmount = () => {
