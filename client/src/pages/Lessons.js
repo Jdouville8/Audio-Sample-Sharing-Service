@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Typography, CardContent, makeStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import { InlineWidget } from "react-calendly";
+import CheckoutForm from '../components/CheckoutForm/index'
 
 const useStyles = makeStyles({
 	root: {
@@ -38,6 +39,10 @@ function Lessons() {
 							<Typography>
 								WavMovers 1-on-1 lessons will empower you to grow leaps and bounds in your musical journey through honing the skills needed to get you from the bedroom to the main stage
 							</Typography>
+							<br/>
+							<CheckoutForm>
+
+							</CheckoutForm>
 						</CardContent>
 					</Card>
 				</Grid>
