@@ -33,7 +33,7 @@ function Home() {
 			</Grid>
 			<Grid container direction="row" justify="center" alignItems="center">
 				{results.map((result) => (
-					<Grid item>
+					<Grid item key={result.id}>
 						<Details
 							src={result.src}
 							title={result.title}
