@@ -17,6 +17,7 @@ import NoMatch from './pages/NoMatch';
 import Lessons from './pages/Lessons';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
+import About from "./pages/About";
 
 const stripePromise = loadStripe('pk_test_51IbyXTGpEScSSzwXh44D5mrHcdtU3kD902kW87kXDu1RIkJco8MEujFZtgG0C49nFMIODD1QWWOYdkgmF8VbtnR400lPNyG32Q');
 
@@ -26,9 +27,9 @@ function App() {
 		audioSrc: '',
 	});
 
-	const handlePlayClick = (str) => {
-		setSrc({ audioSrc: str });
-	};
+  const handlePlayClick = (str) => {
+    setSrc({ audioSrc: str });
+  };
 
 	return (
 		<Elements stripe={stripePromise}>
@@ -68,6 +69,9 @@ function App() {
 						</Route>
 						<Route exact path={'/education'}>
 							<Education />
+						</Route>
+						<Route exact path={'/about'}>
+							<About />
 						</Route>
 						<Route>
 							<NoMatch />
