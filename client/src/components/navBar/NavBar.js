@@ -24,7 +24,6 @@ import HomeIcon from "@material-ui/icons/Home";
 import PublishIcon from "@material-ui/icons/Publish";
 import BookIcon from "@material-ui/icons/Book";
 import EventIcon from "@material-ui/icons/Event";
-import InfoIcon from "@material-ui/icons/Info";
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -304,18 +303,7 @@ function NavBar() {
 								<PublishIcon />
 							</Link>
 						</Tooltip>
-						<Tooltip title="About">
-							<Link
-								to="/about"
-								style={{
-									color: "pink",
-									margin: "5px",
-									marginTop: "7%",
-									textDecoration: "none",
-								}}>
-								<InfoIcon />
-							</Link>
-						</Tooltip>
+
 						{/* <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
