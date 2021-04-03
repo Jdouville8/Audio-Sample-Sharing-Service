@@ -9,7 +9,7 @@ const useStyles = {
 	},
 };
 
-function Footer() {
+function Footer(props) {
 	const classes = useStyles;
 
 	return (
@@ -23,7 +23,7 @@ function Footer() {
 		>
 			<div>
 				<AudioPlayer
-					src="https://drive.google.com/uc?export=open&id=1NABnmpfSFFpNcjav7XbQiNisdR6OIHo6"
+					src={props.audioSrc}
 					onPlay={(e) => console.log('onPlay')}
 					style={{
 						width: '33%',
