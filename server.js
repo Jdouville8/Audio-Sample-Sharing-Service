@@ -12,6 +12,7 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const config = require('./config');
+const cors = require('cors')
 
 const connectionParams = {
 	useNewUrlParser: true,
@@ -47,7 +48,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(express.json());
 app.use(logger('dev'));
-
+app.use(cors())
 // Put all API endpoints under '/api'
 // app.use('/api', require('./routes/file'));
 app.use(require('./routes'));

@@ -51,7 +51,7 @@ const [success, setSuccess] =  useState(false)
     if(!error) {
         try {
             const {id} = paymentMethod
-            const response = await axios.post("http://localhost:3001/payment", {
+            const response = await axios.post("http://localhost:3001/stripe/create-payment-intent", {
                 amount: 3000,
                 id
             })
