@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const stripe = require("stripe")('pk_test_51IbyXTGpEScSSzwXh44D5mrHcdtU3kD902kW87kXDu1RIkJco8MEujFZtgG0C49nFMIODD1QWWOYdkgmF8VbtnR400lPNyG32Q')
 const path = require('path');
 const crypto = require('crypto');
 const PORT = process.env.PORT || 3001;
@@ -11,6 +12,7 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const config = require('./config');
+const cors = require('cors')
 
 const connectionParams = {
 	useNewUrlParser: true,
@@ -46,7 +48,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(express.json());
 app.use(logger('dev'));
-
+app.use(cors())
 // Put all API endpoints under '/api'
 // app.use('/api', require('./routes/file'));
 app.use(require('./routes'));
