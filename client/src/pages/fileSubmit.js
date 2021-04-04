@@ -5,6 +5,7 @@ import { Button } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import { Box } from "@material-ui/core";
+import { DropzoneArea } from "material-ui-dropzone";
 
 const useStyles = makeStyles((theme) => ({
 	// root: {
@@ -14,8 +15,7 @@ const useStyles = makeStyles((theme) => ({
 	// 	},
 	// },
 	card: {
-		width: 300,
-		height: 180,
+		margin: "auto",
 	},
 	button: {
 		color: "#5e235b",
@@ -31,8 +31,8 @@ export default function FileSubmit() {
 
 	const [file, setFile] = useState("");
 
-	const onChange = (e) => {
-		setFile(e.target.files[0]);
+	const onChange = (files) => {
+		setFile(files);
 	};
 
 	const log = () => {
@@ -57,45 +57,31 @@ export default function FileSubmit() {
 		<div
 			style={{
 				height: "100vh",
-				marginLeft: "60%",
-				marginTop: "40%",
-				transform: "translate(-50%, -50%)",
 				display: "flex",
 			}}>
-			<Box>
-				<Card
-					className={classes.card}
-					spacing={0}
-					align="center"
-					justify="center"
-					p={2}>
-					<CardActions>
-						<form
-							className={classes.root}
-							noValidate
-							autoComplete="off"
-							// onSubmit={onSubmit}
-							enctype="multipart/form-data">
-							<label className={classes.label}>Please choose a File</label>
-							<br />
-							<input
-								name="file"
-								type="file"
-								placeholder=""
-								onChange={onChange}
-							/>
-							<Button
-								variant="contained"
-								className={classes.button}
-								// color="primary"
-								// value="Upload"
-								onClick={onSubmit}>
-								Submit
-							</Button>
-						</form>
-					</CardActions>
-				</Card>
-			</Box>
+			<Card className={classes.card}>
+				<DropzoneArea onChange={(files) => onChange(files)} />
+				{/* <CardActions>
+					<form
+						className={classes.root}
+						noValidate
+						autoComplete="off"
+						// onSubmit={onSubmit}
+						enctype="multipart/form-data">
+						<label className={classes.label}>Please choose a File</label>
+						<br />
+
+						<Button
+							variant="contained"
+							className={classes.button}
+							// color="primary"
+							// value="Upload"
+							onClick={onSubmit}>
+							Submit
+						</Button>
+					</form>
+				</CardActions> */}
+			</Card>
 		</div>
 	);
 }
