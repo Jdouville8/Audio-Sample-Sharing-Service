@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { Button } from "@material-ui/core";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -78,7 +79,7 @@ export default function CheckoutForm() {
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
-          <button
+          <Button
             type="submit"
             style={{
               color: "#5e235b",
@@ -87,7 +88,7 @@ export default function CheckoutForm() {
             }}
           >
             Pay
-          </button>
+          </Button>
         </form>
       ) : (
         <div>
