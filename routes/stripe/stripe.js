@@ -8,7 +8,9 @@ const User = require('../../models/User');
 const PackInfo = require('../../models/PackInfo');
 const crypto = require('crypto');
 const path = require('path');
-const stripe = require('stripe')(process.env.STRIPE_KEY)
+const cors = require('cors')
+require('dotenv').config();
+const stripe = require('stripe')(process.env.REACT_APP_STRIPE_KEY)
 
 
 const calculateOrderAmount = () => {
@@ -18,7 +20,7 @@ const calculateOrderAmount = () => {
     return 3000;
   };
   
-router.post("/create-payment-intent", async (req, res) => {
+router.post("/create-payment-intent", cors(), async (req, res) => {
     console.log('payment being made!!')
     
 
