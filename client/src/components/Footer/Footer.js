@@ -53,7 +53,6 @@ function Footer(props) {
             className={classes.fab}
             size="small"
             style={{
-              backgroundColor: "slategray",
               color: "pink",
             }}
           >
