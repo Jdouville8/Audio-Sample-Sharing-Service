@@ -83,7 +83,7 @@ export default function CheckoutForm() {
             type="submit"
             style={{
               color: "#5e235b",
-              margin: "auto",
+              marginTop: "10px",
               backgroundColor: "#8989fc",
             }}
           >
