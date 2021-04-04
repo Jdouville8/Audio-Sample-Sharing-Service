@@ -1,18 +1,11 @@
-import React from "react";
-
-import {
-  Grid,
-  Card,
-  CardActions,
-  CardContent,
-  Button,
-  TextField,
-  makeStyles,
-} from "@material-ui/core";
+import React, { useEffect } from "react";
+import { Grid, Card, makeStyles, Modal, Backdrop } from "@material-ui/core";
 import CoolImg from "../images/ms1-1.png";
 import LoginButton from "../components/LoginButton/LoginButton";
+import PropTypes from "prop-types";
+import { useSpring, animated } from "react-spring/web.cjs";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
   },
@@ -22,12 +15,66 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  paper: {
+    backgroundColor: "#424242",
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
+
+const Fade = React.forwardRef(function Fade(props, ref) {
+  const { in: open, children, onEnter, onExited, ...other } = props;
+  const style = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: open ? 1 : 0 },
+    onStart: () => {
+      if (open && onEnter) {
+        onEnter();
+      }
+    },
+    onRest: () => {
+      if (!open && onExited) {
+        onExited();
+      }
+    },
+  });
+
+  return (
+    <animated.div ref={ref} style={style} {...other}>
+      {children}
+    </animated.div>
+  );
 });
 
+Fade.propTypes = {
+  children: PropTypes.element,
+  in: PropTypes.bool.isRequired,
+  onEnter: PropTypes.func,
+  onExited: PropTypes.func,
+};
+
 function Login() {
+  useEffect(() => {
+    handleOpen();
+  }, []);
+
   const classes = useStyles();
 
-  const onSubmit = () => {};
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div
@@ -36,6 +83,35 @@ function Login() {
         width: "100%",
       }}
     >
+      <Modal
+        aria-labelledby="spring-modal-title"
+        aria-describedby="spring-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <h2
+              id="spring-modal-title"
+              style={{ textAlign: "center", color: "pink" }}
+            >
+              Uh-oh!
+            </h2>
+            <p
+              id="spring-modal-description"
+              style={{ textAlign: "center", color: "pink" }}
+            >
+              You must be logged in to use this feature.
+            </p>
+          </div>
+        </Fade>
+      </Modal>
       <Grid>
         <Grid item lg={7}>
           <div
