@@ -54,7 +54,7 @@ function Footer(props) {
             size="small"
             style={{
               color: "violet",
-              backgroundColor: "darkslate",
+              backgroundColor: `rgba(0,0,0,.7)`,
             }}
           >
             <InfoIcon />
