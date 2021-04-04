@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   a: {
     color: "pink",
+    textDecoration: "none",
   },
 }));
 
@@ -79,7 +80,10 @@ function EducationalResources() {
         <Grid container spacing={1} justify="center">
           <Grid item sm={3}>
             <Paper className={classes.paper}>
-              <a href="https://www.youtube.com/watch?v=M_FkdkYepQ4">
+              <a
+                className={classes.a}
+                href="https://www.youtube.com/watch?v=M_FkdkYepQ4"
+              >
                 How to make Neurobass course
               </a>
             </Paper>
@@ -92,50 +96,74 @@ function EducationalResources() {
         <Grid container spacing={1} justify="center">
           <Grid item sm={3}>
             <Paper className={classes.paper}>
-              <a href="https://youtube.com/playlist?list=PL4hlVFgfYnIxncow4AxCiL4vvzpPWV3r8">
+              <a
+                className={classes.a}
+                href="https://youtube.com/playlist?list=PL4hlVFgfYnIxncow4AxCiL4vvzpPWV3r8"
+              >
                 COPYCATT
               </a>
             </Paper>
 
             <Paper className={classes.paper}>
-              <a href="https://youtube.com/playlist?list=PL4hlVFgfYnIw8q_UJ3qOqm3ldFAsqkhby">
+              <a
+                className={classes.a}
+                href="https://youtube.com/playlist?list=PL4hlVFgfYnIw8q_UJ3qOqm3ldFAsqkhby"
+              >
                 EPROM (Shades)
               </a>
             </Paper>
 
             <Paper className={classes.paper}>
-              <a href="https://youtube.com/playlist?list=PL4hlVFgfYnIwShIQHtqImREXYWg26pTQd">
+              <a
+                className={classes.a}
+                href="https://youtube.com/playlist?list=PL4hlVFgfYnIwShIQHtqImREXYWg26pTQd"
+              >
                 Mr. Carmack
               </a>
             </Paper>
 
             <Paper className={classes.paper}>
-              <a href="https://youtube.com/playlist?list=PL4hlVFgfYnIwyzRiKEYl_zN-uUOoxJJcy">
+              <a
+                className={classes.a}
+                href="https://youtube.com/playlist?list=PL4hlVFgfYnIwyzRiKEYl_zN-uUOoxJJcy"
+              >
                 Medasin
               </a>
             </Paper>
           </Grid>
           <Grid item sm={3}>
             <Paper className={classes.paper}>
-              <a href="https://youtube.com/playlist?list=PL4hlVFgfYnIxZEQIXpJP-NQeqlrNcUer0">
+              <a
+                className={classes.a}
+                href="https://youtube.com/playlist?list=PL4hlVFgfYnIxZEQIXpJP-NQeqlrNcUer0"
+              >
                 Haywyre
               </a>
             </Paper>
 
             <Paper className={classes.paper}>
-              <a href="https://youtube.com/playlist?list=PL4hlVFgfYnIxncow4AxCiL4vvzpPWV3r8">
+              <a
+                className={classes.a}
+                href="https://youtube.com/playlist?list=PL4hlVFgfYnIxncow4AxCiL4vvzpPWV3r8"
+              >
                 Habstrakt
               </a>
             </Paper>
 
             <Paper className={classes.paper}>
-              <a href="https://youtube.com/playlist?list=PL4hlVFgfYnIzBo0xDmqEwLYg_eFZiGKbd">
+              <a
+                className={classes.a}
+                href="https://youtube.com/playlist?list=PL4hlVFgfYnIzBo0xDmqEwLYg_eFZiGKbd"
+              >
                 Effin
               </a>
             </Paper>
 
             <Paper className={classes.paper}>
-              <a href="https://youtube.com/playlist?list=PL4hlVFgfYnIzmqe6Vg6upBjgHROn0zO57">
+              <a
+                className={classes.a}
+                href="https://youtube.com/playlist?list=PL4hlVFgfYnIzmqe6Vg6upBjgHROn0zO57"
+              >
                 Kill The Noise
               </a>
             </Paper>
