@@ -74,7 +74,7 @@ export default function CheckoutForm() {
     <>
       {!success ? (
         <form onSubmit={handleSubmit}>
-          <fieldset className="FormGroup">
+          <fieldset className="FormGroup" style={{ borderRadius: "10px" }}>
             <div className="FormRow">
               <CardElement options={CARD_OPTIONS} />
             </div>
