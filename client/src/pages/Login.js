@@ -7,7 +7,10 @@ import { useSpring, animated } from "react-spring/web.cjs";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 275,
+    minWidth: 150,
+    height: 50,
+    backgroundColor: `rgba(0,0,0,.7)`,
+    borderRadius: "10px",
   },
   title: {
     fontSize: 14,
@@ -129,14 +132,15 @@ function Login() {
           <div
             style={{
               position: "absolute",
-              left: "77%",
-              top: "50%",
+              left: "50%",
+              top: "40%",
               transform: "translate(-50%, -50%)",
-              boxShadow: "5px 5px 15px grey",
+              boxShadow: "0 0 50px 10px  lightpink",
+              borderRadius: "10px",
             }}
           >
             <Card className={classes.root} variant="outlined">
-              <form>
+              <form style={{ padding: "15px", textAlign: "center" }}>
                 <LoginButton />
               </form>
             </Card>
