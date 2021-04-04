@@ -53,7 +53,8 @@ function Footer(props) {
             className={classes.fab}
             size="small"
             style={{
-              color: "pink",
+              color: "violet",
+              backgroundColor: "darkslate",
             }}
           >
             <InfoIcon />
