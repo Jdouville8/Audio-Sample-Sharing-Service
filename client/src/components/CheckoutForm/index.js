@@ -78,7 +78,7 @@ export default function CheckoutForm() {
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
-          <button type="submit" style={{ color: "#5e235b" }}>
+          <button type="submit" style={{ color: "#5e235b", margin: "auto" }}>
             Pay
           </button>
         </form>
