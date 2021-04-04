@@ -19,6 +19,11 @@ const useStyles = makeStyles({
   cardTitle: {
     fontWeight: "20px",
   },
+  button: {
+    color: "#5e235b",
+    margin: "auto",
+    backgroundColor: "#8989fc",
+  },
 });
 
 function Lessons() {
@@ -69,15 +74,18 @@ function Lessons() {
                   needed to get you from the bedroom to the main stage
                 </Typography>
                 <br />
+                <h3>$30/hr</h3>
+
                 {showItem ? (
                   <CheckoutContainer />
                 ) : (
                   <div>
-                    {" "}
-                    <h3>$30/hr</h3>{" "}
-                    <Button onClick={() => setShowItem(true)}>
+                    <Button
+                      className={classes.button}
+                      onClick={() => setShowItem(true)}
+                    >
                       Purchase a lesson!
-                    </Button>{" "}
+                    </Button>
                   </div>
                 )}
               </CardContent>
