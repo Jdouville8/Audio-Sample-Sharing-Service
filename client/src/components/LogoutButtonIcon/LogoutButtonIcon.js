@@ -4,25 +4,26 @@ import { Link, Tooltip, makeStyles } from "@material-ui/core";
 import AccountBox from "@material-ui/icons/AccountBox";
 
 const useStyles = makeStyles(() => ({
-	login: {
-		cursor: "pointer",
-	},
+  login: {
+    cursor: "pointer",
+  },
 }));
 
 function LogoutButtonIcon() {
-	const classes = useStyles();
-	const { logout } = useAuth0();
+  const classes = useStyles();
+  const { logout } = useAuth0();
 
-	return (
-		<Tooltip title="Logout">
-			<Link
-				className={classes.login}
-				style={{ color: "pink", margin: "5px" }}
-				onClick={() => logout({ returnTo: window.location.origin })}>
-				<AccountBox />
-			</Link>
-		</Tooltip>
-	);
+  return (
+    <Tooltip title="Logout">
+      <Link
+        className={classes.login}
+        style={{ color: "pink", margin: "5px", marginTop: "7%" }}
+        onClick={() => logout({ returnTo: window.location.origin })}
+      >
+        <AccountBox />
+      </Link>
+    </Tooltip>
+  );
 }
 
 export default LogoutButtonIcon;
