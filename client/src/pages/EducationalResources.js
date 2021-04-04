@@ -50,7 +50,7 @@ function EducationalResources() {
 
   return (
     <>
-      <div className={classes.label} style={{ height: "100vh" }}>
+      <div className={classes.label} style={{ height: "100vh", margin: "0" }}>
         {/* TITLE */}
         <Typography
           align="center"
@@ -62,7 +62,7 @@ function EducationalResources() {
         <Typography align="center" variant="h4" className={classes.margins}>
           Beginner
         </Typography>
-        <Grid container spacing={1} justify="center">
+        <Grid container justify="center">
           <Grid item sm={4}>
             <Paper className={classes.paper}>
               <a
@@ -77,7 +77,7 @@ function EducationalResources() {
         <Typography align="center" variant="h4" className={classes.margins}>
           Sound Design
         </Typography>
-        <Grid container spacing={1} justify="center">
+        <Grid container justify="center">
           <Grid item sm={3}>
             <Paper className={classes.paper}>
               <a
@@ -93,7 +93,7 @@ function EducationalResources() {
           Live Streams
         </Typography>
 
-        <Grid container spacing={1} justify="center">
+        <Grid container justify="center">
           <Grid item sm={3}>
             <Paper className={classes.paper}>
               <a
