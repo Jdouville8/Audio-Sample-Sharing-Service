@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Card, Typography, CardContent, makeStyles } from "@material-ui/core";
+import {
+  Card,
+  Typography,
+  CardContent,
+  makeStyles,
+  Button,
+} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import { InlineWidget } from "react-calendly";
 import CheckoutContainer from "../components/CheckoutContainer/index";
@@ -12,6 +18,11 @@ const useStyles = makeStyles({
   },
   cardTitle: {
     fontWeight: "20px",
+  },
+  button: {
+    color: "#5e235b",
+    margin: "auto",
+    backgroundColor: "#8989fc",
   },
 });
 
@@ -30,11 +41,14 @@ function Lessons() {
         }}
       >
         <Grid container direction="row" alignItems="center" justify="center">
-          <Grid item style={{ height: "700px", width: "25%" }}>
+          <Grid
+            item
+            style={{ height: "700px", width: "25%", minWidth: "500px" }}
+          >
             <Card
               className={classes.root}
               variant="outlined"
-              style={{ opacity: ".95", boxShadow: "5px 5px 15px grey" }}
+              style={{ opacity: ".95", boxShadow: "5px 5px 15px #424242" }}
             >
               <CardContent>
                 <Typography
@@ -60,15 +74,18 @@ function Lessons() {
                   needed to get you from the bedroom to the main stage
                 </Typography>
                 <br />
+                <h3>$30/hr</h3>
+
                 {showItem ? (
                   <CheckoutContainer />
                 ) : (
                   <div>
-                    {" "}
-                    <h3>$30/hr</h3>{" "}
-                    <button onClick={() => setShowItem(true)}>
+                    <Button
+                      className={classes.button}
+                      onClick={() => setShowItem(true)}
+                    >
                       Purchase a lesson!
-                    </button>{" "}
+                    </Button>
                   </div>
                 )}
               </CardContent>
