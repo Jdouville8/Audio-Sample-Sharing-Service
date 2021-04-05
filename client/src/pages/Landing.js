@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Background from "../images/landing.png";
-import Logo from "../images/LogoV1.png";
+import Logo from "../images/LogoV5.png";
 
 import Typography from "@material-ui/core/Typography";
 
@@ -54,7 +54,7 @@ function Landing() {
           className={classes.root}
           style={{
             position: "absolute",
-            bottom: "35%",
+            bottom: "20%",
             left: "5%",
             width: "35%",
             backgroundColor: `rgba(0,0,0,.7)`,
@@ -94,7 +94,12 @@ function Landing() {
         </Card>
         <img
           src={Logo}
-          style={{ height: "45%", position: "absolute", right: "1%" }}
+          style={{
+            height: "20%",
+            position: "absolute",
+            left: "10%",
+            top: "2%",
+          }}
         ></img>
       </div>
     </div>
