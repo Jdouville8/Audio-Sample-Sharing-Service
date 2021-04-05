@@ -82,6 +82,7 @@ export default function FileSubmit() {
               Icon={PublishIcon}
               dropzoneClass={classes.dropzone}
               onChange={(files) => onChange(files)}
+              maxFileSize={500000000000}
               style={{ color: "pink" }}
             />
             <Fab

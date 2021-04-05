@@ -9,7 +9,8 @@ const PackInfo = require('../../models/PackInfo');
 const crypto = require('crypto');
 const path = require('path');
 const cors = require('cors')
-// require('dotenv').config();
+// needed for local payment testing, dotenv dev dependency also needed
+require('dotenv').config();
 const stripe = require('stripe')(process.env.REACT_APP_STRIPE_KEY)
 
 
