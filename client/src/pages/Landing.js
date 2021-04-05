@@ -59,11 +59,13 @@ function Landing() {
             width: "35%",
             backgroundColor: `rgba(0,0,0,.7)`,
             color: "white",
+            maxHeight: "55%",
+            overflow: "auto",
           }}
           variant="outlined"
         >
           <CardContent>
-            <Typography style={{ opacity: "1" }}>
+            <Typography>
               <p className={classes.indent}>
                 <b>WavMovers</b> is a cutting edge audio sample library and
                 education platform aimed to enable music creators to make their
@@ -87,7 +89,11 @@ function Landing() {
             </Typography>
           </CardContent>
           <CardActions>
-            <Link size="small" to="/signup" style={{ textDecoration: "none" }}>
+            <Link
+              size="small"
+              to="/signup"
+              style={{ textDecoration: "none", color: "violet" }}
+            >
               Sign up today
             </Link>
           </CardActions>

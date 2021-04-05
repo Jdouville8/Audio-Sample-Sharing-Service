@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 		flex: "1 0 auto",
 	},
 	cover: {
-		width: 220,
+		width: 204,
 		height: 220,
 	},
 	controls: {
@@ -62,7 +62,10 @@ const useStyles = makeStyles((theme) => ({
 		width: 38,
 	},
 	type: {
-		display: "inline",
+		width: 960,
+	},
+	textColor: {
+		color: "violet",
 	},
 }));
 
@@ -121,7 +124,11 @@ export default function Details(props) {
 		<div>
 			<Card
 				className={classes.root}
-				style={{ marginTop: "15px", marginBottom: "15px" }}>
+				style={{
+					marginTop: "15px",
+					marginBottom: "15px",
+					backgroundColor: `rgba(0,0,0,.7)`,
+				}}>
 				<Grid container>
 					<Grid item>
 						<CardMedia
@@ -134,30 +141,29 @@ export default function Details(props) {
 						<CardHeader
 							title={props.title}
 							subheader={props.artist}
-							subheaderTypographyProps={{ color: "black" }}
+							className={classes.textColor}
+							subheaderTypographyProps={{ color: "violet" }}
 						/>
 						<CardContent>
 							<Typography
-								style={{
-									whiteSpace: "normal",
-									wordWrap: "break-word",
-								}}
-								className={classes.type}
+								className={(classes.type, classes.textColor)}
 								variant="body2"
-								color="textSecondary"
 								component="p">
 								{props.overview}
 							</Typography>
 						</CardContent>
 						<CardActions disableSpacing>
 							<IconButton aria-label="play/pause" onClick={handlePlayClick}>
-								<PlayArrowIcon className={classes.playIcon} />
+								<PlayArrowIcon
+									className={(classes.playIcon, classes.textColor)}
+								/>
 							</IconButton>
 							<IconButton
 								aria-label="add to favorites"
 								onClick={handleFavClick}
 								id={props.key}
-								ref={buttonRef}>
+								ref={buttonRef}
+								className={classes.textColor}>
 								<FavoriteIcon />
 							</IconButton>
 							{/* <IconButton
@@ -170,7 +176,10 @@ export default function Details(props) {
               >
                 <ExpandMoreIcon />
               </IconButton> */}
-							<IconButton aria-label="Download" onClick={handleDownload}>
+							<IconButton
+								aria-label="Download"
+								onClick={handleDownload}
+								className={classes.textColor}>
 								<GetAppIcon />
 							</IconButton>
 						</CardActions>
