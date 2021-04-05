@@ -104,14 +104,24 @@ export default function Details(props) {
 			},
 		};
 		axios
-			.patch(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
-				{
-					user_metadata: { favorites: [fav] },
-				},
+			.get(
+				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
 				options
 			)
-			.then(console.log('post success'));
+			.then(
+				function ({ data }) {
+					console.log(data);
+				}
+				// axios
+				// .patch(
+				// 	`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
+				// 	{
+				// 		user_metadata: { favorites: [fav] },
+				// 	},
+				// 	options
+				// )
+				// .then(console.log('post success'))
+			);
 	};
 
 	const handlePlayClick = (e) => {
@@ -177,8 +187,8 @@ export default function Details(props) {
 						<CardActions disableSpacing>
 							<IconButton aria-label="play/pause" onClick={handlePlayClick}>
 								<PlayArrowIcon
-									className={(classes.playIcon)}
-									style={{color: 'grey'}}
+									className={classes.playIcon}
+									style={{ color: 'grey' }}
 								/>
 							</IconButton>
 							<IconButton
@@ -201,7 +211,7 @@ export default function Details(props) {
 							<IconButton
 								aria-label="Download"
 								onClick={handleDownload}
-								style={{color: 'grey'}}
+								style={{ color: 'grey' }}
 							>
 								<GetAppIcon />
 							</IconButton>
