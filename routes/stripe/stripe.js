@@ -15,9 +15,7 @@ const stripe = require('stripe')(process.env.REACT_APP_STRIPE_KEY)
 
 
 const calculateOrderAmount = () => {
-    // Replace this constant with a calculation of the order's amount
-    // Calculate the order total on the server to prevent
-    // people from directly manipulating the amount on the client
+
     return 3000;
   };
   
