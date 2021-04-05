@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../LoginButton/LoginButton';
 import LogoutButton from '../LogoutButton/LogoutButton';
-import { Link, makeStyles, MenuItem } from '@material-ui/core';
+import { MenuItem } from '@material-ui/core';
 
 const AuthenticationButton = () => {
 	const { isAuthenticated } = useAuth0();
