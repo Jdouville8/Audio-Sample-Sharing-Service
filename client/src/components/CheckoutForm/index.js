@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { Button } from "@material-ui/core";
+import BillingDetailsFields from "../BillingFields/index";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -74,6 +75,11 @@ export default function CheckoutForm() {
     <>
       {!success ? (
         <form onSubmit={handleSubmit}>
+          <fieldset className="FormGroup" style={{ borderRadius: "10px" }}>
+            <div className="FormRow">
+              <BillingDetailsFields></BillingDetailsFields>
+            </div>
+          </fieldset>
           <fieldset className="FormGroup" style={{ borderRadius: "10px" }}>
             <div className="FormRow">
               <CardElement options={CARD_OPTIONS} />
