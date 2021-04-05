@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Details(props) {
 	const history = useHistory();
 	const goToLoginPage = () => navigate('/login');
-	const { isAuthenticated } = useAuth0();
+	const { isAuthenticated, user } = useAuth0();
 	const classes = useStyles();
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
