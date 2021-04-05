@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import AccountThumbnail from "../AccountThumbnail/AccountThumbnail";
 import { fade, makeStyles } from "@material-ui/core/styles";
@@ -12,6 +12,7 @@ import {
 	MenuItem,
 	Menu,
 	Tooltip,
+	TextField,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
@@ -27,6 +28,8 @@ import BookIcon from "@material-ui/icons/Book";
 import EventIcon from "@material-ui/icons/Event";
 import LoginButton from "../LoginButton/LoginButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
+import { useHistory } from "react-router-dom";
+import API from "../../utils/SearchAPI";
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -94,6 +97,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavBar() {
+	const history = useHistory();
+	const [results, setResults] = React.useState(null);
 	// * Set up loginWithRedirect
 	const { loginWithRedirect, isAuthenticated } = useAuth0();
 
@@ -120,6 +125,8 @@ function NavBar() {
 	const handleMobileMenuOpen = (event) => {
 		setMobileMoreAnchorEl(event.currentTarget);
 	};
+
+	const searchRef = useRef(null);
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -287,6 +294,7 @@ function NavBar() {
 									<SearchIcon />
 								</div>
 								<InputBase
+									ref={searchRef}
 									placeholder="Search…"
 									classes={{
 										root: classes.inputRoot,

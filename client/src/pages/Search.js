@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Grid, TextField } from "@material-ui/core/";
 import Details from "../components/Details";
 import { makeStyles } from "@material-ui/core/styles";
-// import Packs from "../packs.json";
-// import API from "../utils/SearchAPI";
+import Packs from "../packs.json";
+import API from "../utils/SearchAPI";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -21,10 +21,10 @@ function Search() {
 	const classes = useStyles();
 	const [results, setResults] = useState(Packs);
 
-	// const onChange = (e) => {
-	// 	let res = API.search(e.target.value);
-	// 	setResults(res);
-	// };
+	const onChange = (e) => {
+		let res = API.search(e.target.value);
+		setResults(res);
+	};
 
 	return (
 		<div style={{ height: "100vh" }}>
