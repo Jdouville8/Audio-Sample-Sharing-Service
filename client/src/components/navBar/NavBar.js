@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
 	// * Set up loginWithRedirect
-	const { loginWithRedirect } = useAuth0();
+	const { loginWithRedirect, isAuthenticated } = useAuth0();
 
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -127,7 +127,7 @@ function NavBar() {
 	};
 
 	const menuId = 'primary-search-account-menu';
-	const renderMenu = (
+	const renderAuthMenu = (
 		<Menu
 			anchorEl={anchorEl}
 			anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -137,7 +137,6 @@ function NavBar() {
 			open={isMenuOpen}
 			onClose={handleMenuClose}
 		>
-			isAuthenticated ?{' '}
 			<MenuItem onClick={handleMenuClose}>
 				{' '}
 				<Link
@@ -166,7 +165,18 @@ function NavBar() {
 			<MenuItem onClick={handleMenuClose}>
 				<LogoutButton />
 			</MenuItem>
-			:{' '}
+		</Menu>
+	);
+	const renderUnauthMenu = (
+		<Menu
+			anchorEl={anchorEl}
+			anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+			id={menuId}
+			keepMounted
+			transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+			open={isMenuOpen}
+			onClose={handleMenuClose}
+		>
 			<MenuItem onClick={handleMenuClose}>
 				<LoginButton />
 			</MenuItem>
@@ -264,126 +274,128 @@ function NavBar() {
 	);
 
 	return (
-		<div className={(classes.grow, classes.toolbar)}>
-			<AppBar>
-				<Toolbar
-					style={{
-						backgroundImage: `url(${Background})`,
-						backgroundRepeat: `no-repeat`,
-						backgroundSize: `cover`,
-						backgroundPosition: `center center`,
-					}}
-				>
-					<Link
-						to="/landing"
-						style={{ color: 'white', textDecoration: 'none' }}
+		<>
+			<div className={(classes.grow, classes.toolbar)}>
+				<AppBar>
+					<Toolbar
+						style={{
+							backgroundImage: `url(${Background})`,
+							backgroundRepeat: `no-repeat`,
+							backgroundSize: `cover`,
+							backgroundPosition: `center center`,
+						}}
 					>
-						<Typography className={classes.title} variant="h6" noWrap>
-							WavMovers
-						</Typography>
-					</Link>
-					<div className={classes.search}>
-						<form onSubmit={onSubmit}>
-							<div className={classes.searchIcon}>
-								<SearchIcon />
-							</div>
-							<InputBase
-								placeholder="Search…"
-								classes={{
-									root: classes.inputRoot,
-									input: classes.inputInput,
-								}}
-								inputProps={{ 'aria-label': 'search' }}
-							/>
-						</form>
-					</div>
-					<div className={classes.grow} />
-					<div className={classes.sectionDesktop}>
-						<Tooltip title="Home">
-							<Link
-								to="/home"
-								style={{
-									color: 'pink',
-									margin: '5px',
-									marginTop: '7%',
-									textDecoration: 'none',
-								}}
-							>
-								<HomeIcon />
-							</Link>
-						</Tooltip>
-						<Tooltip title="Resources">
-							<Link
-								to="/education"
-								style={{
-									color: 'pink',
-									margin: '5px',
-									marginTop: '7%',
-									textDecoration: 'none',
-								}}
-							>
-								<BookIcon />
-							</Link>
-						</Tooltip>
-						<Tooltip title="Lessons">
-							<Link
-								to="/lessons"
-								style={{
-									color: 'pink',
-									margin: '5px',
-									marginTop: '7%',
-									textDecoration: 'none',
-								}}
-							>
-								<EventIcon />
-							</Link>
-						</Tooltip>
-						<Tooltip title="Upload">
-							<Link
-								to="/upload"
-								style={{
-									color: 'pink',
-									margin: '5px',
-									marginTop: '7%',
-									textDecoration: 'none',
-								}}
-							>
-								<PublishIcon />
-							</Link>
-						</Tooltip>
+						<Link
+							to="/landing"
+							style={{ color: 'white', textDecoration: 'none' }}
+						>
+							<Typography className={classes.title} variant="h6" noWrap>
+								WavMovers
+							</Typography>
+						</Link>
+						<div className={classes.search}>
+							<form onSubmit={onSubmit}>
+								<div className={classes.searchIcon}>
+									<SearchIcon />
+								</div>
+								<InputBase
+									placeholder="Search…"
+									classes={{
+										root: classes.inputRoot,
+										input: classes.inputInput,
+									}}
+									inputProps={{ 'aria-label': 'search' }}
+								/>
+							</form>
+						</div>
+						<div className={classes.grow} />
+						<div className={classes.sectionDesktop}>
+							<Tooltip title="Home">
+								<Link
+									to="/home"
+									style={{
+										color: 'pink',
+										margin: '5px',
+										marginTop: '7%',
+										textDecoration: 'none',
+									}}
+								>
+									<HomeIcon />
+								</Link>
+							</Tooltip>
+							<Tooltip title="Resources">
+								<Link
+									to="/education"
+									style={{
+										color: 'pink',
+										margin: '5px',
+										marginTop: '7%',
+										textDecoration: 'none',
+									}}
+								>
+									<BookIcon />
+								</Link>
+							</Tooltip>
+							<Tooltip title="Lessons">
+								<Link
+									to="/lessons"
+									style={{
+										color: 'pink',
+										margin: '5px',
+										marginTop: '7%',
+										textDecoration: 'none',
+									}}
+								>
+									<EventIcon />
+								</Link>
+							</Tooltip>
+							<Tooltip title="Upload">
+								<Link
+									to="/upload"
+									style={{
+										color: 'pink',
+										margin: '5px',
+										marginTop: '7%',
+										textDecoration: 'none',
+									}}
+								>
+									<PublishIcon />
+								</Link>
+							</Tooltip>
 
-						{/* <IconButton aria-label="show 17 new notifications" color="inherit">
+							{/* <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton> */}
-						<IconButton
-							edge="end"
-							aria-label="account of current user"
-							aria-controls={menuId}
-							aria-haspopup="true"
-							onClick={handleProfileMenuOpen}
-							color="inherit"
-						>
-							<AccountThumbnail />
-						</IconButton>
-					</div>
-					<div className={classes.sectionMobile}>
-						<IconButton
-							aria-label="show more"
-							aria-controls={mobileMenuId}
-							aria-haspopup="true"
-							onClick={handleMobileMenuOpen}
-							color="inherit"
-						>
-							<MoreIcon />
-						</IconButton>
-					</div>
-				</Toolbar>
-			</AppBar>
-			{renderMobileMenu}
-			{renderMenu}
-		</div>
+							<IconButton
+								edge="end"
+								aria-label="account of current user"
+								aria-controls={menuId}
+								aria-haspopup="true"
+								onClick={handleProfileMenuOpen}
+								color="inherit"
+							>
+								<AccountThumbnail />
+							</IconButton>
+						</div>
+						<div className={classes.sectionMobile}>
+							<IconButton
+								aria-label="show more"
+								aria-controls={mobileMenuId}
+								aria-haspopup="true"
+								onClick={handleMobileMenuOpen}
+								color="inherit"
+							>
+								<MoreIcon />
+							</IconButton>
+						</div>
+					</Toolbar>
+				</AppBar>
+				{renderMobileMenu}
+				{isAuthenticated ? renderAuthMenu : renderUnauthMenu}
+			</div>
+		</>
 	);
 }
 
