@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "5px",
   },
   a: {
-    color: "pink",
+    color: "violet",
     textDecoration: "none",
   },
 }));
