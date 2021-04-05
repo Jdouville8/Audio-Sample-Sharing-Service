@@ -236,18 +236,18 @@ function NavBar() {
 				</Link>
 			</MenuItem>
 			<MenuItem>
-				<AuthenticationButton style={{ color: '#3d1347' }} />
+				<AuthenticationButton style={{ color: 'pink' }} />
 			</MenuItem>
 			<MenuItem onClick={handleProfileMenuOpen}>
-				<IconButton
+				{/* <IconButton
 					aria-label="account of current user"
 					aria-controls="primary-search-account-menu"
 					aria-haspopup="true"
 					color="inherit"
 				>
-					<AccountCircle />
-				</IconButton>
-				<p style={{ color: '#3d1347' }}>Profile</p>
+					<AccountThumbnail />
+				</IconButton> */}
+				<p style={{ color: 'pink', margin: '5px' }}>User</p>
 			</MenuItem>
 		</Menu>
 	);
