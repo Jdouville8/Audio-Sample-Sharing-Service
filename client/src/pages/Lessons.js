@@ -32,31 +32,27 @@ function Lessons() {
 
 	const [showItem, setShowItem] = useState(false);
 
-	const [paySuccess, setPaySuccess] = useState({
-		success: false,
-	});
-
-	const handlePaySuccess = () => {
-		setPaySuccess({ success: true });
-	};
-
 	if (isAuthenticated) {
 		return (
 			<div
 				style={{
-					height: '100vh',
+					height: '120vh',
 					width: '100%',
 				}}
 			>
 				<Grid container direction="row" alignItems="center" justify="center">
 					<Grid
 						item
-						style={{ height: '700px', width: '25%', minWidth: '500px' }}
+						style={{ height: '700px', width: '60%', minWidth: '500px' }}
 					>
 						<Card
 							className={classes.root}
 							variant="outlined"
-							style={{ opacity: '.95', boxShadow: '5px 5px 15px #424242' }}
+							style={{
+								backgroundColor: `rgba(0,0,0,.7)`,
+								color: 'violet',
+								boxShadow: '5px 5px 15px #424242',
+							}}
 						>
 							<CardContent>
 								<Typography
@@ -99,18 +95,14 @@ function Lessons() {
 							</CardContent>
 						</Card>
 					</Grid>
-					{paySuccess.success ? (
-						<Grid item style={{ width: '60%' }}>
-							<InlineWidget
-								styles={{
-									height: '650px',
-								}}
-								url="https://calendly.com/backleftmusic"
-							/>
-						</Grid>
-					) : (
-						<></>
-					)}
+					{/* <Grid item style={{ width: "60%" }}>
+            <InlineWidget
+              styles={{
+                height: "650px",
+              }}
+              url="https://calendly.com/backleftmusic"
+            />
+          </Grid> */}
 				</Grid>
 			</div>
 		);

@@ -7,6 +7,7 @@ const FormFieldContainer = styled.div`
   align-items: center;
   margin-left: 15px;
   border-top: 1px solid #fff;
+  background-color: 'white';
   &:first-of-type {
     border-top: none;
   }
@@ -30,10 +31,11 @@ const Input = styled.input`
   padding: 11px 15px 11px 8px;
   color: #8384f3;
   border: none;
-  background-color: #ebebeb;
+  background: transparent;
   animation: 1ms void-animation-out;
   &::placeholder {
     color: #87bbfd;
+    background: transparent;
   }
 `;
 

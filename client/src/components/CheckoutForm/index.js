@@ -3,6 +3,8 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { Button, makeStyles } from '@material-ui/core';
 import BillingDetailsFields from '../BillingFields/index';
+import Grid from '@material-ui/core/Grid';
+import { InlineWidget } from 'react-calendly';
 
 const CARD_OPTIONS = {
 	iconStyle: 'solid',
@@ -84,7 +86,10 @@ export default function CheckoutForm() {
 		<>
 			{!success ? (
 				<form onSubmit={handleSubmit}>
-					<fieldset className="FormGroup" style={{ borderRadius: '10px' }}>
+					<fieldset
+						className="FormGroup"
+						style={{ borderRadius: '10px', backgroundColor: 'white' }}
+					>
 						<div className="FormRow">
 							<BillingDetailsFields></BillingDetailsFields>
 							<div className={classes.card}>
@@ -109,7 +114,22 @@ export default function CheckoutForm() {
 				</form>
 			) : (
 				<div>
-					<h2>Get your headphones and a cup of coffee this should be fun!</h2>
+					<Grid
+						item
+						style={{ width: '100%' }}
+						alignItems="center"
+						justify="center"
+					>
+						<h2 style={{ textAlign: 'center' }}>
+							Get your headphones and a cup of coffee, this should be fun!
+						</h2>
+						<InlineWidget
+							styles={{
+								height: '650px',
+							}}
+							url="https://calendly.com/backleftmusic"
+						/>
+					</Grid>
 				</div>
 			)}
 		</>
