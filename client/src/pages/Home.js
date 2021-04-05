@@ -6,6 +6,7 @@ import Packs from "../packs.json";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { makeStyles } from "@material-ui/core/styles";
+import Login from "./Login";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -21,32 +22,37 @@ function Home() {
 
   const results = Packs;
 
-  return (
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-      }}
-    >
-      <Grid container direction="row" justify="center" alignItems="center">
-        <Grid item sm={11} lg={8}></Grid>
-      </Grid>
-      <Grid container direction="row" justify="center" alignItems="center">
-        {results.map((result) => (
-          <Grid item>
-            <Details
-              src={result.src}
-              title={result.title}
-              artist={result.artist}
-              overview={result.overview}
-              dlUrl={result.dlUrl}
-              audioSrc={result.audioSrc}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </div>
-  );
+  if (isAuthenticated) {
+    return (
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          overflow: "hidden",
+        }}
+      >
+        <Grid container direction="row" justify="center" alignItems="center">
+          <Grid item sm={11} lg={8}></Grid>
+        </Grid>
+        <Grid container direction="row" justify="center" alignItems="center">
+          {results.map((result) => (
+            <Grid item>
+              <Details
+                src={result.src}
+                title={result.title}
+                artist={result.artist}
+                overview={result.overview}
+                dlUrl={result.dlUrl}
+                audioSrc={result.audioSrc}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+    );
+  } else {
+    return <Login />;
+  }
 }
 
 export default Home;
