@@ -1,41 +1,48 @@
 import React, { useState, useEffect } from "react";
-import Grid from "@material-ui/core/Grid";
-import SearchBar from "../components/SearchBar";
+import { Grid, TextField } from "@material-ui/core/";
 import Details from "../components/Details";
 import { makeStyles } from "@material-ui/core/styles";
-import Packs from "../packs.json";
+// import Packs from "../packs.json";
+// import API from "../utils/SearchAPI";
 
 const useStyles = makeStyles((theme) => ({
-	container: {
-		display: "grid",
-		gridTemplateColumns: "repeat(12, 1fr)",
-		gridGap: theme.spacing(3),
+	root: {
+		display: "flex",
+		flexWrap: "wrap",
+	},
+	textField: {
+		marginLeft: theme.spacing(1),
+		marginRight: theme.spacing(1),
+		width: "25ch",
 	},
 }));
 
 function Search() {
-	const styles = useStyles();
+	const classes = useStyles();
+	const [results, setResults] = useState(Packs);
 
-	const results = Packs;
-
-	// useEffect(() => {
-	// 	fetch("http://localhost:3001/api/files", {
-	// 		method: "GET",
-	// 	})
-	// 		.then((res) => {
-	// 			console.log(res);
-	// 			setResults(res);
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err);
-	// 		});
-	// }, []);
+	// const onChange = (e) => {
+	// 	let res = API.search(e.target.value);
+	// 	setResults(res);
+	// };
 
 	return (
 		<div style={{ height: "100vh" }}>
 			<Grid container direction="row" justify="center" alignItems="center">
 				<Grid item sm={11} lg={8}>
-					<SearchBar />
+					<div className={classes.root}>
+						<TextField
+							id="search"
+							style={{ margin: 8 }}
+							placeholder="Search"
+							fullWidth
+							margin="normal"
+							InputLabelProps={{
+								shrink: true,
+							}}
+							onChange={onChange}
+						/>
+					</div>
 				</Grid>
 			</Grid>
 			<Grid container direction="row" justify="center" alignItems="center">

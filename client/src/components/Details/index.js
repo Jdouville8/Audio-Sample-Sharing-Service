@@ -1,27 +1,27 @@
-import React, { useRef, useContext } from 'react';
-import PlayerContext from '../../utils/PlayerContext';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import Grid from '@material-ui/core/Grid';
-import axios from 'axios';
-import { useAuth0 } from '@auth0/auth0-react';
-import Login from '../../pages/Login';
-import { useHistory } from 'react-router-dom';
+import React, { useRef, useContext } from "react";
+import PlayerContext from "../../utils/PlayerContext";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import clsx from "clsx";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import { red } from "@material-ui/core/colors";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import SkipNextIcon from "@material-ui/icons/SkipNext";
+import GetAppIcon from "@material-ui/icons/GetApp";
+import Grid from "@material-ui/core/Grid";
+import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
+import Login from "../../pages/Login";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -29,31 +29,31 @@ const useStyles = makeStyles((theme) => ({
 	},
 	media: {
 		height: 0,
-		paddingTop: '56.25%', // 16:9
+		paddingTop: "56.25%", // 16:9
 	},
 	expand: {
-		transform: 'rotate(0deg)',
-		marginLeft: 'auto',
-		transition: theme.transitions.create('transform', {
+		transform: "rotate(0deg)",
+		marginLeft: "auto",
+		transition: theme.transitions.create("transform", {
 			duration: theme.transitions.duration.shortest,
 		}),
 	},
 	expandOpen: {
-		transform: 'rotate(180deg)',
+		transform: "rotate(180deg)",
 	},
 	avatar: {
 		backgroundColor: red[500],
 	},
 	content: {
-		flex: '1 0 auto',
+		flex: "1 0 auto",
 	},
 	cover: {
 		width: 204,
 		height: 220,
 	},
 	controls: {
-		display: 'flex',
-		alignItems: 'center',
+		display: "flex",
+		alignItems: "center",
 		paddingLeft: theme.spacing(1),
 		paddingBottom: theme.spacing(1),
 	},
@@ -64,15 +64,12 @@ const useStyles = makeStyles((theme) => ({
 	type: {
 		width: 960,
 	},
-	textColor: {
-		color: 'violet',
-	},
 }));
 
 export default function Details(props) {
 	const history = useHistory();
-	const goToLoginPage = () => navigate('/login');
-	const { isAuthenticated, user } = useAuth0();
+	const goToLoginPage = () => navigate("/login");
+	const { isAuthenticated } = useAuth0();
 	const classes = useStyles();
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
@@ -84,7 +81,7 @@ export default function Details(props) {
 		setExpanded(!expanded);
 	};
 
-	const buttonRef = useRef();
+	const buttonRef = useRef(null);
 
 	const handleFavClick = (e) => {
 		e.preventDefault();
@@ -95,35 +92,22 @@ export default function Details(props) {
 			setFavoriteColor(false);
 		}
 
-		const userId = user.sub;
-		const fav = props.id;
-		console.log(fav);
-		const options = {
-			headers: {
-				Authorization: process.env.REACT_APP_AUTH_TOKEN,
-			},
-		};
+		const fav = buttonRef.id;
 		axios
-			.patch(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
-				{
-					user_metadata: { favorites: [fav] },
-				},
-				options
-			)
-			.then(console.log('post success'));
+			.post("/api/users/favs", {
+				favorites: fav,
+			})
+			.then(console.log("post success"));
 	};
 
 	const handlePlayClick = (e) => {
 		e.preventDefault();
 
 		let audioSrc = props.audioSrc;
-		let audioTitle = `${props.title} by ${props.artist}`;
 
 		console.log(audioSrc);
-		console.log(audioTitle);
 
-		changePlayerContext(audioSrc, audioTitle);
+		changePlayerContext(audioSrc);
 
 		// send audioSrc value to audio player in footer component
 	};
@@ -136,20 +120,15 @@ export default function Details(props) {
 			// THIS URL MUST CHANGE DYNAMICALLY
 			const fileName = props.dlUrl;
 			window.location.href =
-				'https://wavmovers.herokuapp.com/api/files/' + fileName;
-		} else history.push('/login');
+				"https://wavmovers.herokuapp.com/api/files/" + fileName;
+		} else history.push("/login");
 	};
 
 	return (
 		<div>
 			<Card
 				className={classes.root}
-				style={{
-					marginTop: '15px',
-					marginBottom: '15px',
-					backgroundColor: `rgba(0,0,0,.7)`,
-				}}
-			>
+				style={{ marginTop: "15px", marginBottom: "15px" }}>
 				<Grid container>
 					<Grid item>
 						<CardMedia
@@ -162,30 +141,27 @@ export default function Details(props) {
 						<CardHeader
 							title={props.title}
 							subheader={props.artist}
-							className={classes.textColor}
-							subheaderTypographyProps={{ color: 'violet' }}
+							subheaderTypographyProps={{ color: "black" }}
 						/>
 						<CardContent>
 							<Typography
-								className={(classes.type, classes.textColor)}
+								className={classes.type}
 								variant="body2"
-								component="p"
-							>
+								color="textSecondary"
+								component="p">
 								{props.overview}
 							</Typography>
 						</CardContent>
 						<CardActions disableSpacing>
 							<IconButton aria-label="play/pause" onClick={handlePlayClick}>
-								<PlayArrowIcon
-									className={(classes.playIcon)}
-									style={{color: 'grey'}}
-								/>
+								<PlayArrowIcon className={classes.playIcon} />
 							</IconButton>
 							<IconButton
 								aria-label="add to favorites"
 								onClick={handleFavClick}
-								style={!favoriteColor ? { color: 'grey' } : { color: 'red' }}
-							>
+								id={props.key}
+								ref={buttonRef}
+								style={!favoriteColor ? { color: "grey" } : { color: "red" }}>
 								<FavoriteIcon />
 							</IconButton>
 							{/* <IconButton
@@ -198,11 +174,7 @@ export default function Details(props) {
               >
                 <ExpandMoreIcon />
               </IconButton> */}
-							<IconButton
-								aria-label="Download"
-								onClick={handleDownload}
-								style={{color: 'grey'}}
-							>
+							<IconButton aria-label="Download" onClick={handleDownload}>
 								<GetAppIcon />
 							</IconButton>
 						</CardActions>
