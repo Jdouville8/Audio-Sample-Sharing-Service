@@ -107,7 +107,7 @@ export default function Details(props) {
 			.patch(
 				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
 				{
-					user_metadata: { favorites: ['update metadata is working!'] },
+					user_metadata: { favorites: [fav] },
 				},
 				options
 			)
