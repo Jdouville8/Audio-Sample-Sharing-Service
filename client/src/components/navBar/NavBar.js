@@ -301,7 +301,6 @@ function NavBar() {
 								<HomeIcon />
 							</Link>
 						</Tooltip>
-						<AuthenticationButtonIcon />
 						<Tooltip title="Resources">
 							<Link
 								to="/education"
