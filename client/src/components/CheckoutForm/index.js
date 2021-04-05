@@ -9,11 +9,12 @@ const CARD_OPTIONS = {
   style: {
     base: {
       iconColor: "#c4f0ff",
-      color: "#fff",
+      color: "#8384f3",
       fontWeight: 500,
       fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
       fontSize: "16px",
       fontSmoothing: "antialiased",
+      border: 'none',
       ":-webkit-autofill": { color: "#fce883" },
       "::placeholder": { color: "#87bbfd" },
     },
