@@ -32,6 +32,14 @@ function Lessons() {
 
 	const [showItem, setShowItem] = useState(false);
 
+	const [paySuccess, setPaySuccess] = useState({
+		success: false,
+	});
+
+	const handlePaySuccess = () => {
+		setPaySuccess({ success: true });
+	};
+
 	if (isAuthenticated) {
 		return (
 			<div

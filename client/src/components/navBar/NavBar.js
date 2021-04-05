@@ -256,9 +256,6 @@ function NavBar() {
 					About
 				</Link>
 			</MenuItem>
-			<MenuItem>
-				<AuthenticationButton style={{ color: 'pink' }} />
-			</MenuItem>
 			<MenuItem onClick={handleProfileMenuOpen}>
 				{/* <IconButton
 					aria-label="account of current user"
@@ -268,7 +265,7 @@ function NavBar() {
 				>
 					<AccountThumbnail />
 				</IconButton> */}
-				<p style={{ color: 'pink', margin: '5px' }}>User</p>
+				<p style={{ color: 'pink', margin: '5px' }}>User / Login</p>
 			</MenuItem>
 		</Menu>
 	);
