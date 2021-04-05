@@ -7,7 +7,6 @@ import {
 	Button,
 } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import { InlineWidget } from 'react-calendly';
 import CheckoutContainer from '../components/CheckoutContainer/index';
 import { useAuth0 } from '@auth0/auth0-react';
 import Login from './Login';
