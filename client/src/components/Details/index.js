@@ -177,7 +177,8 @@ export default function Details(props) {
 						<CardActions disableSpacing>
 							<IconButton aria-label="play/pause" onClick={handlePlayClick}>
 								<PlayArrowIcon
-									className={(classes.playIcon, classes.textColor)}
+									className={(classes.playIcon)}
+									style={{color: 'grey'}}
 								/>
 							</IconButton>
 							<IconButton
@@ -200,7 +201,7 @@ export default function Details(props) {
 							<IconButton
 								aria-label="Download"
 								onClick={handleDownload}
-								className={classes.textColor}
+								style={{color: 'grey'}}
 							>
 								<GetAppIcon />
 							</IconButton>

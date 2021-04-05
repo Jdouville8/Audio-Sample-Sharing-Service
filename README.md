@@ -1,29 +1,49 @@
-# Create React Express App
+# WavMovers
 
-## About This Boilerplate
+## Badge
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## Description
 
-## Starting the app locally
+WavMovers is a web application geared towards being a one-stop resource for music creators looking to grow in their journey. Some features include:
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+- Downloadable compressed zip files containing high quality audio samples for use in music productions or audio post-production environments as sound FX
+- The ability to schedule 1-on-1 lessons with professional electronic music producers available with a stripe purchase (to get through Stripe payment wall on deployed link, enter the credit card information: 4242 4242 4242 4242 exp: 4/24)
+- A fully functioning audio bar with which to play demo tracks of audio sample packs
+- User Profile functionality through implementation of Auth0 - The ability to upload large audio pack files to a mongodb cloud database through use of Gridfs node package
 
-```
-npm install
-```
+## Table of Contents
 
-This should install node modules within the server and the client folder.
+[Description](#Description)
+[Installation](#Installation)
+[License](#License)
+[Contribution](#Contribution)
+[Questions](#Questions)
 
-After both installations complete, run the following command in your terminal:
+## Installation
 
-```
-npm start
-```
+Run npm i from the root folder to install all client side and server side packages needed to build this website.
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+## License
 
-## Deployment (Heroku)
+MIT
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+## Contribution
+
+The contributors for this application include: Nick Goedecke, Seth Hill, Luke Oxner and Justin Douville
+
+## Questions
+
+Github:
+
+Nick: https://github.com/Perkyderm
+Seth: https://github.com/seff0
+Luke: https://github.com/lukeoxner
+Justin: https://github.com/Jdouville8
+
+You can reach me at the following email with any additional questions you may have:
+Nick: ncgoedecke@gmail.com
+Seth: seth.h971@gmail.com
+Luke: lukeoxner77@gmail.com
+Justin: JDouville8@gmail.com
