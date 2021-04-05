@@ -98,8 +98,7 @@ export default function Details(props) {
 		const email = user.email;
 		const id = user.user_id;
 		console.log(email);
-		console.log(user.user_id);
-		console.log(process.env.REACT_APP_AUTH_TOKEN);
+		console.log(user);
 		const fav = buttonRef.id;
 		const options = {
 			headers: {
