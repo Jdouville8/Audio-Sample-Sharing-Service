@@ -74,12 +74,12 @@ function Lessons() {
                   needed to get you from the bedroom to the main stage
                 </Typography>
                 <br />
-                <h3>$30/hr</h3>
 
                 {showItem ? (
                   <CheckoutContainer />
-                ) : (
-                  <div>
+                  ) : (
+                    <div>
+                    <h3>$30/hr</h3>
                     <Button
                       className={classes.button}
                       onClick={() => setShowItem(true)}

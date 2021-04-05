@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { Button } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
+import BillingDetailsFields from "../BillingFields/index";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
   style: {
     base: {
       iconColor: "#c4f0ff",
-      color: "#fff",
+      color: "#8384f3",
       fontWeight: 500,
       fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
       fontSize: "16px",
       fontSmoothing: "antialiased",
+      // border: 'none',
       ":-webkit-autofill": { color: "#fce883" },
       "::placeholder": { color: "#87bbfd" },
     },
@@ -23,10 +25,17 @@ const CARD_OPTIONS = {
   },
 };
 
+const useStyles = makeStyles((theme) => ({
+  card: {
+    margin: "15px",
+  },
+}));
+
 export default function CheckoutForm() {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const classes = useStyles();
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -76,9 +85,16 @@ export default function CheckoutForm() {
         <form onSubmit={handleSubmit}>
           <fieldset className="FormGroup" style={{ borderRadius: "10px" }}>
             <div className="FormRow">
+              <BillingDetailsFields></BillingDetailsFields>
+              <div className={classes.card}>
               <CardElement options={CARD_OPTIONS} />
+              </div>
             </div>
           </fieldset>
+          {/* <fieldset className="FormGroup" style={{ borderRadius: "10px" }}>
+            <div className="FormRow">
+            </div>
+          </fieldset> */}
           <Button
             type="submit"
             style={{
