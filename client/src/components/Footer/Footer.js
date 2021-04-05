@@ -40,7 +40,7 @@ function Footer(props) {
           onPlay={(e) => console.log("onPlay")}
           style={{
             width: "33%",
-            backgroundColor: `rgba(0,0,0,0.5)`,
+            backgroundColor: `rgba(0,0,0,0.6)`,
             borderRadius: "10px",
             margin: "auto",
           }}

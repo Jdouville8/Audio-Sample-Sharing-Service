@@ -28,6 +28,7 @@ function Home() {
         style={{
           height: "100%",
           width: "100%",
+          overflow: "hidden",
         }}
       >
         <Grid container direction="row" justify="center" alignItems="center">
