@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Card,
@@ -32,6 +32,7 @@ const useStyles = makeStyles({
     textIndent: "30px",
   },
 });
+
 function Landing() {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
@@ -48,6 +49,7 @@ function Landing() {
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundAttachment: "fixed",
+          overflow: "hidden",
         }}
       >
         <Card
