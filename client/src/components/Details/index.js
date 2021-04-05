@@ -76,6 +76,7 @@ export default function Details(props) {
 	const classes = useStyles();
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
+	const [favoriteColor, setFavoriteColor] = React.useState(false)
 
 	const changePlayerContext = useContext(PlayerContext);
 
@@ -87,6 +88,12 @@ export default function Details(props) {
 
 	const handleFavClick = (e) => {
 		e.preventDefault();
+
+		if (!favoriteColor) {
+			setFavoriteColor(true)
+		} else {
+			setFavoriteColor(false)
+		}
 
 		const fav = buttonRef.id;
 		axios
@@ -167,7 +174,7 @@ export default function Details(props) {
 								onClick={handleFavClick}
 								id={props.key}
 								ref={buttonRef}
-								className={classes.textColor}
+								style={!favoriteColor ? {color: 'grey'} : {color: 'red'}}
 							>
 								<FavoriteIcon />
 							</IconButton>
