@@ -7,7 +7,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Login from "./Login";
-import Visualizer from "../components/Visualizer/Visualizer.js";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -48,7 +47,6 @@ function Home() {
               />
             </Grid>
           ))}
-          <Visualizer />
         </Grid>
       </div>
     );
