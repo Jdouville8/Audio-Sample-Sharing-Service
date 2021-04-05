@@ -64,12 +64,15 @@ const useStyles = makeStyles((theme) => ({
 	type: {
 		width: 960,
 	},
+	textColor: {
+		color: "violet",
+	},
 }));
 
 export default function Details(props) {
 	const history = useHistory();
 	const goToLoginPage = () => navigate("/login");
-	const { isAuthenticated } = useAuth0();
+	const { isAuthenticated, user } = useAuth0();
 	const classes = useStyles();
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
@@ -81,7 +84,7 @@ export default function Details(props) {
 		setExpanded(!expanded);
 	};
 
-	const buttonRef = useRef(null);
+	const buttonRef = useRef();
 
 	const handleFavClick = (e) => {
 		e.preventDefault();
@@ -92,11 +95,22 @@ export default function Details(props) {
 			setFavoriteColor(false);
 		}
 
-		const fav = buttonRef.id;
+		const userId = user.sub;
+		const fav = props.id;
+		console.log(fav);
+		const options = {
+			headers: {
+				Authorization: process.env.REACT_APP_AUTH_TOKEN,
+			},
+		};
 		axios
-			.post("/api/users/favs", {
-				favorites: fav,
-			})
+			.patch(
+				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
+				{
+					user_metadata: { favorites: [fav] },
+				},
+				options
+			)
 			.then(console.log("post success"));
 	};
 
@@ -104,10 +118,12 @@ export default function Details(props) {
 		e.preventDefault();
 
 		let audioSrc = props.audioSrc;
+		let audioTitle = `${props.title} by ${props.artist}`;
 
 		console.log(audioSrc);
+		console.log(audioTitle);
 
-		changePlayerContext(audioSrc);
+		changePlayerContext(audioSrc, audioTitle);
 
 		// send audioSrc value to audio player in footer component
 	};
@@ -128,7 +144,11 @@ export default function Details(props) {
 		<div>
 			<Card
 				className={classes.root}
-				style={{ marginTop: "15px", marginBottom: "15px" }}>
+				style={{
+					marginTop: "15px",
+					marginBottom: "15px",
+					backgroundColor: `rgba(0,0,0,.7)`,
+				}}>
 				<Grid container>
 					<Grid item>
 						<CardMedia
@@ -141,26 +161,27 @@ export default function Details(props) {
 						<CardHeader
 							title={props.title}
 							subheader={props.artist}
-							subheaderTypographyProps={{ color: "black" }}
+							className={classes.textColor}
+							subheaderTypographyProps={{ color: "violet" }}
 						/>
 						<CardContent>
 							<Typography
-								className={classes.type}
+								className={(classes.type, classes.textColor)}
 								variant="body2"
-								color="textSecondary"
 								component="p">
 								{props.overview}
 							</Typography>
 						</CardContent>
 						<CardActions disableSpacing>
 							<IconButton aria-label="play/pause" onClick={handlePlayClick}>
-								<PlayArrowIcon className={classes.playIcon} />
+								<PlayArrowIcon
+									className={classes.playIcon}
+									style={{ color: "grey" }}
+								/>
 							</IconButton>
 							<IconButton
 								aria-label="add to favorites"
 								onClick={handleFavClick}
-								id={props.key}
-								ref={buttonRef}
 								style={!favoriteColor ? { color: "grey" } : { color: "red" }}>
 								<FavoriteIcon />
 							</IconButton>
@@ -174,7 +195,10 @@ export default function Details(props) {
               >
                 <ExpandMoreIcon />
               </IconButton> */}
-							<IconButton aria-label="Download" onClick={handleDownload}>
+							<IconButton
+								aria-label="Download"
+								onClick={handleDownload}
+								style={{ color: "grey" }}>
 								<GetAppIcon />
 							</IconButton>
 						</CardActions>
