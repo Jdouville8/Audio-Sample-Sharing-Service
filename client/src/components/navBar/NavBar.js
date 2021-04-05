@@ -18,6 +18,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Background from '../../images/WaveFlip.png';
+import UserMenu from '../UserMenu/UserMenu';
 import AuthenticationButton from '../AuthenticationButton/AuthenticationButton';
 import AuthenticationButtonIcon from '../AuthenticationButtonIcon/AuthenticationButtonIcon';
 import HomeIcon from '@material-ui/icons/Home';
@@ -134,31 +135,7 @@ function NavBar() {
 			open={isMenuOpen}
 			onClose={handleMenuClose}
 		>
-			<MenuItem onClick={handleMenuClose}>
-				{' '}
-				<Link
-					to=""
-					style={{
-						color: '#3d1347',
-						margin: '5px',
-						textDecoration: 'none',
-					}}
-				>
-					Profile
-				</Link>
-			</MenuItem>
-			<MenuItem onClick={handleMenuClose}>
-				<Link
-					to="/account"
-					style={{
-						color: '#3d1347',
-						margin: '5px',
-						textDecoration: 'none',
-					}}
-				>
-					Account
-				</Link>
-			</MenuItem>
+			<UserMenu />
 		</Menu>
 	);
 

@@ -1,10 +1,10 @@
-import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { Link, Tooltip, makeStyles } from "@material-ui/core";
+import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Link, Tooltip, makeStyles, MenuItem } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 	login: {
-		cursor: "pointer",
+		cursor: 'pointer',
 	},
 }));
 
@@ -13,14 +13,17 @@ function LoginButton() {
 	const { loginWithRedirect } = useAuth0();
 
 	return (
-		<Tooltip title="Login">
-			<Link
-				className={classes.login}
-				style={{ color: "pink", margin: "5px" }}
-				onClick={() => loginWithRedirect()}>
-				Login
-			</Link>
-		</Tooltip>
+		<MenuItem>
+			<Tooltip title="Login">
+				<Link
+					className={classes.login}
+					style={{ color: '#3d1347', margin: '5px', textDecoration: 'none' }}
+					onClick={() => loginWithRedirect()}
+				>
+					Login
+				</Link>
+			</Tooltip>
+		</MenuItem>
 	);
 }
 
