@@ -84,7 +84,7 @@ export default function Details(props) {
 		setExpanded(!expanded);
 	};
 
-	const buttonRef = useRef(null);
+	const buttonRef = useRef();
 
 	const handleFavClick = (e) => {
 		e.preventDefault();
@@ -95,11 +95,9 @@ export default function Details(props) {
 			setFavoriteColor(false);
 		}
 
-		const email = user.email;
-		const id = user.sub;
-		console.log(email);
-		console.log(id);
-		const fav = buttonRef.id;
+		const userId = user.sub;
+		const fav = props.id;
+		console.log(fav);
 		const options = {
 			headers: {
 				Authorization: process.env.REACT_APP_AUTH_TOKEN,
@@ -107,7 +105,7 @@ export default function Details(props) {
 		};
 		axios
 			.patch(
-				`https://wavmovers.us.auth0.com/api/v2/users/${id}`,
+				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
 				{
 					user_metadata: { favorites: ['update metadata is working!'] },
 				},
@@ -185,8 +183,6 @@ export default function Details(props) {
 							<IconButton
 								aria-label="add to favorites"
 								onClick={handleFavClick}
-								id={props.key}
-								ref={buttonRef}
 								style={!favoriteColor ? { color: 'grey' } : { color: 'red' }}
 							>
 								<FavoriteIcon />
