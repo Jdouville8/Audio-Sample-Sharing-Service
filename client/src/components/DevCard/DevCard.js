@@ -21,11 +21,14 @@ export default function MediaCard(props) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card
+      className={classes.root}
+      style={{ backgroundColor: `rgba(0,0,0,.7)` }}
+    >
       <CardMedia className={classes.media} image={props.pic} />
       <CardContent
         style={{
-          backgroundColor: "#424242",
+          backgroundColor: `rgba(0,0,0,.1)`,
           color: "white",
           textAlign: "center",
         }}
@@ -49,11 +52,15 @@ export default function MediaCard(props) {
           {props.about}
         </Typography>
       </CardContent>
-      <CardActions style={{ backgroundColor: "#424242" }}>
+      <CardActions style={{}}>
         <a
           href={props.gitHub}
           target="_blank"
-          style={{ color: "pink", margin: "auto" }}
+          style={{
+            color: "pink",
+            margin: "auto",
+            backgroundColor: `rgba(0,0,0,.7)`,
+          }}
         >
           GitHub
         </a>

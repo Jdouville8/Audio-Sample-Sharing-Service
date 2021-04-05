@@ -87,7 +87,7 @@ function About() {
           <Button
             className={classes.paper}
             style={{
-              backgroundColor: "#424242",
+              backgroundColor: `rgba(0,0,0,.7)`,
               color: "white",
             }}
             href="mailto:wavmovers@gmail.com"
