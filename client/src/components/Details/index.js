@@ -97,12 +97,12 @@ export default function Details(props) {
 		e.preventDefault();
 
 		let audioSrc = props.audioSrc;
-		let audioTitle = props.audioTitle;
+		let audioTitle = `${props.title} by ${props.artist}`;
 
 		console.log(audioSrc);
 		console.log(audioTitle);
 
-		changePlayerContext(audioSrc);
+		changePlayerContext(audioSrc, audioTitle);
 
 		// send audioSrc value to audio player in footer component
 	};

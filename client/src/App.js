@@ -28,6 +28,10 @@ function App() {
 		audioSrc: '',
 	});
 
+	const [title, setTitle] = useState({
+		audioTitle: '',
+	});
+
 	const handlePlayClick = (str) => {
 		setSrc({ audioSrc: str });
 	};

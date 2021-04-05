@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlayerContext = React.createContext((data) => {
+const PlayerContext = React.createContext((source, title) => {
 	return undefined;
 });
 
