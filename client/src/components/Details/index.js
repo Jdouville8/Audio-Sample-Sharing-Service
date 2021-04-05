@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cover: {
     width: 204,
-    height: 204,
+    height: 220,
   },
   controls: {
     display: "flex",
@@ -148,6 +148,9 @@ export default function Details(props) {
               </Typography>
             </CardContent>
             <CardActions disableSpacing>
+              <IconButton aria-label="play/pause" onClick={handlePlayClick}>
+                <PlayArrowIcon className={classes.playIcon} />
+              </IconButton>
               <IconButton
                 aria-label="add to favorites"
                 onClick={handleFavClick}
@@ -156,7 +159,7 @@ export default function Details(props) {
               >
                 <FavoriteIcon />
               </IconButton>
-              <IconButton
+              {/* <IconButton
                 className={clsx(classes.expand, {
                   [classes.expandOpen]: expanded,
                 })}
@@ -165,16 +168,16 @@ export default function Details(props) {
                 aria-label="show more"
               >
                 <ExpandMoreIcon />
+              </IconButton> */}
+              <IconButton aria-label="Download" onClick={handleDownload}>
+                <GetAppIcon />
               </IconButton>
             </CardActions>
 
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
+            {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent className={classes.content}>
                 <Typography component="h5" variant="h5">
                   {props.trackList}
-                </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
-                  {props.artist}
                 </Typography>
               </CardContent>
               <div className={classes.controls}>
@@ -185,9 +188,7 @@ export default function Details(props) {
                     <SkipPreviousIcon />
                   )}
                 </IconButton>
-                <IconButton aria-label="play/pause" onClick={handlePlayClick}>
-                  <PlayArrowIcon className={classes.playIcon} />
-                </IconButton>
+
                 <IconButton aria-label="next">
                   {theme.direction === "rtl" ? (
                     <SkipPreviousIcon />
@@ -195,11 +196,8 @@ export default function Details(props) {
                     <SkipNextIcon />
                   )}
                 </IconButton>
-                <IconButton aria-label="Download" onClick={handleDownload}>
-                  <GetAppIcon />
-                </IconButton>
               </div>
-            </Collapse>
+            </Collapse> */}
           </Grid>
         </Grid>
       </Card>
