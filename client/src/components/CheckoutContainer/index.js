@@ -1,15 +1,14 @@
-import React from 'react'
-import CheckoutForm from '../CheckoutForm/index'
+import React from 'react';
+import CheckoutForm from '../CheckoutForm/index';
 
-
-function index() {
-    return (
-        <>
-        <div>
-            <CheckoutForm></CheckoutForm>
-        </div>
-        </>
-    )
+function index(props) {
+	return (
+		<>
+			<div>
+				<CheckoutForm value={props.handlePaySuccess} />
+			</div>
+		</>
+	);
 }
 
-export default index
+export default index;
