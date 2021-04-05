@@ -32,8 +32,9 @@ function App() {
 		audioTitle: '',
 	});
 
-	const handlePlayClick = (str) => {
-		setSrc({ audioSrc: str });
+	const handlePlayClick = (srcUrl, title) => {
+		setSrc({ audioSrc: srcUrl });
+		setTitle({ audioTitle: title });
 	};
 
 	return (
@@ -85,7 +86,7 @@ function App() {
 								<NoMatch />
 							</Route>
 						</Switch>
-						<Footer audioSrc={src.audioSrc} />
+						<Footer audioSrc={src.audioSrc} audioTitle={title.audioTitle} />
 					</div>
 				</Router>
 			</PlayerContext.Provider>
