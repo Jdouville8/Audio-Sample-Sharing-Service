@@ -76,7 +76,7 @@ export default function Details(props) {
 	const classes = useStyles();
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
-	const [favoriteColor, setFavoriteColor] = React.useState(false)
+	const [favoriteColor, setFavoriteColor] = React.useState(false);
 
 	const changePlayerContext = useContext(PlayerContext);
 
@@ -90,16 +90,30 @@ export default function Details(props) {
 		e.preventDefault();
 
 		if (!favoriteColor) {
-			setFavoriteColor(true)
+			setFavoriteColor(true);
 		} else {
-			setFavoriteColor(false)
+			setFavoriteColor(false);
 		}
 
+		const email = user.email;
+		const id = user.user_id;
+		console.log(email);
+		console.log(user.user_id);
+		console.log(process.env.REACT_APP_AUTH_TOKEN);
 		const fav = buttonRef.id;
+		const options = {
+			headers: {
+				Authorization: process.env.REACT_APP_AUTH_TOKEN,
+			},
+		};
 		axios
-			.post('/api/users/favs', {
-				favorites: fav,
-			})
+			.patch(
+				`https://wavmovers.us.auth0.com/api/v2/users/auth0%7C6066145a0346230069f78028`,
+				{
+					user_metadata: { favorites: ['its working'] },
+				},
+				options
+			)
 			.then(console.log('post success'));
 	};
 
@@ -174,7 +188,7 @@ export default function Details(props) {
 								onClick={handleFavClick}
 								id={props.key}
 								ref={buttonRef}
-								style={!favoriteColor ? {color: 'grey'} : {color: 'red'}}
+								style={!favoriteColor ? { color: 'grey' } : { color: 'red' }}
 							>
 								<FavoriteIcon />
 							</IconButton>
