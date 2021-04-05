@@ -96,9 +96,9 @@ export default function Details(props) {
 		}
 
 		const email = user.email;
-		const id = user.user_id;
+		const id = user.sub;
 		console.log(email);
-		console.log(user);
+		console.log(id);
 		const fav = buttonRef.id;
 		const options = {
 			headers: {
@@ -107,9 +107,9 @@ export default function Details(props) {
 		};
 		axios
 			.patch(
-				`https://wavmovers.us.auth0.com/api/v2/users/auth0%7C6066145a0346230069f78028`,
+				`https://wavmovers.us.auth0.com/api/v2/users/${id}`,
 				{
-					user_metadata: { favorites: ['its working'] },
+					user_metadata: { favorites: ['big working'] },
 				},
 				options
 			)
