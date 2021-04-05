@@ -25,6 +25,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import PublishIcon from '@material-ui/icons/Publish';
 import BookIcon from '@material-ui/icons/Book';
 import EventIcon from '@material-ui/icons/Event';
+import LoginButton from '../LoginButton/LoginButton';
+import LogoutButton from '../LogoutButton/LogoutButton';
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -135,7 +137,39 @@ function NavBar() {
 			open={isMenuOpen}
 			onClose={handleMenuClose}
 		>
-			<UserMenu />
+			isAuthenticated ?{' '}
+			<MenuItem onClick={handleMenuClose}>
+				{' '}
+				<Link
+					to=""
+					style={{
+						color: '#3d1347',
+						margin: '5px',
+						textDecoration: 'none',
+					}}
+				>
+					Profile
+				</Link>
+			</MenuItem>
+			<MenuItem onClick={handleMenuClose}>
+				<Link
+					to="/account"
+					style={{
+						color: '#3d1347',
+						margin: '5px',
+						textDecoration: 'none',
+					}}
+				>
+					Account
+				</Link>
+			</MenuItem>
+			<MenuItem onClick={handleMenuClose}>
+				<LogoutButton />
+			</MenuItem>
+			:{' '}
+			<MenuItem onClick={handleMenuClose}>
+				<LoginButton />
+			</MenuItem>
 		</Menu>
 	);
 

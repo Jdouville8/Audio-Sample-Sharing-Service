@@ -8,10 +8,22 @@ import { MenuItem } from '@material-ui/core';
 const AuthenticationButton = () => {
 	const { isAuthenticated } = useAuth0();
 
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+	const handleMobileMenuClose = () => {
+		setMobileMoreAnchorEl(null);
+	};
+
+	const handleMenuClose = () => {
+		setAnchorEl(null);
+		handleMobileMenuClose();
+	};
+
 	if (isAuthenticated) {
 		return (
 			<>
-				<MenuItem>
+				<MenuItem onClick={handleMenuClose}>
 					{' '}
 					<Link
 						to=""
@@ -24,7 +36,7 @@ const AuthenticationButton = () => {
 						Profile
 					</Link>
 				</MenuItem>
-				<MenuItem>
+				<MenuItem onClick={handleMenuClose}>
 					<Link
 						to="/account"
 						style={{
@@ -36,7 +48,7 @@ const AuthenticationButton = () => {
 						Account
 					</Link>
 				</MenuItem>
-				<MenuItem>
+				<MenuItem onClick={handleMenuClose}>
 					<LogoutButton />
 				</MenuItem>
 			</>
