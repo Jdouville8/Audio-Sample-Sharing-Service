@@ -72,11 +72,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Details(props) {
 	const history = useHistory();
 	const goToLoginPage = () => navigate('/login');
-	const { isAuthenticated } = useAuth0();
+	const { isAuthenticated, user } = useAuth0();
 	const classes = useStyles();
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
-	const [favoriteColor, setFavoriteColor] = React.useState(false)
+	const [favoriteColor, setFavoriteColor] = React.useState(false);
 
 	const changePlayerContext = useContext(PlayerContext);
 
@@ -84,22 +84,33 @@ export default function Details(props) {
 		setExpanded(!expanded);
 	};
 
-	const buttonRef = useRef(null);
+	const buttonRef = useRef();
 
 	const handleFavClick = (e) => {
 		e.preventDefault();
 
 		if (!favoriteColor) {
-			setFavoriteColor(true)
+			setFavoriteColor(true);
 		} else {
-			setFavoriteColor(false)
+			setFavoriteColor(false);
 		}
 
-		const fav = buttonRef.id;
+		const userId = user.sub;
+		const fav = props.id;
+		console.log(fav);
+		const options = {
+			headers: {
+				Authorization: process.env.REACT_APP_AUTH_TOKEN,
+			},
+		};
 		axios
-			.post('/api/users/favs', {
-				favorites: fav,
-			})
+			.patch(
+				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
+				{
+					user_metadata: { favorites: [fav] },
+				},
+				options
+			)
 			.then(console.log('post success'));
 	};
 
@@ -173,9 +184,7 @@ export default function Details(props) {
 							<IconButton
 								aria-label="add to favorites"
 								onClick={handleFavClick}
-								id={props.key}
-								ref={buttonRef}
-								style={!favoriteColor ? {color: 'grey'} : {color: 'red'}}
+								style={!favoriteColor ? { color: 'grey' } : { color: 'red' }}
 							>
 								<FavoriteIcon />
 							</IconButton>
