@@ -110,7 +110,7 @@ export default function Details(props) {
 	// };
 	// const userId = user.sub;
 
-	// const changePlayerContext = useContext(PlayerContext);
+	const changePlayerContext = useContext(PlayerContext);
 
 	// const handleExpandClick = () => {
 	// 	setExpanded(!expanded);
