@@ -82,6 +82,8 @@ export default function Details(props) {
 			Authorization: process.env.REACT_APP_AUTH_TOKEN,
 		},
 	};
+	const userId = user.sub;
+	let newFavs;
 
 	const changePlayerContext = useContext(PlayerContext);
 
@@ -91,12 +93,27 @@ export default function Details(props) {
 
 	const buttonRef = useRef();
 
-	const updateFavorites = (newFavs, userId) => {
+	const clearFavorites = () => {
 		axios
 			.patch(
 				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
 				{
-					user_metadata: { favorites: [newFavs] },
+					user_metadata: {},
+				},
+				options
+			)
+			.then(() => {
+				console.log('favs cleared');
+				updateFavorites();
+			});
+	};
+
+	const updateFavorites = () => {
+		axios
+			.patch(
+				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
+				{
+					user_metadata: { favorites: newFavs },
 				},
 				options
 			)
@@ -112,9 +129,8 @@ export default function Details(props) {
 			setFavoriteColor(false);
 		}
 
-		const userId = user.sub;
-		const fav = props.id;
-		console.log(fav);
+		let fav = props.id;
+		console.log(`fav: ${fav}`);
 		axios
 			.get(
 				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
@@ -122,14 +138,20 @@ export default function Details(props) {
 			)
 			.then(function ({ data }) {
 				let userFavs = data.user_metadata.favorites;
-				if (userFavs.includes(fav)) {
-					userFavs.filter((userFav) => userFav !== fav);
-					console.log(userFavs);
-					updateFavorites(userFavs, userId);
+				console.log(`userFavs: ${userFavs}`);
+
+				if (!userFavs) {
+					newFavs = [fav];
+					updateFavorites();
+				} else if (userFavs.includes(fav)) {
+					newFavs = userFavs.filter((userFav) => userFav !== fav);
+					console.log(`newFavs: ${newFavs}`);
+					clearFavorites();
 				} else {
 					userFavs.push(fav);
-					console.log(userFavs);
-					updateFavorites(userFavs, userId);
+					newFavs = userFavs;
+					console.log(`newFavs: ${newFavs}`);
+					clearFavorites();
 				}
 			});
 	};
