@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PlayerContext from '../../utils/PlayerContext';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -77,6 +77,30 @@ export default function Details(props) {
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
 	const [favoriteColor, setFavoriteColor] = React.useState(false);
+
+	useEffect(() => {
+		let fav = props.id;
+		console.log(`useEffect fav: ${fav}`);
+
+		axios
+			.get(
+				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
+				options
+			)
+			.then(function ({ data }) {
+				let userFavs = data.user_metadata.favorites;
+				console.log(`useEffect userFavs: ${userFavs}`);
+
+				if (!userFavs) {
+					return;
+				} else if (userFavs.includes(fav)) {
+					setFavoriteColor(true);
+				} else {
+					setFavoriteColor(false);
+				}
+			});
+	}, []);
+
 	const options = {
 		headers: {
 			Authorization: process.env.REACT_APP_AUTH_TOKEN,
@@ -105,11 +129,11 @@ export default function Details(props) {
 	const handleFavClick = (e) => {
 		e.preventDefault();
 
-		if (!favoriteColor) {
-			setFavoriteColor(true);
-		} else {
-			setFavoriteColor(false);
-		}
+		// if (!favoriteColor) {
+		// 	setFavoriteColor(true);
+		// } else {
+		// 	setFavoriteColor(false);
+		// }
 
 		let fav = props.id;
 		console.log(`fav: ${fav}`);
@@ -127,15 +151,18 @@ export default function Details(props) {
 				if (!userFavs) {
 					newFavs = [fav];
 					updateFavorites(newFavs);
+					setFavoriteColor(true);
 				} else if (userFavs.includes(fav)) {
 					newFavs = userFavs.filter((userFav) => userFav !== fav);
 					console.log(`newFavs: ${newFavs}`);
 					updateFavorites(newFavs);
+					setFavoriteColor(false);
 				} else {
-					userFavs.push(fav);
+					let result = userFavs.push(fav);
 					newFavs = userFavs;
 					console.log(`newFavs: ${newFavs}`);
 					updateFavorites(newFavs);
+					setFavoriteColor(true);
 				}
 			});
 	};
