@@ -25,11 +25,12 @@ const stripePromise = loadStripe(
 
 function App() {
 	const [src, setSrc] = useState({
-		audioSrc: '',
+		audioSrc:
+			'https://drive.google.com/uc?export=open&id=1hpFgecYoJIaV91q20O77IKUw4tZkQJyU',
 	});
 
 	const [title, setTitle] = useState({
-		audioTitle: '',
+		audioTitle: 'Big Drums by BackLeft',
 	});
 
 	const handlePlayClick = (srcUrl, title) => {
