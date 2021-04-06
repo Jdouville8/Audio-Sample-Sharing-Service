@@ -150,7 +150,7 @@ function NavBar() {
 					Profile
 				</Link>
 			</MenuItem>
-			<MenuItem onClick={handleMenuClose}>
+			{/* <MenuItem onClick={handleMenuClose}>
 				<Link
 					to=""
 					style={{
@@ -161,7 +161,7 @@ function NavBar() {
 				>
 					Account
 				</Link>
-			</MenuItem>
+			</MenuItem> */}
 			<MenuItem onClick={handleMenuClose}>
 				<LogoutButton />
 			</MenuItem>
