@@ -86,6 +86,8 @@ export default function Details(props) {
 
 	const buttonRef = useRef();
 
+	let userFavs = [];
+
 	const handleFavClick = (e) => {
 		e.preventDefault();
 
@@ -110,7 +112,14 @@ export default function Details(props) {
 			)
 			.then(
 				function ({ data }) {
-					console.log(data);
+					// let userFavs = data.user_metadata.favorites;
+					if (userFavs.includes(fav)) {
+						userFavs.filter((userFav) => userFav !== fav);
+						console.log(userFavs);
+					} else {
+						userFavs.push(fav);
+						console.log(userFavs);
+					}
 				}
 				// axios
 				// .patch(
