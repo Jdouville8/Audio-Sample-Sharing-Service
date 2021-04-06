@@ -83,7 +83,6 @@ export default function Details(props) {
 		},
 	};
 	const userId = user.sub;
-	let newFavs;
 
 	const changePlayerContext = useContext(PlayerContext);
 
@@ -91,24 +90,7 @@ export default function Details(props) {
 		setExpanded(!expanded);
 	};
 
-	const buttonRef = useRef();
-
-	const clearFavorites = () => {
-		axios
-			.patch(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
-				{
-					user_metadata: {},
-				},
-				options
-			)
-			.then(() => {
-				console.log('favs cleared');
-				updateFavorites();
-			});
-	};
-
-	const updateFavorites = () => {
+	const updateFavorites = (newFavs) => {
 		axios
 			.patch(
 				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
@@ -131,27 +113,29 @@ export default function Details(props) {
 
 		let fav = props.id;
 		console.log(`fav: ${fav}`);
+
 		axios
 			.get(
 				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
 				options
 			)
 			.then(function ({ data }) {
+				let newFavs;
 				let userFavs = data.user_metadata.favorites;
 				console.log(`userFavs: ${userFavs}`);
 
 				if (!userFavs) {
 					newFavs = [fav];
-					updateFavorites();
+					updateFavorites(newFavs);
 				} else if (userFavs.includes(fav)) {
 					newFavs = userFavs.filter((userFav) => userFav !== fav);
 					console.log(`newFavs: ${newFavs}`);
-					clearFavorites();
+					updateFavorites(newFavs);
 				} else {
 					userFavs.push(fav);
 					newFavs = userFavs;
 					console.log(`newFavs: ${newFavs}`);
-					clearFavorites();
+					updateFavorites(newFavs);
 				}
 			});
 	};
