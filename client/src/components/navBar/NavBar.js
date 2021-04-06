@@ -133,6 +133,7 @@ function NavBar() {
 			pathname: "/search",
 			state: { query: query },
 		});
+		setQuery("");
 	};
 
 	const menuId = "primary-search-account-menu";
@@ -294,6 +295,7 @@ function NavBar() {
 								</div>
 								<InputBase
 									onChange={(e) => setQuery(e.target.value)}
+									value={query}
 									placeholder="Search…"
 									classes={{
 										root: classes.inputRoot,
