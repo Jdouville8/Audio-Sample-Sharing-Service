@@ -42,7 +42,7 @@ function Footer(props) {
         <AudioPlayer
           src={props.audioSrc}
           header={props.audioTitle}
-          volume=".1"
+          volume=".025"
           onPlay={(e) => console.log("onPlay")}
           style={{
             width: "200%",
