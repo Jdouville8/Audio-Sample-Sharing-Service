@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "./App.css";
 import PlayerContext from "./utils/PlayerContext";
@@ -19,11 +20,13 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import About from "./pages/About";
 
+
 const stripePromise = loadStripe(
-  "pk_test_51IbyXTGpEScSSzwXh44D5mrHcdtU3kD902kW87kXDu1RIkJco8MEujFZtgG0C49nFMIODD1QWWOYdkgmF8VbtnR400lPNyG32Q"
+	'pk_test_51IbyXTGpEScSSzwXh44D5mrHcdtU3kD902kW87kXDu1RIkJco8MEujFZtgG0C49nFMIODD1QWWOYdkgmF8VbtnR400lPNyG32Q'
 );
 
 function App() {
+
   const [src, setSrc] = useState({
     audioSrc:
       "https://drive.google.com/uc?export=open&id=1nhsYL5VBDnxZ1wIXVJdbsA6QQOWQsMIo",
@@ -33,41 +36,42 @@ function App() {
     audioTitle: "LoL Space Groove 2021",
   });
 
-  const handlePlayClick = (srcUrl, title) => {
-    setSrc({ audioSrc: srcUrl });
-    setTitle({ audioTitle: title });
-  };
 
-  return (
-    <Elements stripe={stripePromise}>
-      <PlayerContext.Provider value={handlePlayClick}>
-        <Router>
-          <div
-            style={{
-              backgroundImage: `url(${Background})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              backgroundPosition: "center center",
-              backgroundAttachment: "fixed",
-            }}
-          >
-            <NavBar />
-            <Switch>
-              <Route exact path={"/search"}>
-                <Search />
-              </Route>
-              <Route exact path={["/", "/landing"]}>
-                <Landing />
-              </Route>
-              <Route exact path={"/upload"}>
-                <FileSubmit />
-              </Route>
-              <Route exact path={"/login"}>
-                <Login />
-              </Route>
-              {/* <Route exact path={"/signup"}>
+	const handlePlayClick = (srcUrl, title) => {
+		setSrc({ audioSrc: srcUrl });
+		setTitle({ audioTitle: title });
+	};
+
+	return (
+		<Elements stripe={stripePromise}>
+			<PlayerContext.Provider value={handlePlayClick}>
+				<Router>
+					<div
+						style={{
+							backgroundImage: `url(${Background})`,
+							backgroundRepeat: 'no-repeat',
+							backgroundSize: 'cover',
+							backgroundPosition: 'center center',
+							backgroundAttachment: 'fixed',
+						}}
+					>
+						<NavBar />
+						<Switch>
+							<Route exact path={'/search'}>
+								<Search />
+							</Route>
+							<Route exact path={['/', '/landing']}>
+								<Landing />
+							</Route>
+							<Route exact path={'/upload'}>
+								<FileSubmit />
+							</Route>
+							<Route exact path={'/login'}>
+								<Login />
+							</Route>
+							{/* <Route exact path={"/signup"}>
                 <Signup />
-              </Route> */}
+              </Route>
               <Route exact path={"/home"}>
                 <Home />
               </Route>
