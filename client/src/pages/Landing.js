@@ -56,7 +56,7 @@ function Landing() {
           className={classes.root}
           style={{
             position: "absolute",
-            bottom: "20%",
+            bottom: "30%",
             left: "5%",
             width: "35%",
             backgroundColor: `rgba(0,0,0,.7)`,
