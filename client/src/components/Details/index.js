@@ -63,8 +63,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-// misc comment to prompt rebuild
-
 export default function Details(props) {
 	const history = useHistory();
 	const goToLoginPage = () => navigate("/login");
@@ -73,35 +71,40 @@ export default function Details(props) {
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
 	const [favoriteColor, setFavoriteColor] = React.useState(false);
+	let userId;
 
 	useEffect(() => {
 		let fav = props.id;
 		console.log(`useEffect fav: ${fav}`);
 
-		axios
-			.get(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
-				options
-			)
-			.then(function ({ data }) {
-				let metadata = data.user_metadata;
-				console.log(metadata);
-				if (!metadata) {
-					console.log("metadata is undefined :(");
-					seedMetadata();
-				} else {
-					let userFavs = metadata.favorites;
-					console.log(`useEffect userFavs: ${userFavs}`);
+		if (isAuthenticated) {
+			userId = user.sub;
 
-					if (!userFavs) {
-						return;
-					} else if (userFavs.includes(fav)) {
-						setFavoriteColor(true);
+			axios
+				.get(
+					`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
+					options
+				)
+				.then(function ({ data }) {
+					let metadata = data.user_metadata;
+					console.log(metadata);
+					if (!metadata) {
+						console.log("metadata is undefined :(");
+						seedMetadata();
 					} else {
-						setFavoriteColor(false);
+						let userFavs = metadata.favorites;
+						console.log(`useEffect userFavs: ${userFavs}`);
+
+						if (!userFavs) {
+							return;
+						} else if (userFavs.includes(fav)) {
+							setFavoriteColor(true);
+						} else {
+							setFavoriteColor(false);
+						}
 					}
-				}
-			});
+				});
+		}
 	}, []);
 
 	const options = {
@@ -109,7 +112,6 @@ export default function Details(props) {
 			Authorization: process.env.REACT_APP_AUTH_TOKEN,
 		},
 	};
-	const userId = user.sub;
 
 	const changePlayerContext = useContext(PlayerContext);
 
@@ -150,37 +152,39 @@ export default function Details(props) {
 		// 	setFavoriteColor(false);
 		// }
 
-		let fav = props.id;
-		console.log(`fav: ${fav}`);
+		if (isAuthenticated) {
+			let fav = props.id;
+			console.log(`fav: ${fav}`);
 
-		axios
-			.get(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
-				options
-			)
-			.then(function ({ data }) {
-				let newFavs;
-				let userFavs = data.user_metadata.favorites;
-				console.log(userFavs);
-				console.log(`userFavs: ${userFavs}`);
+			axios
+				.get(
+					`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
+					options
+				)
+				.then(function ({ data }) {
+					let newFavs;
+					let userFavs = data.user_metadata.favorites;
+					console.log(userFavs);
+					console.log(`userFavs: ${userFavs}`);
 
-				if (!userFavs) {
-					newFavs = [fav];
-					updateFavorites(newFavs);
-					setFavoriteColor(true);
-				} else if (userFavs.includes(fav)) {
-					newFavs = userFavs.filter((userFav) => userFav !== fav);
-					console.log(`newFavs: ${newFavs}`);
-					updateFavorites(newFavs);
-					setFavoriteColor(false);
-				} else {
-					let result = userFavs.push(fav);
-					newFavs = userFavs;
-					console.log(`newFavs: ${newFavs}`);
-					updateFavorites(newFavs);
-					setFavoriteColor(true);
-				}
-			});
+					if (!userFavs) {
+						newFavs = [fav];
+						updateFavorites(newFavs);
+						setFavoriteColor(true);
+					} else if (userFavs.includes(fav)) {
+						newFavs = userFavs.filter((userFav) => userFav !== fav);
+						console.log(`newFavs: ${newFavs}`);
+						updateFavorites(newFavs);
+						setFavoriteColor(false);
+					} else {
+						let result = userFavs.push(fav);
+						newFavs = userFavs;
+						console.log(`newFavs: ${newFavs}`);
+						updateFavorites(newFavs);
+						setFavoriteColor(true);
+					}
+				});
+		} else history.push("/login");
 	};
 
 	const handlePlayClick = (e) => {
