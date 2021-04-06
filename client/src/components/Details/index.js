@@ -77,6 +77,11 @@ export default function Details(props) {
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
 	const [favoriteColor, setFavoriteColor] = React.useState(false);
+	const options = {
+		headers: {
+			Authorization: process.env.REACT_APP_AUTH_TOKEN,
+		},
+	};
 
 	const changePlayerContext = useContext(PlayerContext);
 
@@ -86,7 +91,17 @@ export default function Details(props) {
 
 	const buttonRef = useRef();
 
-	let userFavs = [];
+	const updateFavorites = (newFavs, userId) => {
+		axios
+			.patch(
+				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
+				{
+					user_metadata: { favorites: [newFavs] },
+				},
+				options
+			)
+			.then(console.log('post success'));
+	};
 
 	const handleFavClick = (e) => {
 		e.preventDefault();
@@ -100,37 +115,23 @@ export default function Details(props) {
 		const userId = user.sub;
 		const fav = props.id;
 		console.log(fav);
-		const options = {
-			headers: {
-				Authorization: process.env.REACT_APP_AUTH_TOKEN,
-			},
-		};
 		axios
 			.get(
 				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
 				options
 			)
-			.then(
-				function ({ data }) {
-					// let userFavs = data.user_metadata.favorites;
-					if (userFavs.includes(fav)) {
-						userFavs.filter((userFav) => userFav !== fav);
-						console.log(userFavs);
-					} else {
-						userFavs.push(fav);
-						console.log(userFavs);
-					}
+			.then(function ({ data }) {
+				let userFavs = data.user_metadata.favorites;
+				if (userFavs.includes(fav)) {
+					userFavs.filter((userFav) => userFav !== fav);
+					console.log(userFavs);
+					updateFavorites(userFavs, userId);
+				} else {
+					userFavs.push(fav);
+					console.log(userFavs);
+					updateFavorites(userFavs, userId);
 				}
-				// axios
-				// .patch(
-				// 	`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
-				// 	{
-				// 		user_metadata: { favorites: [fav] },
-				// 	},
-				// 	options
-				// )
-				// .then(console.log('post success'))
-			);
+			});
 	};
 
 	const handlePlayClick = (e) => {
