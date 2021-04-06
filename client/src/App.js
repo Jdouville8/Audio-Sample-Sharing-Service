@@ -11,7 +11,7 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Education from './pages/EducationalResources';
 import Footer from './components/Footer/Footer';
-import UserProfile from './pages/UserProfile';
+import Profile from './pages/Profile';
 import Background from './images/wallpaper.jpg';
 import NoMatch from './pages/NoMatch';
 import Lessons from './pages/Lessons';
@@ -25,11 +25,12 @@ const stripePromise = loadStripe(
 
 function App() {
 	const [src, setSrc] = useState({
-		audioSrc: '',
+		audioSrc:
+			'https://drive.google.com/uc?export=open&id=1hpFgecYoJIaV91q20O77IKUw4tZkQJyU',
 	});
 
 	const [title, setTitle] = useState({
-		audioTitle: '',
+		audioTitle: 'Big Drums by BackLeft',
 	});
 
 	const handlePlayClick = (srcUrl, title) => {
@@ -80,7 +81,7 @@ function App() {
 								<About />
 							</Route>
 							<Route exact path={'/profile'}>
-								<UserProfile />
+								<Profile />
 							</Route>
 							<Route>
 								<NoMatch />
