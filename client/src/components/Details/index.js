@@ -106,7 +106,10 @@ export default function Details(props) {
 			Authorization: process.env.REACT_APP_AUTH_TOKEN,
 		},
 	};
-	const userId = user.sub;
+	let userId;
+	if (isAuthenticated) {
+		userId = user.sub;
+	}
 
 	const changePlayerContext = useContext(PlayerContext);
 

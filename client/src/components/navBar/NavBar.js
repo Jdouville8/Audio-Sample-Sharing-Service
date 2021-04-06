@@ -149,7 +149,7 @@ function NavBar() {
 			<MenuItem onClick={handleMenuClose}>
 				{" "}
 				<Link
-					to=""
+					to="/profile"
 					style={{
 						color: "#3d1347",
 						margin: "5px",
@@ -158,17 +158,18 @@ function NavBar() {
 					Profile
 				</Link>
 			</MenuItem>
-			<MenuItem onClick={handleMenuClose}>
+			{/* <MenuItem onClick={handleMenuClose}>
 				<Link
-					to="/account"
+					to=""
 					style={{
-						color: "#3d1347",
-						margin: "5px",
-						textDecoration: "none",
-					}}>
+						color: '#3d1347',
+						margin: '5px',
+						textDecoration: 'none',
+					}}
+				>
 					Account
 				</Link>
-			</MenuItem>
+			</MenuItem> */}
 			<MenuItem onClick={handleMenuClose}>
 				<LogoutButton />
 			</MenuItem>

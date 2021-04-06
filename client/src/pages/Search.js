@@ -26,10 +26,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Search() {
+	const { user, isAuthenticated, isLoading } = useAuth0();
 	const classes = useStyles();
 	const location = useLocation();
 	const [results, setResults] = useState(Packs);
-	const { user, isAuthenticated, isLoading } = useAuth0();
 
 	useEffect(() => {
 		if (location.state.query !== undefined) {
@@ -43,35 +43,43 @@ function Search() {
 		setResults(API.search(e.target.value));
 	};
 
-	if (isAuthenticated) {
-		return (
-			<div style={{ height: "100%" }}>
-				<Grid container direction="row" justify="center" alignItems="center">
-					<Grid item sm={11} lg={8}>
-						<SearchBar />
+	return (
+		<div style={{ height: "100vh" }}>
+			<Grid container direction="row" justify="center" alignItems="center">
+				<Grid item sm={11} lg={8}>
+					<div className={classes.root}>
+						<TextField
+							id="search"
+							style={{ margin: 8 }}
+							placeholder="Search"
+							fullWidth
+							margin="normal"
+							InputLabelProps={{
+								shrink: true,
+							}}
+							onChange={onChange}
+						/>
+					</div>
+				</Grid>
+			</Grid>
+			<Grid container direction="row" justify="center" alignItems="center">
+				{results.map((result) => (
+					<Grid item>
+						<Details
+							id={result.id}
+							key={result.id}
+							src={result.src}
+							title={result.title}
+							artist={result.artist}
+							overview={result.overview}
+							dlUrl={result.dlUrl}
+							audioSrc={result.audioSrc}
+						/>
 					</Grid>
-				</Grid>
-				<Grid container direction="row" justify="center" alignItems="center">
-					{results.map((result) => (
-						<Grid item>
-							<Details
-								id={result.id}
-								key={result.id}
-								src={result.src}
-								title={result.title}
-								artist={result.artist}
-								overview={result.overview}
-								dlUrl={result.dlUrl}
-								audioSrc={result.audioSrc}
-							/>
-						</Grid>
-					))}
-				</Grid>
-			</div>
-		);
-	} else {
-		return <Login />;
-	}
+				))}
+			</Grid>
+		</div>
+	);
 }
 
 export default Search;
