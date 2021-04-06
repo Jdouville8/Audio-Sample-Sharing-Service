@@ -1,26 +1,19 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import PlayerContext from "../../utils/PlayerContext";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import Grid from "@material-ui/core/Grid";
-import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-import Login from "../../pages/Login";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -29,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	media: {
 		height: 0,
-		paddingTop: "56.25%", // 16:9
+		paddingTop: "56.25%",
 	},
 	expand: {
 		transform: "rotate(0deg)",
@@ -110,7 +103,7 @@ export default function Details(props) {
 	// };
 	// const userId = user.sub;
 
-	// const changePlayerContext = useContext(PlayerContext);
+	const changePlayerContext = useContext(PlayerContext);
 
 	// const handleExpandClick = () => {
 	// 	setExpanded(!expanded);
