@@ -80,6 +80,10 @@ export default function Details(props) {
 
 	useEffect(() => {
 		let fav = props.id;
+		let userId;
+		if (isAuthenticated) {
+			userId = user.sub;
+		}
 		console.log(`useEffect fav: ${fav}`);
 
 		axios
@@ -106,10 +110,6 @@ export default function Details(props) {
 			Authorization: process.env.REACT_APP_AUTH_TOKEN,
 		},
 	};
-	let userId;
-	if (isAuthenticated) {
-		userId = user.sub;
-	}
 
 	const changePlayerContext = useContext(PlayerContext);
 
