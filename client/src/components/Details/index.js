@@ -69,6 +69,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+// misc comment to prompt rebuild
+
 export default function Details(props) {
 	const history = useHistory();
 	const goToLoginPage = () => navigate('/login');
