@@ -4,6 +4,7 @@ import Details from "../components/Details";
 import { makeStyles } from "@material-ui/core/styles";
 import Packs from "../packs.json";
 import API from "../utils/SearchAPI";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -19,11 +20,19 @@ const useStyles = makeStyles((theme) => ({
 
 function Search() {
 	const classes = useStyles();
+	const location = useLocation();
 	const [results, setResults] = useState(Packs);
 
+	useEffect(() => {
+		if (location.state.query !== undefined) {
+			setResults(API.search(location.state.query));
+		} else {
+			setResults(API.search());
+		}
+	}, [location]);
+
 	const onChange = (e) => {
-		let res = API.search(e.target.value);
-		setResults(res);
+		setResults(API.search(e.target.value));
 	};
 
 	return (

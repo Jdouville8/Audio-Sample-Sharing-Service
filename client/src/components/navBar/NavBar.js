@@ -30,6 +30,7 @@ import LoginButton from "../LoginButton/LoginButton";
 import LogoutButton from "../LogoutButton/LogoutButton";
 import { useHistory } from "react-router-dom";
 import API from "../../utils/SearchAPI";
+import { useEffect } from "react/cjs/react.development";
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -98,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
 	const history = useHistory();
-	const [query, setQuery] = React.useState();
+	const [query, setQuery] = React.useState("");
 	// * Set up loginWithRedirect
 	const { loginWithRedirect, isAuthenticated } = useAuth0();
 
@@ -128,7 +129,6 @@ function NavBar() {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		console.log(query);
 		history.push({
 			pathname: "/search",
 			state: { query: query },
