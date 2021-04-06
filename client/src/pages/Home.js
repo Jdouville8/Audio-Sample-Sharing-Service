@@ -39,6 +39,7 @@ function Home() {
 						<Grid item>
 							<Details
 								id={result.id}
+								key={result.id}
 								src={result.src}
 								title={result.title}
 								artist={result.artist}
