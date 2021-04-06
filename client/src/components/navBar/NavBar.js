@@ -1,7 +1,7 @@
-import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import AccountThumbnail from '../AccountThumbnail/AccountThumbnail';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import AccountThumbnail from "../AccountThumbnail/AccountThumbnail";
+import { fade, makeStyles } from "@material-ui/core/styles";
 import {
 	AppBar,
 	Toolbar,
@@ -12,21 +12,25 @@ import {
 	MenuItem,
 	Menu,
 	Tooltip,
-} from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import Background from '../../images/WaveFlip.png';
-import UserMenu from '../UserMenu/UserMenu';
-import AuthenticationButton from '../AuthenticationButton/AuthenticationButton';
-import AuthenticationButtonIcon from '../AuthenticationButtonIcon/AuthenticationButtonIcon';
-import HomeIcon from '@material-ui/icons/Home';
-import PublishIcon from '@material-ui/icons/Publish';
-import BookIcon from '@material-ui/icons/Book';
-import EventIcon from '@material-ui/icons/Event';
-import LoginButton from '../LoginButton/LoginButton';
-import LogoutButton from '../LogoutButton/LogoutButton';
+	TextField,
+} from "@material-ui/core";
+import { Link } from "react-router-dom";
+import SearchIcon from "@material-ui/icons/Search";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import MoreIcon from "@material-ui/icons/MoreVert";
+import Background from "../../images/WaveFlip.png";
+import UserMenu from "../UserMenu/UserMenu";
+import AuthenticationButton from "../AuthenticationButton/AuthenticationButton";
+import AuthenticationButtonIcon from "../AuthenticationButtonIcon/AuthenticationButtonIcon";
+import HomeIcon from "@material-ui/icons/Home";
+import PublishIcon from "@material-ui/icons/Publish";
+import BookIcon from "@material-ui/icons/Book";
+import EventIcon from "@material-ui/icons/Event";
+import LoginButton from "../LoginButton/LoginButton";
+import LogoutButton from "../LogoutButton/LogoutButton";
+import { useHistory } from "react-router-dom";
+import API from "../../utils/SearchAPI";
+import { useEffect } from "react/cjs/react.development";
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -36,64 +40,66 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: theme.spacing(2),
 	},
 	title: {
-		display: 'none',
-		[theme.breakpoints.up('sm')]: {
-			display: 'block',
+		display: "none",
+		[theme.breakpoints.up("sm")]: {
+			display: "block",
 		},
 	},
 	search: {
-		position: 'relative',
+		position: "relative",
 		borderRadius: theme.shape.borderRadius,
 		backgroundColor: fade(theme.palette.common.white, 0.15),
-		'&:hover': {
+		"&:hover": {
 			backgroundColor: fade(theme.palette.common.white, 0.25),
 		},
 		marginRight: theme.spacing(2),
 		marginLeft: 0,
-		width: '100%',
-		[theme.breakpoints.up('sm')]: {
+		width: "100%",
+		[theme.breakpoints.up("sm")]: {
 			marginLeft: theme.spacing(3),
-			width: 'auto',
+			width: "auto",
 		},
 	},
 	searchIcon: {
 		padding: theme.spacing(0, 2),
-		height: '100%',
-		position: 'absolute',
-		pointerEvents: 'none',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
+		height: "100%",
+		position: "absolute",
+		pointerEvents: "none",
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
 	},
 	inputRoot: {
-		color: 'inherit',
+		color: "inherit",
 	},
 	inputInput: {
 		padding: theme.spacing(1, 1, 1, 0),
 		// vertical padding + font size from searchIcon
 		paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-		transition: theme.transitions.create('width'),
-		width: '100%',
-		[theme.breakpoints.up('md')]: {
-			width: '20ch',
+		transition: theme.transitions.create("width"),
+		width: "100%",
+		[theme.breakpoints.up("md")]: {
+			width: "20ch",
 		},
 	},
 	sectionDesktop: {
-		display: 'none',
-		[theme.breakpoints.up('md')]: {
-			display: 'flex',
+		display: "none",
+		[theme.breakpoints.up("md")]: {
+			display: "flex",
 		},
 	},
 	sectionMobile: {
-		display: 'flex',
-		[theme.breakpoints.up('md')]: {
-			display: 'none',
+		display: "flex",
+		[theme.breakpoints.up("md")]: {
+			display: "none",
 		},
 	},
 	toolbar: theme.mixins.toolbar,
 }));
 
 function NavBar() {
+	const history = useHistory();
+	const [query, setQuery] = React.useState("");
 	// * Set up loginWithRedirect
 	const { loginWithRedirect, isAuthenticated } = useAuth0();
 
@@ -123,30 +129,32 @@ function NavBar() {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		window.location.href = 'http://localhost:3000/search';
+		history.push({
+			pathname: "/search",
+			state: { query: query },
+		});
+		setQuery("");
 	};
 
-	const menuId = 'primary-search-account-menu';
+	const menuId = "primary-search-account-menu";
 	const renderAuthMenu = (
 		<Menu
 			anchorEl={anchorEl}
-			anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+			anchorOrigin={{ vertical: "top", horizontal: "right" }}
 			id={menuId}
 			keepMounted
-			transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+			transformOrigin={{ vertical: "top", horizontal: "right" }}
 			open={isMenuOpen}
-			onClose={handleMenuClose}
-		>
+			onClose={handleMenuClose}>
 			<MenuItem onClick={handleMenuClose}>
-				{' '}
+				{" "}
 				<Link
 					to="/profile"
 					style={{
-						color: '#3d1347',
-						margin: '5px',
-						textDecoration: 'none',
-					}}
-				>
+						color: "#3d1347",
+						margin: "5px",
+						textDecoration: "none",
+					}}>
 					Profile
 				</Link>
 			</MenuItem>
@@ -170,38 +178,35 @@ function NavBar() {
 	const renderUnauthMenu = (
 		<Menu
 			anchorEl={anchorEl}
-			anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+			anchorOrigin={{ vertical: "top", horizontal: "right" }}
 			id={menuId}
 			keepMounted
-			transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+			transformOrigin={{ vertical: "top", horizontal: "right" }}
 			open={isMenuOpen}
-			onClose={handleMenuClose}
-		>
+			onClose={handleMenuClose}>
 			<MenuItem onClick={handleMenuClose}>
 				<LoginButton />
 			</MenuItem>
 		</Menu>
 	);
 
-	const mobileMenuId = 'primary-search-account-menu-mobile';
+	const mobileMenuId = "primary-search-account-menu-mobile";
 	const renderMobileMenu = (
 		<Menu
 			anchorEl={mobileMoreAnchorEl}
-			anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+			anchorOrigin={{ vertical: "top", horizontal: "right" }}
 			id={mobileMenuId}
 			keepMounted
-			transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+			transformOrigin={{ vertical: "top", horizontal: "right" }}
 			open={isMobileMenuOpen}
-			onClose={handleMobileMenuClose}
-		>
+			onClose={handleMobileMenuClose}>
 			<MenuItem>
 				<Link
 					to="/home"
 					style={{
-						color: '#3d1347',
-						margin: '5px',
-					}}
-				>
+						color: "#3d1347",
+						margin: "5px",
+					}}>
 					Home
 				</Link>
 			</MenuItem>
@@ -212,11 +217,10 @@ function NavBar() {
 				<Link
 					to="/education"
 					style={{
-						color: 'violet',
-						margin: '5px',
-						textDecoration: 'none',
-					}}
-				>
+						color: "violet",
+						margin: "5px",
+						textDecoration: "none",
+					}}>
 					Resources
 				</Link>
 			</MenuItem>
@@ -224,11 +228,10 @@ function NavBar() {
 				<Link
 					to="/lessons"
 					style={{
-						color: 'violet',
-						margin: '5px',
-						textDecoration: 'none',
-					}}
-				>
+						color: "violet",
+						margin: "5px",
+						textDecoration: "none",
+					}}>
 					Lessons
 				</Link>
 			</MenuItem>
@@ -236,11 +239,10 @@ function NavBar() {
 				<Link
 					to="/upload"
 					style={{
-						color: 'violet',
-						margin: '5px',
-						textDecoration: 'none',
-					}}
-				>
+						color: "violet",
+						margin: "5px",
+						textDecoration: "none",
+					}}>
 					Upload
 				</Link>
 			</MenuItem>
@@ -248,11 +250,10 @@ function NavBar() {
 				<Link
 					to="/about"
 					style={{
-						color: 'violet',
-						margin: '5px',
-						textDecoration: 'none',
-					}}
-				>
+						color: "violet",
+						margin: "5px",
+						textDecoration: "none",
+					}}>
 					About
 				</Link>
 			</MenuItem>
@@ -265,7 +266,7 @@ function NavBar() {
 				>
 					<AccountThumbnail />
 				</IconButton> */}
-				<p style={{ color: 'violet', margin: '5px' }}>User / Login</p>
+				<p style={{ color: "violet", margin: "5px" }}>User / Login</p>
 			</MenuItem>
 		</Menu>
 	);
@@ -280,12 +281,10 @@ function NavBar() {
 							backgroundRepeat: `no-repeat`,
 							backgroundSize: `cover`,
 							backgroundPosition: `center center`,
-						}}
-					>
+						}}>
 						<Link
 							to="/landing"
-							style={{ color: 'white', textDecoration: 'none' }}
-						>
+							style={{ color: "white", textDecoration: "none" }}>
 							<Typography className={classes.title} variant="h6" noWrap>
 								WavMovers
 							</Typography>
@@ -296,12 +295,14 @@ function NavBar() {
 									<SearchIcon />
 								</div>
 								<InputBase
+									onChange={(e) => setQuery(e.target.value)}
+									value={query}
 									placeholder="Search…"
 									classes={{
 										root: classes.inputRoot,
 										input: classes.inputInput,
 									}}
-									inputProps={{ 'aria-label': 'search' }}
+									inputProps={{ "aria-label": "search" }}
 								/>
 							</form>
 						</div>
@@ -311,12 +312,11 @@ function NavBar() {
 								<Link
 									to="/home"
 									style={{
-										color: 'violet',
-										margin: '5px',
-										marginTop: '7%',
-										textDecoration: 'none',
-									}}
-								>
+										color: "violet",
+										margin: "5px",
+										marginTop: "7%",
+										textDecoration: "none",
+									}}>
 									<HomeIcon />
 								</Link>
 							</Tooltip>
@@ -324,12 +324,11 @@ function NavBar() {
 								<Link
 									to="/education"
 									style={{
-										color: 'violet',
-										margin: '5px',
-										marginTop: '7%',
-										textDecoration: 'none',
-									}}
-								>
+										color: "violet",
+										margin: "5px",
+										marginTop: "7%",
+										textDecoration: "none",
+									}}>
 									<BookIcon />
 								</Link>
 							</Tooltip>
@@ -337,12 +336,11 @@ function NavBar() {
 								<Link
 									to="/lessons"
 									style={{
-										color: 'violet',
-										margin: '5px',
-										marginTop: '7%',
-										textDecoration: 'none',
-									}}
-								>
+										color: "violet",
+										margin: "5px",
+										marginTop: "7%",
+										textDecoration: "none",
+									}}>
 									<EventIcon />
 								</Link>
 							</Tooltip>
@@ -350,12 +348,11 @@ function NavBar() {
 								<Link
 									to="/upload"
 									style={{
-										color: 'violet',
-										margin: '5px',
-										marginTop: '7%',
-										textDecoration: 'none',
-									}}
-								>
+										color: "violet",
+										margin: "5px",
+										marginTop: "7%",
+										textDecoration: "none",
+									}}>
 									<PublishIcon />
 								</Link>
 							</Tooltip>
@@ -371,8 +368,7 @@ function NavBar() {
 								aria-controls={menuId}
 								aria-haspopup="true"
 								onClick={handleProfileMenuOpen}
-								color="inherit"
-							>
+								color="inherit">
 								<AccountThumbnail />
 							</IconButton>
 						</div>
@@ -382,8 +378,7 @@ function NavBar() {
 								aria-controls={mobileMenuId}
 								aria-haspopup="true"
 								onClick={handleMobileMenuOpen}
-								color="inherit"
-							>
+								color="inherit">
 								<MoreIcon />
 							</IconButton>
 						</div>
