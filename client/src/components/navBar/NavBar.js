@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import AccountThumbnail from "../AccountThumbnail/AccountThumbnail";
 import { fade, makeStyles } from "@material-ui/core/styles";
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
 	const history = useHistory();
-	const [results, setResults] = React.useState(null);
+	const [query, setQuery] = React.useState();
 	// * Set up loginWithRedirect
 	const { loginWithRedirect, isAuthenticated } = useAuth0();
 
@@ -126,14 +126,13 @@ function NavBar() {
 		setMobileMoreAnchorEl(event.currentTarget);
 	};
 
-	const searchRef = useRef(null);
-
 	const onSubmit = (e) => {
 		e.preventDefault();
-		history.push("/search");
-		console.log(searchRef);
-		let res = API.search(searchRef.current.value);
-		setResults(res);
+		console.log(query);
+		history.push({
+			pathname: "/search",
+			state: { query: query },
+		});
 	};
 
 	const menuId = "primary-search-account-menu";
@@ -294,7 +293,7 @@ function NavBar() {
 									<SearchIcon />
 								</div>
 								<InputBase
-									ref={searchRef}
+									onChange={(e) => setQuery(e.target.value)}
 									placeholder="Search…"
 									classes={{
 										root: classes.inputRoot,
