@@ -88,7 +88,7 @@ export default function Details(props) {
 				console.log(metadata);
 				if (!metadata) {
 					console.log("metadata is undefined :(");
-					// seedMetadata();
+					seedMetadata();
 				} else {
 					let userFavs = metadata.favorites;
 					console.log(`useEffect userFavs: ${userFavs}`);
@@ -117,6 +117,18 @@ export default function Details(props) {
 		setExpanded(!expanded);
 	};
 
+	const seedMetadata = () => {
+		axios
+			.patch(
+				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
+				{
+					user_metadata: { favorites: "" },
+				},
+				options
+			)
+			.then(console.log("metadata seed success"));
+	};
+
 	const updateFavorites = (newFavs) => {
 		axios
 			.patch(
@@ -132,11 +144,11 @@ export default function Details(props) {
 	const handleFavClick = (e) => {
 		e.preventDefault();
 
-		if (!favoriteColor) {
-			setFavoriteColor(true);
-		} else {
-			setFavoriteColor(false);
-		}
+		// if (!favoriteColor) {
+		// 	setFavoriteColor(true);
+		// } else {
+		// 	setFavoriteColor(false);
+		// }
 
 		let fav = props.id;
 		console.log(`fav: ${fav}`);
