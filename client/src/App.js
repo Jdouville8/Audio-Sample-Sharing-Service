@@ -11,7 +11,7 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Education from './pages/EducationalResources';
 import Footer from './components/Footer/Footer';
-import UserAccount from './pages/UserAccount';
+import UserProfile from './pages/UserProfile';
 import Background from './images/wallpaper.jpg';
 import NoMatch from './pages/NoMatch';
 import Lessons from './pages/Lessons';
@@ -79,8 +79,8 @@ function App() {
 							<Route exact path={'/about'}>
 								<About />
 							</Route>
-							<Route exact path={'/account'}>
-								<UserAccount />
+							<Route exact path={'/profile'}>
+								<UserProfile />
 							</Route>
 							<Route>
 								<NoMatch />
