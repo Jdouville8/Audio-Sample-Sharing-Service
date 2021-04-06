@@ -31,7 +31,6 @@ function Footer(props) {
   // wave.fromElement("player2", "visual2", options);
   return (
     <footer
-      container
       style={{
         position: "fixed",
         bottom: 0,
@@ -43,13 +42,14 @@ function Footer(props) {
         <AudioPlayer
           src={props.audioSrc}
           header={props.audioTitle}
-          volume=".1"
+          volume=".025"
           onPlay={(e) => console.log("onPlay")}
           style={{
             width: "200%",
             backgroundColor: `rgba(0,0,0,0.6)`,
             borderRadius: "10px",
             color: "white",
+            textAlign: "center",
           }}
         />
       </div>

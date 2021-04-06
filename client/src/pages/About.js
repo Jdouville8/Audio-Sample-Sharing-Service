@@ -19,31 +19,35 @@ function About() {
   const devs = [
     {
       name: "Justin Douville",
-      about: "Passionate Web developer with an extensive background in music production education, audio engineering and sound design looking to bring power to aspiring creators in the modern age of computer-generated music",
+      about:
+        "Web developer with extensive background in music production education and audio engineering.",
       gitHub: "https://github.com/Jdouville8",
       pic: `${Justin}`,
-      role: "Back-End Dev",
+      role: "Back-End",
     },
     {
       name: "Luke Oxner",
-      about: "Blurbbbbb",
+      about:
+        "Full-stack developer who loves solving problems, learning new skills, and exploring the mountains of Colorado.",
       gitHub: "https://github.com/lukeoxner",
       pic: `${Luke}`,
-      role: "Back-End Dev",
+      role: "Back-End",
     },
     {
       name: "Seth Hill",
-      about: "Blurbbbbb",
+      about:
+        "Full-stack developer specializing in server-side scripting and object-oriented programming. Excited to solve problems with user-centric solutions.",
       gitHub: "https://github.com/seff0",
       pic: `${Seth}`,
-      role: "Front-End Dev",
+      role: "Front-End",
     },
     {
       name: "Nick Goedecke",
-      about: "Blurbbbbb",
+      about:
+        "Full stack developer who is always looking to tackle projects; coding and rock climbing alike.",
       gitHub: "https://github.com/Perkyderm",
       pic: `${Nick}`,
-      role: "Front-End Dev",
+      role: "Front-End",
     },
   ];
 
