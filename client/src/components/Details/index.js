@@ -88,6 +88,7 @@ export default function Details(props) {
 				console.log(metadata);
 				if (!metadata) {
 					console.log("metadata is undefined :(");
+					// seedMetadata();
 				} else {
 					let userFavs = metadata.favorites;
 					console.log(`useEffect userFavs: ${userFavs}`);
