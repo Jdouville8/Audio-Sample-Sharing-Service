@@ -4,7 +4,6 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
@@ -23,24 +22,25 @@ export default function MediaCard(props) {
   return (
     <Card
       className={classes.root}
-      style={{ backgroundColor: `rgba(0,0,0,.7)` }}
+      style={{
+        backgroundColor: `rgba(0,0,0,.7)`,
+        width: "250px",
+        height: "670px",
+      }}
     >
       <CardMedia className={classes.media} image={props.pic} />
       <CardContent
         style={{
-          backgroundColor: `rgba(0,0,0,.1)`,
+          backgroundColor: `rgba(0,0,0,0)`,
           color: "white",
           textAlign: "center",
+          height: "200px",
         }}
       >
         <Typography gutterBottom variant="h5" component="h2">
           {props.name}
         </Typography>
-        <Typography
-          gutterBottom
-          variant="subtitle1"
-          style={{ color: "lightgray" }}
-        >
+        <Typography gutterBottom style={{ color: "lightgray" }}>
           {props.role}
         </Typography>
         <Typography
@@ -52,14 +52,14 @@ export default function MediaCard(props) {
           {props.about}
         </Typography>
       </CardContent>
-      <CardActions style={{}}>
+      <CardActions>
         <a
           href={props.gitHub}
           target="_blank"
           style={{
-            color: "pink",
+            color: "violet",
             margin: "auto",
-            backgroundColor: `rgba(0,0,0,.7)`,
+            backgroundColor: `rgba(0,0,0,.0)`,
           }}
         >
           GitHub
