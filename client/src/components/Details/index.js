@@ -1,27 +1,27 @@
-import React, { useEffect, useContext } from 'react';
-import PlayerContext from '../../utils/PlayerContext';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import Grid from '@material-ui/core/Grid';
-import axios from 'axios';
-import { useAuth0 } from '@auth0/auth0-react';
-import Login from '../../pages/Login';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useContext } from "react";
+import PlayerContext from "../../utils/PlayerContext";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import clsx from "clsx";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import { red } from "@material-ui/core/colors";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import SkipNextIcon from "@material-ui/icons/SkipNext";
+import GetAppIcon from "@material-ui/icons/GetApp";
+import Grid from "@material-ui/core/Grid";
+import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
+import Login from "../../pages/Login";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -29,31 +29,31 @@ const useStyles = makeStyles((theme) => ({
 	},
 	media: {
 		height: 0,
-		paddingTop: '56.25%', // 16:9
+		paddingTop: "56.25%", // 16:9
 	},
 	expand: {
-		transform: 'rotate(0deg)',
-		marginLeft: 'auto',
-		transition: theme.transitions.create('transform', {
+		transform: "rotate(0deg)",
+		marginLeft: "auto",
+		transition: theme.transitions.create("transform", {
 			duration: theme.transitions.duration.shortest,
 		}),
 	},
 	expandOpen: {
-		transform: 'rotate(180deg)',
+		transform: "rotate(180deg)",
 	},
 	avatar: {
 		backgroundColor: red[500],
 	},
 	content: {
-		flex: '1 0 auto',
+		flex: "1 0 auto",
 	},
 	cover: {
 		width: 204,
 		height: 220,
 	},
 	controls: {
-		display: 'flex',
-		alignItems: 'center',
+		display: "flex",
+		alignItems: "center",
 		paddingLeft: theme.spacing(1),
 		paddingBottom: theme.spacing(1),
 	},
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 		width: 960,
 	},
 	textColor: {
-		color: 'violet',
+		color: "violet",
 	},
 }));
 
@@ -73,100 +73,101 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Details(props) {
 	const history = useHistory();
-	const goToLoginPage = () => navigate('/login');
+	const goToLoginPage = () => navigate("/login");
 	const { isAuthenticated, user } = useAuth0();
 	const classes = useStyles();
 	const theme = useTheme();
 	const [expanded, setExpanded] = React.useState(false);
 	const [favoriteColor, setFavoriteColor] = React.useState(false);
 
-	useEffect(() => {
-		let fav = props.id;
-		console.log(`useEffect fav: ${fav}`);
+	// useEffect(() => {
+	// 	let fav = props.id;
+	// 	console.log(`useEffect fav: ${fav}`);
 
-		axios
-			.get(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
-				options
-			)
-			.then(function ({ data }) {
-				let userFavs = data.user_metadata.favorites;
-				console.log(`useEffect userFavs: ${userFavs}`);
+	// 	axios
+	// 		.get(
+	// 			`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
+	// 			options
+	// 		)
+	// 		.then(function ({ data }) {
+	// 			let userFavs = data.user_metadata;
+	// 			console.log(`useEffect userFavs: ${userFavs}`);
 
-				if (!userFavs) {
-					return;
-				} else if (userFavs.includes(fav)) {
-					setFavoriteColor(true);
-				} else {
-					setFavoriteColor(false);
-				}
-			});
-	}, []);
+	// 			if (!userFavs) {
+	// 				return;
+	// 			} else if (userFavs.includes(fav)) {
+	// 				setFavoriteColor(true);
+	// 			} else {
+	// 				setFavoriteColor(false);
+	// 			}
+	// 		});
+	// }, []);
 
-	const options = {
-		headers: {
-			Authorization: process.env.REACT_APP_AUTH_TOKEN,
-		},
-	};
-	const userId = user.sub;
+	// const options = {
+	// 	headers: {
+	// 		Authorization: process.env.REACT_APP_AUTH_TOKEN,
+	// 	},
+	// };
+	// const userId = user.sub;
 
-	const changePlayerContext = useContext(PlayerContext);
+	// const changePlayerContext = useContext(PlayerContext);
 
-	const handleExpandClick = () => {
-		setExpanded(!expanded);
-	};
+	// const handleExpandClick = () => {
+	// 	setExpanded(!expanded);
+	// };
 
-	const updateFavorites = (newFavs) => {
-		axios
-			.patch(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
-				{
-					user_metadata: { favorites: newFavs },
-				},
-				options
-			)
-			.then(console.log('post success'));
-	};
+	// const updateFavorites = (newFavs) => {
+	// 	axios
+	// 		.patch(
+	// 			`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
+	// 			{
+	// 				user_metadata: { favorites: newFavs },
+	// 			},
+	// 			options
+	// 		)
+	// 		.then(console.log('post success'));
+	// };
 
 	const handleFavClick = (e) => {
 		e.preventDefault();
 
-		// if (!favoriteColor) {
-		// 	setFavoriteColor(true);
-		// } else {
-		// 	setFavoriteColor(false);
-		// }
+		if (!favoriteColor) {
+			setFavoriteColor(true);
+		} else {
+			setFavoriteColor(false);
+		}
 
-		let fav = props.id;
-		console.log(`fav: ${fav}`);
+		// let fav = props.id;
+		// console.log(`fav: ${fav}`);
 
-		axios
-			.get(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
-				options
-			)
-			.then(function ({ data }) {
-				let newFavs;
-				let userFavs = data.user_metadata.favorites;
-				console.log(`userFavs: ${userFavs}`);
+		// axios
+		// 	.get(
+		// 		`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
+		// 		options
+		// 	)
+		// 	.then(function ({ data }) {
+		// 		let newFavs;
+		// 		let userFavs = data.user_metadata;
+		// 		console.log(userFavs);
+		// 		console.log(`userFavs: ${userFavs}`);
 
-				if (!userFavs) {
-					newFavs = [fav];
-					updateFavorites(newFavs);
-					setFavoriteColor(true);
-				} else if (userFavs.includes(fav)) {
-					newFavs = userFavs.filter((userFav) => userFav !== fav);
-					console.log(`newFavs: ${newFavs}`);
-					updateFavorites(newFavs);
-					setFavoriteColor(false);
-				} else {
-					let result = userFavs.push(fav);
-					newFavs = userFavs;
-					console.log(`newFavs: ${newFavs}`);
-					updateFavorites(newFavs);
-					setFavoriteColor(true);
-				}
-			});
+		// 		if (!userFavs) {
+		// 			newFavs = [fav];
+		// 			updateFavorites(newFavs);
+		// 			setFavoriteColor(true);
+		// 		} else if (userFavs.includes(fav)) {
+		// 			newFavs = userFavs.filter((userFav) => userFav !== fav);
+		// 			console.log(`newFavs: ${newFavs}`);
+		// 			updateFavorites(newFavs);
+		// 			setFavoriteColor(false);
+		// 		} else {
+		// 			let result = userFavs.push(fav);
+		// 			newFavs = userFavs;
+		// 			console.log(`newFavs: ${newFavs}`);
+		// 			updateFavorites(newFavs);
+		// 			setFavoriteColor(true);
+		// 		}
+		// 	});
 	};
 
 	const handlePlayClick = (e) => {
@@ -191,8 +192,8 @@ export default function Details(props) {
 			// THIS URL MUST CHANGE DYNAMICALLY
 			const fileName = props.dlUrl;
 			window.location.href =
-				'https://wavmovers.herokuapp.com/api/files/' + fileName;
-		} else history.push('/login');
+				"https://wavmovers.herokuapp.com/api/files/" + fileName;
+		} else history.push("/login");
 	};
 
 	return (
@@ -200,11 +201,10 @@ export default function Details(props) {
 			<Card
 				className={classes.root}
 				style={{
-					marginTop: '15px',
-					marginBottom: '15px',
+					marginTop: "15px",
+					marginBottom: "15px",
 					backgroundColor: `rgba(0,0,0,.7)`,
-				}}
-			>
+				}}>
 				<Grid container>
 					<Grid item>
 						<CardMedia
@@ -218,14 +218,13 @@ export default function Details(props) {
 							title={props.title}
 							subheader={props.artist}
 							className={classes.textColor}
-							subheaderTypographyProps={{ color: 'violet' }}
+							subheaderTypographyProps={{ color: "violet" }}
 						/>
 						<CardContent>
 							<Typography
 								className={(classes.type, classes.textColor)}
 								variant="body2"
-								component="p"
-							>
+								component="p">
 								{props.overview}
 							</Typography>
 						</CardContent>
@@ -233,14 +232,13 @@ export default function Details(props) {
 							<IconButton aria-label="play/pause" onClick={handlePlayClick}>
 								<PlayArrowIcon
 									className={classes.playIcon}
-									style={{ color: 'grey' }}
+									style={{ color: "grey" }}
 								/>
 							</IconButton>
 							<IconButton
 								aria-label="add to favorites"
 								onClick={handleFavClick}
-								style={!favoriteColor ? { color: 'grey' } : { color: 'red' }}
-							>
+								style={!favoriteColor ? { color: "grey" } : { color: "red" }}>
 								<FavoriteIcon />
 							</IconButton>
 							{/* <IconButton
@@ -256,8 +254,7 @@ export default function Details(props) {
 							<IconButton
 								aria-label="Download"
 								onClick={handleDownload}
-								style={{ color: 'grey' }}
-							>
+								style={{ color: "grey" }}>
 								<GetAppIcon />
 							</IconButton>
 						</CardActions>
