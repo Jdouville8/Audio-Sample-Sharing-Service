@@ -80,93 +80,94 @@ export default function Details(props) {
 	const [expanded, setExpanded] = React.useState(false);
 	const [favoriteColor, setFavoriteColor] = React.useState(false);
 
-	useEffect(() => {
-		let fav = props.id;
-		console.log(`useEffect fav: ${fav}`);
+	// useEffect(() => {
+	// 	let fav = props.id;
+	// 	console.log(`useEffect fav: ${fav}`);
 
-		axios
-			.get(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
-				options
-			)
-			.then(function ({ data }) {
-				let userFavs = data.user_metadata.favorites;
-				console.log(`useEffect userFavs: ${userFavs}`);
+	// 	axios
+	// 		.get(
+	// 			`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
+	// 			options
+	// 		)
+	// 		.then(function ({ data }) {
+	// 			let userFavs = data.user_metadata;
+	// 			console.log(`useEffect userFavs: ${userFavs}`);
 
-				if (!userFavs) {
-					return;
-				} else if (userFavs.includes(fav)) {
-					setFavoriteColor(true);
-				} else {
-					setFavoriteColor(false);
-				}
-			});
-	}, []);
+	// 			if (!userFavs) {
+	// 				return;
+	// 			} else if (userFavs.includes(fav)) {
+	// 				setFavoriteColor(true);
+	// 			} else {
+	// 				setFavoriteColor(false);
+	// 			}
+	// 		});
+	// }, []);
 
-	const options = {
-		headers: {
-			Authorization: process.env.REACT_APP_AUTH_TOKEN,
-		},
-	};
-	const userId = user.sub;
+	// const options = {
+	// 	headers: {
+	// 		Authorization: process.env.REACT_APP_AUTH_TOKEN,
+	// 	},
+	// };
+	// const userId = user.sub;
 
-	const changePlayerContext = useContext(PlayerContext);
+	// const changePlayerContext = useContext(PlayerContext);
 
-	const handleExpandClick = () => {
-		setExpanded(!expanded);
-	};
+	// const handleExpandClick = () => {
+	// 	setExpanded(!expanded);
+	// };
 
-	const updateFavorites = (newFavs) => {
-		axios
-			.patch(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
-				{
-					user_metadata: { favorites: newFavs },
-				},
-				options
-			)
-			.then(console.log('post success'));
-	};
+	// const updateFavorites = (newFavs) => {
+	// 	axios
+	// 		.patch(
+	// 			`https://wavmovers.us.auth0.com/api/v2/users/${userId}`,
+	// 			{
+	// 				user_metadata: { favorites: newFavs },
+	// 			},
+	// 			options
+	// 		)
+	// 		.then(console.log('post success'));
+	// };
 
 	const handleFavClick = (e) => {
 		e.preventDefault();
 
-		// if (!favoriteColor) {
-		// 	setFavoriteColor(true);
-		// } else {
-		// 	setFavoriteColor(false);
-		// }
+		if (!favoriteColor) {
+			setFavoriteColor(true);
+		} else {
+			setFavoriteColor(false);
+		}
 
-		let fav = props.id;
-		console.log(`fav: ${fav}`);
+		// let fav = props.id;
+		// console.log(`fav: ${fav}`);
 
-		axios
-			.get(
-				`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
-				options
-			)
-			.then(function ({ data }) {
-				let newFavs;
-				let userFavs = data.user_metadata.favorites;
-				console.log(`userFavs: ${userFavs}`);
+		// axios
+		// 	.get(
+		// 		`https://wavmovers.us.auth0.com/api/v2/users/${userId}?fields=user_metadata&include_fields=true`,
+		// 		options
+		// 	)
+		// 	.then(function ({ data }) {
+		// 		let newFavs;
+		// 		let userFavs = data.user_metadata;
+		// 		console.log(userFavs);
+		// 		console.log(`userFavs: ${userFavs}`);
 
-				if (!userFavs) {
-					newFavs = [fav];
-					updateFavorites(newFavs);
-					setFavoriteColor(true);
-				} else if (userFavs.includes(fav)) {
-					newFavs = userFavs.filter((userFav) => userFav !== fav);
-					console.log(`newFavs: ${newFavs}`);
-					updateFavorites(newFavs);
-					setFavoriteColor(false);
-				} else {
-					let result = userFavs.push(fav);
-					newFavs = userFavs;
-					console.log(`newFavs: ${newFavs}`);
-					updateFavorites(newFavs);
-					setFavoriteColor(true);
-				}
-			});
+		// 		if (!userFavs) {
+		// 			newFavs = [fav];
+		// 			updateFavorites(newFavs);
+		// 			setFavoriteColor(true);
+		// 		} else if (userFavs.includes(fav)) {
+		// 			newFavs = userFavs.filter((userFav) => userFav !== fav);
+		// 			console.log(`newFavs: ${newFavs}`);
+		// 			updateFavorites(newFavs);
+		// 			setFavoriteColor(false);
+		// 		} else {
+		// 			let result = userFavs.push(fav);
+		// 			newFavs = userFavs;
+		// 			console.log(`newFavs: ${newFavs}`);
+		// 			updateFavorites(newFavs);
+		// 			setFavoriteColor(true);
+		// 		}
+		// 	});
 	};
 
 	const handlePlayClick = (e) => {
